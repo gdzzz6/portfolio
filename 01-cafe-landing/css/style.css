@@ -247,6 +247,10 @@ ul{list-style:none;}
     linear-gradient(135deg, rgba(169,73,31,.35), rgba(36,27,21,.15)),
     repeating-linear-gradient(45deg,#e6d9c9 0 12px,#f1e6d8 12px 24px);
 }
+.about__media img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  border-radius:var(--radius);
+}
 .about__stat-card{
   position:absolute;background:#fff;border-radius:14px;padding:16px 20px;
   box-shadow:0 20px 40px -20px rgba(36,27,21,.45);
