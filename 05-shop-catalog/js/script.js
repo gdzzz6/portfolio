@@ -13,6 +13,7 @@
       compareAt: null,
       description: "European flax linen, washed soft, in oat.",
       gradient: "grad-1",
+      photo: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=700&q=70",
       isNew: true,
     },
     {
@@ -23,6 +24,7 @@
       compareAt: null,
       description: "Hand-thrown, matte sand glaze, one of a kind.",
       gradient: "grad-2",
+      photo: "https://images.unsplash.com/photo-1584589167171-541ce45f1eea?auto=format&fit=crop&w=700&q=70",
       isNew: false,
     },
     {
@@ -33,6 +35,7 @@
       compareAt: null,
       description: "Organic cotton, woven in Portugal, sage.",
       gradient: "grad-4",
+      photo: "https://images.unsplash.com/photo-1550254478-ead40cc54513?auto=format&fit=crop&w=700&q=70",
       isNew: false,
     },
     {
@@ -43,6 +46,7 @@
       compareAt: null,
       description: "Bubble-free glass, 1L, dishwasher safe.",
       gradient: "grad-6",
+      photo: "https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=700&q=70",
       isNew: false,
     },
     {
@@ -53,6 +57,7 @@
       compareAt: 54,
       description: "Set of two, French seams, stonewashed.",
       gradient: "grad-5",
+      photo: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=70",
       isNew: false,
     },
     {
@@ -63,6 +68,7 @@
       compareAt: null,
       description: "Single-slab ash, food-safe oil finish.",
       gradient: "grad-8",
+      photo: "https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=700&q=70",
       isNew: false,
     },
     {
@@ -73,6 +79,7 @@
       compareAt: null,
       description: "4-piece setting, stoneware, oven to table.",
       gradient: "grad-3",
+      photo: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=700&q=70",
       isNew: true,
     },
     {
@@ -83,6 +90,7 @@
       compareAt: null,
       description: "Hand-woven storage, fits any shelf, natural.",
       gradient: "grad-9",
+      photo: "https://images.unsplash.com/photo-1591129841117-3adfd313e34f?auto=format&fit=crop&w=700&q=70",
       isNew: false,
     },
     {
@@ -93,6 +101,7 @@
       compareAt: null,
       description: "Fitted, flat, and two shams, stonewashed.",
       gradient: "grad-7",
+      photo: "https://images.unsplash.com/photo-1600166898405-da9535204843?auto=format&fit=crop&w=700&q=70",
       isNew: true,
     },
     {
@@ -103,6 +112,7 @@
       compareAt: 38,
       description: "Soy-coconut wax, 45-hour burn, amber glass.",
       gradient: "grad-10",
+      photo: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=700&q=70",
       isNew: false,
     },
   ];
@@ -195,7 +205,7 @@
     return `
       <article class="product-card ${p.gradient}" data-id="${p.id}" data-category="${p.category}">
         <div class="product-card__media">
-          <div class="product-card__media-inner"></div>
+          <div class="product-card__media-inner"><img src="${p.photo}" alt="${p.name}" loading="lazy" onerror="this.remove()"></div>
           ${badge}
           <button class="wishlist-btn ${wished}" data-wishlist="${p.id}" aria-label="Toggle wishlist for ${p.name}" aria-pressed="${!!wishlist[p.id]}">
             <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 20.2s-7.6-4.6-10-9.3C.4 7.5 2 4 5.6 4c2.1 0 3.6 1.2 4.4 2.6C10.8 5.2 12.3 4 14.4 4 18 4 19.6 7.5 22 10.9c-2.4 4.7-10 9.3-10 9.3Z"/></svg>
@@ -345,7 +355,7 @@
     return `
       <div class="cart-item" data-id="${id}">
         <div class="cart-item__media ${p.gradient}">
-          <div class="cart-item__media-inner"></div>
+          <div class="cart-item__media-inner"><img src="${p.photo}" alt="${p.name}" loading="lazy" onerror="this.remove()"></div>
         </div>
         <div class="cart-item__info">
           <h4>${p.name}</h4>
