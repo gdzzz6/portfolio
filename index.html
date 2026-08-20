@@ -90,6 +90,15 @@
     text-align:center;padding:40px 24px 60px;color:var(--ink-soft);font-size:.85rem;
     border-top:1px solid var(--line);
   }
+
+  /* ---- Custom cursor ---- */
+  .cursor-dot,.cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;border-radius:50%;transform:translate(-50%,-50%);}
+  .cursor-dot{width:6px;height:6px;background:var(--accent);transition:opacity .2s ease;}
+  .cursor-ring{width:34px;height:34px;border:1.5px solid var(--accent);opacity:.55;transition:width .25s ease,height .25s ease,opacity .2s ease,background-color .25s ease;}
+  .cursor-ring.is-hover{width:58px;height:58px;opacity:1;background:color-mix(in srgb, var(--accent) 15%, transparent);}
+  .cursor-ring.is-click{width:24px;height:24px;}
+  body.has-custom-cursor,body.has-custom-cursor a,body.has-custom-cursor button{cursor:none;}
+  @media (hover:none),(pointer:coarse){.cursor-dot,.cursor-ring{display:none!important;}}
 </style>
 </head>
 <body>
@@ -185,6 +194,41 @@
 </main>
 
 <footer>© 2026 Al · Back-end &amp; Front-end Developer · No frameworks, no build step</footer>
+
+<script>
+(function () {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  var dot = document.createElement('div'); dot.className = 'cursor-dot';
+  var ring = document.createElement('div'); ring.className = 'cursor-ring';
+  document.body.appendChild(dot);
+  document.body.appendChild(ring);
+  document.body.classList.add('has-custom-cursor');
+
+  var mx = window.innerWidth / 2, my = window.innerHeight / 2, rx = mx, ry = my;
+  window.addEventListener('mousemove', function (e) {
+    mx = e.clientX; my = e.clientY;
+    dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+    dot.style.opacity = 1;
+  });
+  (function raf() {
+    rx += (mx - rx) * 0.18; ry += (my - ry) * 0.18;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(raf);
+  })();
+
+  var hoverSel = 'a,button,.card';
+  document.addEventListener('mouseover', function (e) {
+    if (e.target.closest(hoverSel)) ring.classList.add('is-hover');
+  });
+  document.addEventListener('mouseout', function (e) {
+    if (e.target.closest(hoverSel)) ring.classList.remove('is-hover');
+  });
+  document.addEventListener('mousedown', function () { ring.classList.add('is-click'); });
+  document.addEventListener('mouseup', function () { ring.classList.remove('is-click'); });
+  document.addEventListener('mouseleave', function () { dot.style.opacity = 0; ring.style.opacity = 0; });
+  document.addEventListener('mouseenter', function () { dot.style.opacity = 1; });
+})();
+</script>
 
 </body>
 </html>

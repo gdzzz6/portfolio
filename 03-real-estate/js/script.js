@@ -232,3 +232,37 @@
   }
 
 })();
+
+/* ---- Custom cursor ---- */
+(function () {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  var dot = document.createElement('div'); dot.className = 'cursor-dot';
+  var ring = document.createElement('div'); ring.className = 'cursor-ring';
+  document.body.appendChild(dot);
+  document.body.appendChild(ring);
+  document.body.classList.add('has-custom-cursor');
+
+  var mx = window.innerWidth / 2, my = window.innerHeight / 2, rx = mx, ry = my;
+  window.addEventListener('mousemove', function (e) {
+    mx = e.clientX; my = e.clientY;
+    dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+    dot.style.opacity = 1;
+  });
+  (function raf() {
+    rx += (mx - rx) * 0.18; ry += (my - ry) * 0.18;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(raf);
+  })();
+
+  var hoverSel = 'a,button,input,select,textarea,label,[role="button"],.card,.filter-btn,.toggle-btn,.menu__tab,.product-card,.listing-card,.wishlist-btn,.fav-btn,.quick-add';
+  document.addEventListener('mouseover', function (e) {
+    if (e.target.closest(hoverSel)) ring.classList.add('is-hover');
+  });
+  document.addEventListener('mouseout', function (e) {
+    if (e.target.closest(hoverSel)) ring.classList.remove('is-hover');
+  });
+  document.addEventListener('mousedown', function () { ring.classList.add('is-click'); });
+  document.addEventListener('mouseup', function () { ring.classList.remove('is-click'); });
+  document.addEventListener('mouseleave', function () { dot.style.opacity = 0; ring.style.opacity = 0; });
+  document.addEventListener('mouseenter', function () { dot.style.opacity = 1; });
+})();
