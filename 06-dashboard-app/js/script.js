@@ -7,6 +7,389 @@
   'use strict';
 
   /* ------------------------------------------------------------------ *
+   * Internationalization (i18n)
+   * Shared localStorage key "portfolio_lang" so the choice carries over
+   * across every site in the portfolio (same origin).
+   * ------------------------------------------------------------------ */
+  var LANG_KEY = 'portfolio_lang';
+
+  var translations = {
+    en: {
+      'nav.menu': 'Menu',
+      'nav.overview': 'Overview',
+      'nav.analytics': 'Analytics',
+      'nav.orders': 'Orders',
+      'nav.customers': 'Customers',
+      'nav.reports': 'Reports',
+      'nav.general': 'General',
+      'nav.settings': 'Settings',
+      'user.role': 'Product Admin',
+      'topbar.title': 'Overview',
+      'topbar.subtitle': "Welcome back — here's what's happening today.",
+      'topbar.searchPlaceholder': 'Search…',
+      'topbar.searchAria': 'Search',
+      'topbar.themeToggleTitle': 'Toggle theme',
+      'topbar.notifAria': 'Notifications',
+      'topbar.langAria': 'Change language',
+      'topbar.hamburgerAria': 'Open sidebar',
+      'topbar.collapseTitle': 'Collapse sidebar',
+      'range.7d': '7D',
+      'range.30d': '30D',
+      'range.90d': '90D',
+      'range.12m': '12M',
+      'stat.revenueLabel': 'Revenue',
+      'stat.activeUsersLabel': 'Active Users',
+      'stat.conversionLabel': 'Conversion Rate',
+      'stat.aovLabel': 'Avg. Order Value',
+      'stat.vsLastPeriod': 'vs {value} last period',
+      'chart.revenueTitle': 'Revenue Over Time',
+      'chart.revenueSub': 'Monthly revenue, last 12 months',
+      'chart.revenueLegend': 'Revenue',
+      'chart.trafficTitle': 'Traffic by Channel',
+      'chart.trafficSub': 'Share of sessions this period',
+      'chart.channelsCenterLabel': 'channels',
+      'channel.direct': 'Direct',
+      'channel.organic': 'Organic Search',
+      'channel.referral': 'Referral',
+      'channel.social': 'Social',
+      'table.title': 'Recent Orders',
+      'table.subtitle': 'Latest transactions across all channels',
+      'table.filterPlaceholder': 'Filter by customer name…',
+      'table.filterAria': 'Filter orders by customer name',
+      'table.colId': 'ID',
+      'table.colCustomer': 'Customer',
+      'table.colAmount': 'Amount',
+      'table.colStatus': 'Status',
+      'table.colDate': 'Date',
+      'table.noMatch': 'No orders match',
+      'status.paid': 'Paid',
+      'status.pending': 'Pending',
+      'status.failed': 'Failed',
+      'list.title': 'Top Products',
+      'list.subtitle': 'Best sellers this period',
+      'disclaimer': "Design sample from Al's portfolio — demo only, not a real connected app."
+    },
+    ru: {
+      'nav.menu': 'Меню',
+      'nav.overview': 'Обзор',
+      'nav.analytics': 'Аналитика',
+      'nav.orders': 'Заказы',
+      'nav.customers': 'Клиенты',
+      'nav.reports': 'Отчёты',
+      'nav.general': 'Общее',
+      'nav.settings': 'Настройки',
+      'user.role': 'Администратор продукта',
+      'topbar.title': 'Обзор',
+      'topbar.subtitle': 'С возвращением — вот что происходит сегодня.',
+      'topbar.searchPlaceholder': 'Поиск…',
+      'topbar.searchAria': 'Поиск',
+      'topbar.themeToggleTitle': 'Переключить тему',
+      'topbar.notifAria': 'Уведомления',
+      'topbar.langAria': 'Сменить язык',
+      'topbar.hamburgerAria': 'Открыть меню',
+      'topbar.collapseTitle': 'Свернуть меню',
+      'range.7d': '7Д',
+      'range.30d': '30Д',
+      'range.90d': '90Д',
+      'range.12m': '12М',
+      'stat.revenueLabel': 'Выручка',
+      'stat.activeUsersLabel': 'Активные пользователи',
+      'stat.conversionLabel': 'Конверсия',
+      'stat.aovLabel': 'Средний чек',
+      'stat.vsLastPeriod': 'против {value} за пред. период',
+      'chart.revenueTitle': 'Динамика выручки',
+      'chart.revenueSub': 'Выручка по месяцам, последние 12 месяцев',
+      'chart.revenueLegend': 'Выручка',
+      'chart.trafficTitle': 'Трафик по каналам',
+      'chart.trafficSub': 'Доля сеансов за период',
+      'chart.channelsCenterLabel': 'каналов',
+      'channel.direct': 'Прямые заходы',
+      'channel.organic': 'Органический поиск',
+      'channel.referral': 'Реферальный трафик',
+      'channel.social': 'Соцсети',
+      'table.title': 'Последние заказы',
+      'table.subtitle': 'Последние транзакции по всем каналам',
+      'table.filterPlaceholder': 'Фильтр по имени клиента…',
+      'table.filterAria': 'Фильтр заказов по имени клиента',
+      'table.colId': 'ID',
+      'table.colCustomer': 'Клиент',
+      'table.colAmount': 'Сумма',
+      'table.colStatus': 'Статус',
+      'table.colDate': 'Дата',
+      'table.noMatch': 'Заказы не найдены для',
+      'status.paid': 'Оплачен',
+      'status.pending': 'В ожидании',
+      'status.failed': 'Ошибка',
+      'list.title': 'Топ товаров',
+      'list.subtitle': 'Лидеры продаж за период',
+      'disclaimer': 'Демонстрационный образец из портфолио Al — это макет, а не реально подключённое приложение.'
+    },
+    uk: {
+      'nav.menu': 'Меню',
+      'nav.overview': 'Огляд',
+      'nav.analytics': 'Аналітика',
+      'nav.orders': 'Замовлення',
+      'nav.customers': 'Клієнти',
+      'nav.reports': 'Звіти',
+      'nav.general': 'Загальне',
+      'nav.settings': 'Налаштування',
+      'user.role': 'Адміністратор продукту',
+      'topbar.title': 'Огляд',
+      'topbar.subtitle': 'З поверненням — ось що відбувається сьогодні.',
+      'topbar.searchPlaceholder': 'Пошук…',
+      'topbar.searchAria': 'Пошук',
+      'topbar.themeToggleTitle': 'Перемкнути тему',
+      'topbar.notifAria': 'Сповіщення',
+      'topbar.langAria': 'Змінити мову',
+      'topbar.hamburgerAria': 'Відкрити меню',
+      'topbar.collapseTitle': 'Згорнути меню',
+      'range.7d': '7Д',
+      'range.30d': '30Д',
+      'range.90d': '90Д',
+      'range.12m': '12М',
+      'stat.revenueLabel': 'Дохід',
+      'stat.activeUsersLabel': 'Активні користувачі',
+      'stat.conversionLabel': 'Конверсія',
+      'stat.aovLabel': 'Середній чек',
+      'stat.vsLastPeriod': 'проти {value} за попер. період',
+      'chart.revenueTitle': 'Динаміка доходу',
+      'chart.revenueSub': 'Дохід за місяцями, останні 12 місяців',
+      'chart.revenueLegend': 'Дохід',
+      'chart.trafficTitle': 'Трафік за каналами',
+      'chart.trafficSub': 'Частка сеансів за період',
+      'chart.channelsCenterLabel': 'канали',
+      'channel.direct': 'Прямі заходи',
+      'channel.organic': 'Органічний пошук',
+      'channel.referral': 'Реферальний трафік',
+      'channel.social': 'Соцмережі',
+      'table.title': 'Останні замовлення',
+      'table.subtitle': 'Останні транзакції за всіма каналами',
+      'table.filterPlaceholder': 'Фільтр за іменем клієнта…',
+      'table.filterAria': 'Фільтр замовлень за іменем клієнта',
+      'table.colId': 'ID',
+      'table.colCustomer': 'Клієнт',
+      'table.colAmount': 'Сума',
+      'table.colStatus': 'Статус',
+      'table.colDate': 'Дата',
+      'table.noMatch': 'Замовлень не знайдено для',
+      'status.paid': 'Оплачено',
+      'status.pending': 'Очікується',
+      'status.failed': 'Помилка',
+      'list.title': 'Топ товарів',
+      'list.subtitle': 'Лідери продажів за період',
+      'disclaimer': 'Демонстраційний зразок із портфоліо Al — це макет, а не реально підключений застосунок.'
+    },
+    de: {
+      'nav.menu': 'Menü',
+      'nav.overview': 'Übersicht',
+      'nav.analytics': 'Analysen',
+      'nav.orders': 'Bestellungen',
+      'nav.customers': 'Kunden',
+      'nav.reports': 'Berichte',
+      'nav.general': 'Allgemein',
+      'nav.settings': 'Einstellungen',
+      'user.role': 'Produktadministrator',
+      'topbar.title': 'Übersicht',
+      'topbar.subtitle': 'Willkommen zurück — das ist heute los.',
+      'topbar.searchPlaceholder': 'Suchen…',
+      'topbar.searchAria': 'Suchen',
+      'topbar.themeToggleTitle': 'Design umschalten',
+      'topbar.notifAria': 'Benachrichtigungen',
+      'topbar.langAria': 'Sprache ändern',
+      'topbar.hamburgerAria': 'Menü öffnen',
+      'topbar.collapseTitle': 'Menü einklappen',
+      'range.7d': '7T',
+      'range.30d': '30T',
+      'range.90d': '90T',
+      'range.12m': '12M',
+      'stat.revenueLabel': 'Umsatz',
+      'stat.activeUsersLabel': 'Aktive Nutzer',
+      'stat.conversionLabel': 'Konversionsrate',
+      'stat.aovLabel': 'Ø Bestellwert',
+      'stat.vsLastPeriod': 'vs. {value} im Vorzeitraum',
+      'chart.revenueTitle': 'Umsatzverlauf',
+      'chart.revenueSub': 'Monatlicher Umsatz, letzte 12 Monate',
+      'chart.revenueLegend': 'Umsatz',
+      'chart.trafficTitle': 'Traffic nach Kanal',
+      'chart.trafficSub': 'Anteil der Sitzungen in diesem Zeitraum',
+      'chart.channelsCenterLabel': 'Kanäle',
+      'channel.direct': 'Direkt',
+      'channel.organic': 'Organische Suche',
+      'channel.referral': 'Verweise',
+      'channel.social': 'Social Media',
+      'table.title': 'Letzte Bestellungen',
+      'table.subtitle': 'Neueste Transaktionen aus allen Kanälen',
+      'table.filterPlaceholder': 'Nach Kundenname filtern…',
+      'table.filterAria': 'Bestellungen nach Kundenname filtern',
+      'table.colId': 'ID',
+      'table.colCustomer': 'Kunde',
+      'table.colAmount': 'Betrag',
+      'table.colStatus': 'Status',
+      'table.colDate': 'Datum',
+      'table.noMatch': 'Keine Bestellungen gefunden für',
+      'status.paid': 'Bezahlt',
+      'status.pending': 'Ausstehend',
+      'status.failed': 'Fehlgeschlagen',
+      'list.title': 'Top-Produkte',
+      'list.subtitle': 'Bestseller in diesem Zeitraum',
+      'disclaimer': 'Design-Beispiel aus Als Portfolio — nur eine Demo, keine echte, angebundene Anwendung.'
+    },
+    es: {
+      'nav.menu': 'Menú',
+      'nav.overview': 'Resumen',
+      'nav.analytics': 'Analítica',
+      'nav.orders': 'Pedidos',
+      'nav.customers': 'Clientes',
+      'nav.reports': 'Informes',
+      'nav.general': 'General',
+      'nav.settings': 'Configuración',
+      'user.role': 'Administrador de producto',
+      'topbar.title': 'Resumen',
+      'topbar.subtitle': 'Bienvenido de nuevo — esto es lo que pasa hoy.',
+      'topbar.searchPlaceholder': 'Buscar…',
+      'topbar.searchAria': 'Buscar',
+      'topbar.themeToggleTitle': 'Cambiar tema',
+      'topbar.notifAria': 'Notificaciones',
+      'topbar.langAria': 'Cambiar idioma',
+      'topbar.hamburgerAria': 'Abrir menú',
+      'topbar.collapseTitle': 'Contraer menú',
+      'range.7d': '7D',
+      'range.30d': '30D',
+      'range.90d': '90D',
+      'range.12m': '12M',
+      'stat.revenueLabel': 'Ingresos',
+      'stat.activeUsersLabel': 'Usuarios activos',
+      'stat.conversionLabel': 'Tasa de conversión',
+      'stat.aovLabel': 'Valor medio del pedido',
+      'stat.vsLastPeriod': 'frente a {value} del período anterior',
+      'chart.revenueTitle': 'Ingresos a lo largo del tiempo',
+      'chart.revenueSub': 'Ingresos mensuales, últimos 12 meses',
+      'chart.revenueLegend': 'Ingresos',
+      'chart.trafficTitle': 'Tráfico por canal',
+      'chart.trafficSub': 'Porcentaje de sesiones en este período',
+      'chart.channelsCenterLabel': 'canales',
+      'channel.direct': 'Directo',
+      'channel.organic': 'Búsqueda orgánica',
+      'channel.referral': 'Referidos',
+      'channel.social': 'Redes sociales',
+      'table.title': 'Pedidos recientes',
+      'table.subtitle': 'Últimas transacciones de todos los canales',
+      'table.filterPlaceholder': 'Filtrar por nombre de cliente…',
+      'table.filterAria': 'Filtrar pedidos por nombre de cliente',
+      'table.colId': 'ID',
+      'table.colCustomer': 'Cliente',
+      'table.colAmount': 'Importe',
+      'table.colStatus': 'Estado',
+      'table.colDate': 'Fecha',
+      'table.noMatch': 'No se encontraron pedidos para',
+      'status.paid': 'Pagado',
+      'status.pending': 'Pendiente',
+      'status.failed': 'Fallido',
+      'list.title': 'Productos más vendidos',
+      'list.subtitle': 'Los más vendidos en este período',
+      'disclaimer': 'Muestra de diseño del portafolio de Al — solo una demo, no una aplicación real conectada a datos.'
+    }
+  };
+
+  function getStoredLang() {
+    try {
+      var saved = localStorage.getItem(LANG_KEY);
+      if (saved && translations[saved]) return saved;
+    } catch (e) { /* ignore */ }
+    return 'en';
+  }
+
+  var currentLang = getStoredLang();
+
+  function t(key) {
+    var dict = translations[currentLang] || translations.en;
+    if (dict && dict[key] != null) return dict[key];
+    return (translations.en[key] != null) ? translations.en[key] : '';
+  }
+
+  function applyTranslations() {
+    document.documentElement.setAttribute('lang', currentLang);
+
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      el.textContent = t(el.getAttribute('data-i18n'));
+    });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
+      el.setAttribute('placeholder', t(el.getAttribute('data-i18n-placeholder')));
+    });
+
+    document.querySelectorAll('[data-i18n-title]').forEach(function (el) {
+      el.setAttribute('title', t(el.getAttribute('data-i18n-title')));
+    });
+
+    document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
+      el.setAttribute('aria-label', t(el.getAttribute('data-i18n-aria')));
+    });
+
+    document.querySelectorAll('[data-i18n-tip]').forEach(function (el) {
+      el.setAttribute('data-tip', t(el.getAttribute('data-i18n-tip')));
+    });
+
+    document.querySelectorAll('[data-i18n-tpl]').forEach(function (el) {
+      var tpl = t(el.getAttribute('data-i18n-tpl'));
+      var val = el.getAttribute('data-value') || '';
+      el.textContent = tpl.replace('{value}', val);
+    });
+
+    var langCodeEl = document.getElementById('langCode');
+    if (langCodeEl) langCodeEl.textContent = currentLang.toUpperCase();
+
+    document.querySelectorAll('.lang-option').forEach(function (opt) {
+      opt.classList.toggle('is-active', opt.getAttribute('data-lang') === currentLang);
+    });
+
+    // Re-render dynamic content that embeds translated strings. These are
+    // no-ops before the charts/table exist yet; called again post-init.
+    if (typeof renderDonutChart === 'function') renderDonutChart();
+    if (typeof renderOrdersTable === 'function') renderOrdersTable();
+  }
+
+  function setLang(lang) {
+    if (!translations[lang]) lang = 'en';
+    currentLang = lang;
+    try { localStorage.setItem(LANG_KEY, lang); } catch (e) { /* ignore */ }
+    applyTranslations();
+  }
+
+  function initLangSwitcher() {
+    var switcher = document.getElementById('langSwitcher');
+    var btn = document.getElementById('langBtn');
+    var menu = document.getElementById('langMenu');
+    if (!switcher || !btn || !menu) return;
+
+    function closeMenu() {
+      switcher.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var isOpen = switcher.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    menu.addEventListener('click', function (e) {
+      var opt = e.target.closest('.lang-option');
+      if (!opt) return;
+      setLang(opt.getAttribute('data-lang'));
+      closeMenu();
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!switcher.contains(e.target)) closeMenu();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+  }
+
+  /* ------------------------------------------------------------------ *
    * Theme toggle (persisted in localStorage, applied pre-paint in HTML)
    * ------------------------------------------------------------------ */
   function initTheme() {
@@ -312,10 +695,10 @@
    * with legend hover highlighting the matching slice.
    * ------------------------------------------------------------------ */
   var channelData = [
-    { label: 'Direct', value: 38, color: 'var(--chan-1)' },
-    { label: 'Organic Search', value: 29, color: 'var(--chan-2)' },
-    { label: 'Referral', value: 19, color: 'var(--chan-3)' },
-    { label: 'Social', value: 14, color: 'var(--chan-4)' }
+    { key: 'direct', value: 38, color: 'var(--chan-1)' },
+    { key: 'organic', value: 29, color: 'var(--chan-2)' },
+    { key: 'referral', value: 19, color: 'var(--chan-3)' },
+    { key: 'social', value: 14, color: 'var(--chan-4)' }
   ];
 
   function renderDonutChart() {
@@ -327,28 +710,34 @@
     var circumference = 2 * Math.PI * r;
     var offsetAcc = 0;
 
+    // Position each slice with stroke-dasharray/stroke-dashoffset only (no
+    // per-element `transform` attribute) — this sandbox's renderer double-
+    // applies presentation-attribute `transform` on SVG shapes, which was
+    // sending every slice's geometry far outside the chart. Dash offset
+    // achieves the same "starts at 12 o'clock, sweeps clockwise" layout
+    // without touching transform at all.
     var slicesHtml = channelData.map(function (d, i) {
       var dash = (d.value / 100) * circumference;
       var gap = circumference - dash;
-      var rotation = (offsetAcc / 100) * 360 - 90;
+      var dashoffset = circumference / 4 - (offsetAcc / 100) * circumference;
       offsetAcc += d.value;
       return '<circle class="donut-slice" data-index="' + i + '" cx="' + cx + '" cy="' + cy + '" r="' + r + '" ' +
         'fill="none" stroke="' + d.color + '" stroke-width="' + strokeW + '" ' +
         'stroke-dasharray="' + dash.toFixed(2) + ' ' + gap.toFixed(2) + '" ' +
-        'stroke-linecap="butt" ' +
-        'transform="rotate(' + rotation.toFixed(2) + ' ' + cx + ' ' + cy + ')"></circle>';
+        'stroke-dashoffset="' + dashoffset.toFixed(2) + '" ' +
+        'stroke-linecap="butt"></circle>';
     }).join('');
 
     var centerHtml =
       '<text x="' + cx + '" y="' + (cy - 4) + '" text-anchor="middle" font-size="20" font-weight="700" font-family="var(--font-mono)" fill="var(--text-primary)">' + channelData.length + '</text>' +
-      '<text x="' + cx + '" y="' + (cy + 14) + '" text-anchor="middle" font-size="9.5" fill="var(--text-tertiary)">channels</text>';
+      '<text x="' + cx + '" y="' + (cy + 14) + '" text-anchor="middle" font-size="9.5" fill="var(--text-tertiary)">' + t('chart.channelsCenterLabel') + '</text>';
 
     svg.innerHTML = slicesHtml + centerHtml;
 
     legend.innerHTML = channelData.map(function (d, i) {
       return '<li class="donut-legend-item" data-index="' + i + '">' +
         '<span class="donut-legend-dot" style="background:' + d.color + '"></span>' +
-        '<span class="donut-legend-label">' + d.label + '</span>' +
+        '<span class="donut-legend-label">' + t('channel.' + d.key) + '</span>' +
         '<span class="donut-legend-value">' + d.value + '%</span>' +
       '</li>';
     }).join('');
@@ -430,9 +819,10 @@
   }
 
   function statusPillHtml(status) {
-    var map = { paid: ['pill-paid', 'Paid'], pending: ['pill-pending', 'Pending'], failed: ['pill-failed', 'Failed'] };
-    var entry = map[status] || ['pill-pending', status];
-    return '<span class="pill ' + entry[0] + '">' + entry[1] + '</span>';
+    var classMap = { paid: 'pill-paid', pending: 'pill-pending', failed: 'pill-failed' };
+    var cls = classMap[status] || 'pill-pending';
+    var label = t('status.' + status) || status;
+    return '<span class="pill ' + cls + '">' + label + '</span>';
   }
 
   function getFilteredSortedOrders() {
@@ -441,6 +831,8 @@
       return !term || o.customer.toLowerCase().indexOf(term) !== -1;
     });
 
+    // Sorting always reads the stable data key (id/customer/amount/status/date),
+    // never the translated header text, so localizing the headers can't break it.
     var key = tableState.sortKey;
     var dir = tableState.sortDir === 'asc' ? 1 : -1;
 
@@ -501,7 +893,7 @@
       }).join('');
     }
 
-    // Update header sort indicators
+    // Update header sort indicators (keyed by data-key, unaffected by translation)
     document.querySelectorAll('#ordersTable th.sortable').forEach(function (th) {
       var key = th.getAttribute('data-key');
       th.classList.remove('is-sorted', 'sort-asc', 'sort-desc');
@@ -583,6 +975,8 @@
     renderDonutChart();
     initOrdersTable();
     renderTopProducts();
+    initLangSwitcher();
+    applyTranslations();
 
     // Re-render charts on resize so the hover mapping stays accurate
     // against the SVG's actual rendered size (viewBox scaling).
@@ -596,36 +990,86 @@
   });
 })();
 
-/* ---- Custom cursor ---- */
+/* ---- Custom cursor: precision crosshair ----
+   Two hairline guides (1px each) track the pointer across the full
+   viewport like a spreadsheet/chart crosshair, plus a small tick mark
+   at their intersection. This listens on `window`/`document` only and
+   never touches the chart SVG's own mousemove listener (which reads
+   e.clientX/e.clientY directly for its hover-tooltip), so the two
+   stay fully independent. Everything here is pointer-events:none. */
 (function () {
   if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-  var dot = document.createElement('div'); dot.className = 'cursor-dot';
-  var ring = document.createElement('div'); ring.className = 'cursor-ring';
-  document.body.appendChild(dot);
-  document.body.appendChild(ring);
-  document.body.classList.add('has-custom-cursor');
 
-  var mx = window.innerWidth / 2, my = window.innerHeight / 2, rx = mx, ry = my;
+  var lineH = document.createElement('div');
+  lineH.className = 'crosshair-line crosshair-h';
+  var lineV = document.createElement('div');
+  lineV.className = 'crosshair-line crosshair-v';
+  var tick = document.createElement('div');
+  tick.className = 'crosshair-tick';
+
+  document.body.appendChild(lineH);
+  document.body.appendChild(lineV);
+  document.body.appendChild(tick);
+  document.body.classList.add('has-crosshair-cursor');
+
+  var mx = window.innerWidth / 2;
+  var my = window.innerHeight / 2;
+  var tx = mx, ty = my; // eased position for the tick mark
+  var shown = false;
+
   window.addEventListener('mousemove', function (e) {
-    mx = e.clientX; my = e.clientY;
-    dot.style.left = mx + 'px'; dot.style.top = my + 'px';
-    dot.style.opacity = 1;
+    mx = e.clientX;
+    my = e.clientY;
+    if (!shown) {
+      shown = true;
+      lineH.classList.add('is-visible');
+      lineV.classList.add('is-visible');
+      tick.classList.add('is-visible');
+    }
+  }, { passive: true });
+
+  document.addEventListener('mouseleave', function () {
+    lineH.classList.remove('is-visible');
+    lineV.classList.remove('is-visible');
+    tick.classList.remove('is-visible');
+    shown = false;
   });
+  document.addEventListener('mouseenter', function () {
+    shown = true;
+    lineH.classList.add('is-visible');
+    lineV.classList.add('is-visible');
+    tick.classList.add('is-visible');
+  });
+
   (function raf() {
-    rx += (mx - rx) * 0.18; ry += (my - ry) * 0.18;
-    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    // Lines snap straight to the pointer for a precise, non-laggy feel.
+    lineH.style.top = my + 'px';
+    lineV.style.left = mx + 'px';
+    // The tick mark (the intersection point) eases toward the pointer.
+    tx += (mx - tx) * 0.28;
+    ty += (my - ty) * 0.28;
+    tick.style.left = tx + 'px';
+    tick.style.top = ty + 'px';
     requestAnimationFrame(raf);
   })();
 
-  var hoverSel = 'a,button,input,select,textarea,label,[role="button"],.card,.filter-btn,.toggle-btn,.menu__tab,.product-card,.listing-card,.wishlist-btn,.fav-btn,.quick-add';
+  var hoverSel = [
+    'a', 'button', 'input', 'select', 'textarea', 'label', '[role="button"]',
+    '.nav-link', '.icon-btn', '.range-btn', '.user-block', '.lang-option',
+    'th.sortable', '#mainChart', '#donutChart', '.donut-slice', '.donut-legend-item',
+    '.sidebar-collapse-btn'
+  ].join(',');
+
+  function setActive(on) {
+    lineH.classList.toggle('is-active', on);
+    lineV.classList.toggle('is-active', on);
+    tick.classList.toggle('is-active', on);
+  }
+
   document.addEventListener('mouseover', function (e) {
-    if (e.target.closest(hoverSel)) ring.classList.add('is-hover');
+    if (e.target.closest && e.target.closest(hoverSel)) setActive(true);
   });
   document.addEventListener('mouseout', function (e) {
-    if (e.target.closest(hoverSel)) ring.classList.remove('is-hover');
+    if (e.target.closest && e.target.closest(hoverSel)) setActive(false);
   });
-  document.addEventListener('mousedown', function () { ring.classList.add('is-click'); });
-  document.addEventListener('mouseup', function () { ring.classList.remove('is-click'); });
-  document.addEventListener('mouseleave', function () { dot.style.opacity = 0; ring.style.opacity = 0; });
-  document.addEventListener('mouseenter', function () { dot.style.opacity = 1; });
 })();

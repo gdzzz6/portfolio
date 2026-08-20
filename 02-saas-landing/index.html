@@ -33,15 +33,31 @@
     </a>
 
     <nav class="nav-links" aria-label="Primary">
-      <a href="#product">Product</a>
-      <a href="#features">Features</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#customers">Customers</a>
+      <a href="#product" data-i18n="nav.product">Product</a>
+      <a href="#features" data-i18n="nav.features">Features</a>
+      <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+      <a href="#customers" data-i18n="nav.customers">Customers</a>
     </nav>
 
     <div class="nav-actions">
-      <a href="#" class="link-signin">Sign in</a>
-      <a href="#pricing" class="btn btn-primary btn-sm">Get Started</a>
+      <a href="#" class="link-signin" data-i18n="nav.signin">Sign in</a>
+      <a href="#pricing" class="btn btn-primary btn-sm" data-i18n="nav.getStarted">Get Started</a>
+    </div>
+
+    <!-- ============ LANGUAGE SWITCHER ============ -->
+    <div class="lang-switcher" id="lang-switcher">
+      <button class="lang-btn" id="lang-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Select language">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="currentColor" stroke-width="1.5"/><path d="M3 12H21M12 3C14.5 5.7 15.8 8.8 15.8 12C15.8 15.2 14.5 18.3 12 21C9.5 18.3 8.2 15.2 8.2 12C8.2 8.8 9.5 5.7 12 3Z" stroke="currentColor" stroke-width="1.5"/></svg>
+        <span id="lang-current">EN</span>
+        <svg class="lang-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <ul class="lang-menu" id="lang-menu" role="listbox" aria-label="Language">
+        <li role="option" data-lang="ru">Русский</li>
+        <li role="option" data-lang="uk">Українська</li>
+        <li role="option" data-lang="en">English</li>
+        <li role="option" data-lang="de">Deutsch</li>
+        <li role="option" data-lang="es">Español</li>
+      </ul>
     </div>
 
     <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-panel">
@@ -52,12 +68,12 @@
   <!-- Mobile panel -->
   <div class="mobile-panel" id="mobile-panel">
     <nav aria-label="Mobile">
-      <a href="#product">Product</a>
-      <a href="#features">Features</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#customers">Customers</a>
-      <a href="#" class="mobile-signin">Sign in</a>
-      <a href="#pricing" class="btn btn-primary">Get Started</a>
+      <a href="#product" data-i18n="nav.product">Product</a>
+      <a href="#features" data-i18n="nav.features">Features</a>
+      <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+      <a href="#customers" data-i18n="nav.customers">Customers</a>
+      <a href="#" class="mobile-signin" data-i18n="nav.signin">Sign in</a>
+      <a href="#pricing" class="btn btn-primary" data-i18n="nav.getStarted">Get Started</a>
     </nav>
   </div>
 </header>
@@ -69,23 +85,24 @@
     <div class="hero-glow" aria-hidden="true"></div>
     <div class="container hero-inner">
       <div class="eyebrow fade-in">
-        <span class="dot"></span> Now with AI-assisted workflow builder
+        <span class="dot"></span> <span data-i18n="hero.badge">Now with AI-assisted workflow builder</span>
       </div>
       <h1 class="hero-title fade-in">
-        Run your team's work<br> on <span class="text-gradient">autopilot.</span>
+        <span data-i18n="hero.title1">Run your team's work</span><br>
+        <span data-i18n="hero.title2">on</span> <span class="text-gradient" data-i18n="hero.title3">autopilot.</span>
       </h1>
-      <p class="hero-sub fade-in">
+      <p class="hero-sub fade-in" data-i18n="hero.sub">
         Flowbase connects planning, automation, and reporting into one workspace —
         so your team spends less time coordinating and more time shipping.
       </p>
       <div class="hero-ctas fade-in">
-        <a href="#pricing" class="btn btn-primary btn-lg">Start free trial</a>
+        <a href="#pricing" class="btn btn-primary btn-lg" data-i18n="cta.startFreeTrial">Start free trial</a>
         <button class="btn btn-ghost btn-lg" id="watch-demo-btn" type="button">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6"/><path d="M10 8.5L16 12L10 15.5V8.5Z" fill="currentColor"/></svg>
-          Watch demo
+          <span data-i18n="hero.watchDemo">Watch demo</span>
         </button>
       </div>
-      <p class="hero-note fade-in">No credit card required · 14-day free trial · Cancel anytime</p>
+      <p class="hero-note fade-in" data-i18n="hero.note">No credit card required · 14-day free trial · Cancel anytime</p>
 
       <!-- ============ PRODUCT MOCKUP ============ -->
       <div class="mockup-wrap fade-in" id="product">
@@ -160,7 +177,7 @@
   <!-- ================= LOGO STRIP ================= -->
   <section class="logo-strip fade-in" id="customers">
     <div class="container">
-      <p class="logo-strip-label">Trusted by teams at</p>
+      <p class="logo-strip-label" data-i18n="logos.label">Trusted by teams at</p>
       <div class="logo-row">
         <span class="wordmark">Norrland&nbsp;Systems</span>
         <span class="wordmark">Quarterlane</span>
@@ -176,9 +193,9 @@
   <section class="features" id="features">
     <div class="container">
       <div class="section-head fade-in">
-        <span class="section-kicker">Features</span>
-        <h2>Everything your team needs, minus the busywork</h2>
-        <p>Flowbase replaces a stack of disconnected tools with one workspace that plans, automates, and reports on your team's work automatically.</p>
+        <span class="section-kicker" data-i18n="features.kicker">Features</span>
+        <h2 data-i18n="features.title">Everything your team needs, minus the busywork</h2>
+        <p data-i18n="features.subtitle">Flowbase replaces a stack of disconnected tools with one workspace that plans, automates, and reports on your team's work automatically.</p>
       </div>
 
       <div class="feature-grid">
@@ -186,43 +203,43 @@
           <div class="feature-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14H12L11 22L20 10H12L13 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
           </div>
-          <h3>Visual automation builder</h3>
-          <p>Design multi-step automations with a drag-and-drop canvas — no scripts, no engineering tickets required.</p>
+          <h3 data-i18n="features.f1.title">Visual automation builder</h3>
+          <p data-i18n="features.f1.desc">Design multi-step automations with a drag-and-drop canvas — no scripts, no engineering tickets required.</p>
         </div>
         <div class="feature-card fade-in">
           <div class="feature-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8"/></svg>
           </div>
-          <h3>Flexible project views</h3>
-          <p>Switch between board, timeline, and table views instantly. Every view stays in sync — no duplicate data entry.</p>
+          <h3 data-i18n="features.f2.title">Flexible project views</h3>
+          <p data-i18n="features.f2.desc">Switch between board, timeline, and table views instantly. Every view stays in sync — no duplicate data entry.</p>
         </div>
         <div class="feature-card fade-in">
           <div class="feature-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 12L21 4L13 21L11 13L3 12Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
           </div>
-          <h3>Smart notifications</h3>
-          <p>Context-aware alerts route to the right person on the right channel, so nothing important gets buried.</p>
+          <h3 data-i18n="features.f3.title">Smart notifications</h3>
+          <p data-i18n="features.f3.desc">Context-aware alerts route to the right person on the right channel, so nothing important gets buried.</p>
         </div>
         <div class="feature-card fade-in">
           <div class="feature-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 19V13M4 13V5M12 19V9M12 9V5M20 19V15M20 15V5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
           </div>
-          <h3>Live reporting</h3>
-          <p>Auto-generated dashboards track velocity, cycle time, and workload — always current, never a stale spreadsheet.</p>
+          <h3 data-i18n="features.f4.title">Live reporting</h3>
+          <p data-i18n="features.f4.desc">Auto-generated dashboards track velocity, cycle time, and workload — always current, never a stale spreadsheet.</p>
         </div>
         <div class="feature-card fade-in">
           <div class="feature-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M3 9H21" stroke="currentColor" stroke-width="1.7"/><path d="M8 2V6M16 2V6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
           </div>
-          <h3>Deep integrations</h3>
-          <p>Native connections to the tools you already use, plus an open API for the ones you've built yourself.</p>
+          <h3 data-i18n="features.f5.title">Deep integrations</h3>
+          <p data-i18n="features.f5.desc">Native connections to the tools you already use, plus an open API for the ones you've built yourself.</p>
         </div>
         <div class="feature-card fade-in">
           <div class="feature-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2L20 6V12C20 17 16.5 20.7 12 22C7.5 20.7 4 17 4 12V6L12 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12L11 14L15.5 9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h3>Enterprise-grade security</h3>
-          <p>SSO, granular permissions, and full audit logs come standard — built for teams that can't compromise.</p>
+          <h3 data-i18n="features.f6.title">Enterprise-grade security</h3>
+          <p data-i18n="features.f6.desc">SSO, granular permissions, and full audit logs come standard — built for teams that can't compromise.</p>
         </div>
       </div>
     </div>
@@ -232,19 +249,19 @@
   <section class="how-it-works" id="how">
     <div class="container">
       <div class="section-head fade-in">
-        <span class="section-kicker">How it works</span>
-        <h2>From chaos to clarity in three steps</h2>
+        <span class="section-kicker" data-i18n="how.kicker">How it works</span>
+        <h2 data-i18n="how.title">From chaos to clarity in three steps</h2>
       </div>
 
       <div class="step-row fade-in">
         <div class="step-text">
           <span class="step-num">01</span>
-          <h3>Map your workflow</h3>
-          <p>Import your existing process or start from one of 40+ templates. Flowbase adapts to how your team already works — not the other way around.</p>
+          <h3 data-i18n="how.s1.title">Map your workflow</h3>
+          <p data-i18n="how.s1.desc">Import your existing process or start from one of 40+ templates. Flowbase adapts to how your team already works — not the other way around.</p>
           <ul class="step-list">
-            <li>Drag-and-drop workflow canvas</li>
-            <li>Templates for engineering, marketing, and ops</li>
-            <li>Import from spreadsheets in one click</li>
+            <li data-i18n="how.s1.li1">Drag-and-drop workflow canvas</li>
+            <li data-i18n="how.s1.li2">Templates for engineering, marketing, and ops</li>
+            <li data-i18n="how.s1.li3">Import from spreadsheets in one click</li>
           </ul>
         </div>
         <div class="step-visual">
@@ -264,12 +281,12 @@
       <div class="step-row reverse fade-in">
         <div class="step-text">
           <span class="step-num">02</span>
-          <h3>Automate the busywork</h3>
-          <p>Set rules once and let Flowbase handle status updates, approvals, and hand-offs between teams automatically.</p>
+          <h3 data-i18n="how.s2.title">Automate the busywork</h3>
+          <p data-i18n="how.s2.desc">Set rules once and let Flowbase handle status updates, approvals, and hand-offs between teams automatically.</p>
           <ul class="step-list">
-            <li>Conditional logic and branching rules</li>
-            <li>Scheduled and event-based triggers</li>
-            <li>Approval chains with escalation</li>
+            <li data-i18n="how.s2.li1">Conditional logic and branching rules</li>
+            <li data-i18n="how.s2.li2">Scheduled and event-based triggers</li>
+            <li data-i18n="how.s2.li3">Approval chains with escalation</li>
           </ul>
         </div>
         <div class="step-visual">
@@ -290,12 +307,12 @@
       <div class="step-row fade-in">
         <div class="step-text">
           <span class="step-num">03</span>
-          <h3>Report without the spreadsheet</h3>
-          <p>Every action feeds a live dashboard. Share a read-only link with stakeholders instead of building a deck.</p>
+          <h3 data-i18n="how.s3.title">Report without the spreadsheet</h3>
+          <p data-i18n="how.s3.desc">Every action feeds a live dashboard. Share a read-only link with stakeholders instead of building a deck.</p>
           <ul class="step-list">
-            <li>Real-time velocity and cycle-time charts</li>
-            <li>Shareable, always-current dashboards</li>
-            <li>Exportable summaries for leadership</li>
+            <li data-i18n="how.s3.li1">Real-time velocity and cycle-time charts</li>
+            <li data-i18n="how.s3.li2">Shareable, always-current dashboards</li>
+            <li data-i18n="how.s3.li3">Exportable summaries for leadership</li>
           </ul>
         </div>
         <div class="step-visual">
@@ -321,38 +338,38 @@
   <section class="testimonials">
     <div class="container">
       <div class="section-head fade-in">
-        <span class="section-kicker">Customers</span>
-        <h2>Teams run leaner with Flowbase</h2>
+        <span class="section-kicker" data-i18n="testimonials.kicker">Customers</span>
+        <h2 data-i18n="testimonials.title">Teams run leaner with Flowbase</h2>
       </div>
 
       <div class="testimonial-grid">
         <figure class="testimonial-card fade-in">
-          <blockquote>"We cut our weekly status meeting entirely. Everyone just checks the dashboard now — it's more accurate than the meeting ever was."</blockquote>
+          <blockquote data-i18n="testimonials.t1.quote">"We cut our weekly status meeting entirely. Everyone just checks the dashboard now — it's more accurate than the meeting ever was."</blockquote>
           <figcaption>
             <span class="avatar" style="--c1:#8b7bff;--c2:#5fd0ff">MB</span>
             <div>
               <div class="cite-name">Maya Bergström</div>
-              <div class="cite-role">Head of Operations, Norrland Systems</div>
+              <div class="cite-role" data-i18n="testimonials.t1.role">Head of Operations, Norrland Systems</div>
             </div>
           </figcaption>
         </figure>
         <figure class="testimonial-card fade-in">
-          <blockquote>"The automation builder paid for itself in the first month. What used to take our ops team two days a week now runs itself."</blockquote>
+          <blockquote data-i18n="testimonials.t2.quote">"The automation builder paid for itself in the first month. What used to take our ops team two days a week now runs itself."</blockquote>
           <figcaption>
             <span class="avatar" style="--c1:#ff9d7b;--c2:#ff5fa6">DK</span>
             <div>
               <div class="cite-name">Daniel Kwan</div>
-              <div class="cite-role">VP Engineering, Quarterlane</div>
+              <div class="cite-role" data-i18n="testimonials.t2.role">VP Engineering, Quarterlane</div>
             </div>
           </figcaption>
         </figure>
         <figure class="testimonial-card fade-in">
-          <blockquote>"Migrating from three tools to one Flowbase workspace took a single afternoon. Our team hasn't looked back since."</blockquote>
+          <blockquote data-i18n="testimonials.t3.quote">"Migrating from three tools to one Flowbase workspace took a single afternoon. Our team hasn't looked back since."</blockquote>
           <figcaption>
             <span class="avatar" style="--c1:#5fffb0;--c2:#5fd0ff">RA</span>
             <div>
               <div class="cite-name">Renata Alves</div>
-              <div class="cite-role">COO, Brightfield Labs</div>
+              <div class="cite-role" data-i18n="testimonials.t3.role">COO, Brightfield Labs</div>
             </div>
           </figcaption>
         </figure>
@@ -364,71 +381,71 @@
   <section class="pricing" id="pricing">
     <div class="container">
       <div class="section-head fade-in">
-        <span class="section-kicker">Pricing</span>
-        <h2>Simple pricing that scales with you</h2>
-        <p>Start free. Upgrade when your team is ready — no surprise fees, ever.</p>
+        <span class="section-kicker" data-i18n="pricing.kicker">Pricing</span>
+        <h2 data-i18n="pricing.title">Simple pricing that scales with you</h2>
+        <p data-i18n="pricing.subtitle">Start free. Upgrade when your team is ready — no surprise fees, ever.</p>
 
         <div class="billing-toggle">
-          <span class="toggle-label" id="label-monthly">Monthly</span>
+          <span class="toggle-label" id="label-monthly" data-i18n="pricing.monthly">Monthly</span>
           <button class="switch" id="billing-switch" role="switch" aria-checked="false" aria-label="Toggle yearly billing">
             <span class="switch-knob"></span>
           </button>
-          <span class="toggle-label" id="label-yearly">Yearly</span>
-          <span class="save-badge">Save 20%</span>
+          <span class="toggle-label" id="label-yearly" data-i18n="pricing.yearly">Yearly</span>
+          <span class="save-badge" data-i18n="pricing.save20">Save 20%</span>
         </div>
       </div>
 
       <div class="pricing-grid">
         <div class="price-card fade-in">
-          <h3>Starter</h3>
-          <p class="price-desc">For small teams getting organized.</p>
+          <h3 data-i18n="pricing.starter.name">Starter</h3>
+          <p class="price-desc" data-i18n="pricing.starter.desc">For small teams getting organized.</p>
           <div class="price-amount">
-            <span class="currency">$</span><span class="amount" data-monthly="12" data-yearly="10">12</span><span class="period">/user/mo</span>
+            <span class="currency">$</span><span class="amount" data-monthly="12" data-yearly="10">12</span><span class="period" data-i18n="pricing.perUserMo">/user/mo</span>
           </div>
-          <p class="price-billed-note" data-monthly-note="Billed monthly" data-yearly-note="Billed annually">Billed monthly</p>
-          <a href="#" class="btn btn-outline btn-block">Start free trial</a>
+          <p class="price-billed-note" data-monthly-note="pricing.billedMonthly" data-yearly-note="pricing.billedYearly" data-i18n="pricing.billedMonthly">Billed monthly</p>
+          <a href="#" class="btn btn-outline btn-block" data-i18n="cta.startFreeTrial">Start free trial</a>
           <ul class="price-features">
-            <li>Up to 10 team members</li>
-            <li>Unlimited projects</li>
-            <li>Board, list &amp; timeline views</li>
-            <li>5 active automations</li>
-            <li>Basic reporting</li>
+            <li data-i18n="pricing.starter.f1">Up to 10 team members</li>
+            <li data-i18n="pricing.starter.f2">Unlimited projects</li>
+            <li data-i18n="pricing.starter.f3">Board, list &amp; timeline views</li>
+            <li data-i18n="pricing.starter.f4">5 active automations</li>
+            <li data-i18n="pricing.starter.f5">Basic reporting</li>
           </ul>
         </div>
 
         <div class="price-card featured fade-in">
-          <span class="price-badge">Most popular</span>
-          <h3>Pro</h3>
-          <p class="price-desc">For teams scaling their workflows.</p>
+          <span class="price-badge" data-i18n="pricing.pro.badge">Most popular</span>
+          <h3 data-i18n="pricing.pro.name">Pro</h3>
+          <p class="price-desc" data-i18n="pricing.pro.desc">For teams scaling their workflows.</p>
           <div class="price-amount">
-            <span class="currency">$</span><span class="amount" data-monthly="29" data-yearly="23">29</span><span class="period">/user/mo</span>
+            <span class="currency">$</span><span class="amount" data-monthly="29" data-yearly="23">29</span><span class="period" data-i18n="pricing.perUserMo">/user/mo</span>
           </div>
-          <p class="price-billed-note" data-monthly-note="Billed monthly" data-yearly-note="Billed annually">Billed monthly</p>
-          <a href="#" class="btn btn-primary btn-block">Start free trial</a>
+          <p class="price-billed-note" data-monthly-note="pricing.billedMonthly" data-yearly-note="pricing.billedYearly" data-i18n="pricing.billedMonthly">Billed monthly</p>
+          <a href="#" class="btn btn-primary btn-block" data-i18n="cta.startFreeTrial">Start free trial</a>
           <ul class="price-features">
-            <li>Unlimited team members</li>
-            <li>Unlimited projects</li>
-            <li>All views + custom fields</li>
-            <li>Unlimited automations</li>
-            <li>Advanced reporting &amp; exports</li>
-            <li>Priority support</li>
+            <li data-i18n="pricing.pro.f1">Unlimited team members</li>
+            <li data-i18n="pricing.pro.f2">Unlimited projects</li>
+            <li data-i18n="pricing.pro.f3">All views + custom fields</li>
+            <li data-i18n="pricing.pro.f4">Unlimited automations</li>
+            <li data-i18n="pricing.pro.f5">Advanced reporting &amp; exports</li>
+            <li data-i18n="pricing.pro.f6">Priority support</li>
           </ul>
         </div>
 
         <div class="price-card fade-in">
-          <h3>Enterprise</h3>
-          <p class="price-desc">For organizations with advanced needs.</p>
+          <h3 data-i18n="pricing.enterprise.name">Enterprise</h3>
+          <p class="price-desc" data-i18n="pricing.enterprise.desc">For organizations with advanced needs.</p>
           <div class="price-amount">
-            <span class="amount-custom">Custom</span>
+            <span class="amount-custom" data-i18n="pricing.custom">Custom</span>
           </div>
-          <p class="price-billed-note">Tailored to your organization</p>
-          <a href="#" class="btn btn-outline btn-block">Contact sales</a>
+          <p class="price-billed-note" data-i18n="pricing.tailored">Tailored to your organization</p>
+          <a href="#" class="btn btn-outline btn-block" data-i18n="cta.contactSales">Contact sales</a>
           <ul class="price-features">
-            <li>Everything in Pro</li>
-            <li>SSO &amp; SCIM provisioning</li>
-            <li>Custom permission roles</li>
-            <li>Dedicated success manager</li>
-            <li>99.9% uptime SLA</li>
+            <li data-i18n="pricing.enterprise.f1">Everything in Pro</li>
+            <li data-i18n="pricing.enterprise.f2">SSO &amp; SCIM provisioning</li>
+            <li data-i18n="pricing.enterprise.f3">Custom permission roles</li>
+            <li data-i18n="pricing.enterprise.f4">Dedicated success manager</li>
+            <li data-i18n="pricing.enterprise.f5">99.9% uptime SLA</li>
           </ul>
         </div>
       </div>
@@ -439,63 +456,63 @@
   <section class="faq" id="faq">
     <div class="container container-narrow">
       <div class="section-head fade-in">
-        <span class="section-kicker">FAQ</span>
-        <h2>Questions, answered</h2>
+        <span class="section-kicker" data-i18n="faq.kicker">FAQ</span>
+        <h2 data-i18n="faq.title">Questions, answered</h2>
       </div>
 
       <div class="accordion fade-in">
         <div class="accordion-item">
           <button class="accordion-trigger" aria-expanded="false">
-            <span>Do I need to migrate my existing data to switch to Flowbase?</span>
+            <span data-i18n="faq.q1">Do I need to migrate my existing data to switch to Flowbase?</span>
             <span class="accordion-icon" aria-hidden="true"></span>
           </button>
           <div class="accordion-panel">
-            <p>No. Flowbase includes one-click importers for CSV, spreadsheets, and most popular project tools. Most teams complete migration in under an hour, and our onboarding team can assist with larger data sets at no extra cost.</p>
+            <p data-i18n="faq.a1">No. Flowbase includes one-click importers for CSV, spreadsheets, and most popular project tools. Most teams complete migration in under an hour, and our onboarding team can assist with larger data sets at no extra cost.</p>
           </div>
         </div>
         <div class="accordion-item">
           <button class="accordion-trigger" aria-expanded="false">
-            <span>Can I build automations without writing code?</span>
+            <span data-i18n="faq.q2">Can I build automations without writing code?</span>
             <span class="accordion-icon" aria-hidden="true"></span>
           </button>
           <div class="accordion-panel">
-            <p>Yes. The visual automation builder uses a trigger-and-action model with conditional branching — entirely drag-and-drop. For advanced use cases, Pro and Enterprise plans also expose a REST API and webhook support.</p>
+            <p data-i18n="faq.a2">Yes. The visual automation builder uses a trigger-and-action model with conditional branching — entirely drag-and-drop. For advanced use cases, Pro and Enterprise plans also expose a REST API and webhook support.</p>
           </div>
         </div>
         <div class="accordion-item">
           <button class="accordion-trigger" aria-expanded="false">
-            <span>What happens to my data if I cancel?</span>
+            <span data-i18n="faq.q3">What happens to my data if I cancel?</span>
             <span class="accordion-icon" aria-hidden="true"></span>
           </button>
           <div class="accordion-panel">
-            <p>You can export all of your projects, tasks, and reports at any time in CSV or JSON format. After cancellation, we retain your data for 30 days in case you'd like to reactivate, then it's permanently deleted.</p>
+            <p data-i18n="faq.a3">You can export all of your projects, tasks, and reports at any time in CSV or JSON format. After cancellation, we retain your data for 30 days in case you'd like to reactivate, then it's permanently deleted.</p>
           </div>
         </div>
         <div class="accordion-item">
           <button class="accordion-trigger" aria-expanded="false">
-            <span>Is there a limit on automations or integrations?</span>
+            <span data-i18n="faq.q4">Is there a limit on automations or integrations?</span>
             <span class="accordion-icon" aria-hidden="true"></span>
           </button>
           <div class="accordion-panel">
-            <p>Starter plans include 5 active automations. Pro and Enterprise plans include unlimited automations and integrations, with no cap on monthly execution volume.</p>
+            <p data-i18n="faq.a4">Starter plans include 5 active automations. Pro and Enterprise plans include unlimited automations and integrations, with no cap on monthly execution volume.</p>
           </div>
         </div>
         <div class="accordion-item">
           <button class="accordion-trigger" aria-expanded="false">
-            <span>Does Flowbase support single sign-on (SSO)?</span>
+            <span data-i18n="faq.q5">Does Flowbase support single sign-on (SSO)?</span>
             <span class="accordion-icon" aria-hidden="true"></span>
           </button>
           <div class="accordion-panel">
-            <p>SSO via SAML and SCIM provisioning is available on the Enterprise plan, along with custom permission roles and dedicated onboarding support for your IT team.</p>
+            <p data-i18n="faq.a5">SSO via SAML and SCIM provisioning is available on the Enterprise plan, along with custom permission roles and dedicated onboarding support for your IT team.</p>
           </div>
         </div>
         <div class="accordion-item">
           <button class="accordion-trigger" aria-expanded="false">
-            <span>Is my data secure?</span>
+            <span data-i18n="faq.q6">Is my data secure?</span>
             <span class="accordion-icon" aria-hidden="true"></span>
           </button>
           <div class="accordion-panel">
-            <p>All data is encrypted in transit and at rest. Flowbase undergoes regular independent security audits and offers granular, role-based access controls on every plan.</p>
+            <p data-i18n="faq.a6">All data is encrypted in transit and at rest. Flowbase undergoes regular independent security audits and offers granular, role-based access controls on every plan.</p>
           </div>
         </div>
       </div>
@@ -505,11 +522,11 @@
   <!-- ================= FINAL CTA ================= -->
   <section class="final-cta">
     <div class="container final-cta-inner fade-in">
-      <h2>Ready to see what your team can do without the busywork?</h2>
-      <p>Join hundreds of teams already running on Flowbase. Set up your workspace in minutes.</p>
+      <h2 data-i18n="ctaFinal.title">Ready to see what your team can do without the busywork?</h2>
+      <p data-i18n="ctaFinal.subtitle">Join hundreds of teams already running on Flowbase. Set up your workspace in minutes.</p>
       <div class="hero-ctas">
-        <a href="#pricing" class="btn btn-light btn-lg">Start free trial</a>
-        <a href="#" class="btn btn-ghost-light btn-lg">Talk to sales</a>
+        <a href="#pricing" class="btn btn-light btn-lg" data-i18n="cta.startFreeTrial">Start free trial</a>
+        <a href="#" class="btn btn-ghost-light btn-lg" data-i18n="cta.talkToSales">Talk to sales</a>
       </div>
     </div>
   </section>
@@ -535,7 +552,7 @@
           </span>
           Flowbase
         </a>
-        <p>The workspace for teams who'd rather ship than coordinate.</p>
+        <p data-i18n="footer.tagline">The workspace for teams who'd rather ship than coordinate.</p>
         <div class="social-icons">
           <a href="#" aria-label="Flowbase on X">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 4L20 20M20 4L4 20" stroke="currentColor" stroke-width="0"/><path d="M18.5 4H21L14.5 11.2L22 20H16.2L11.7 14.3L6.5 20H4L10.9 12.3L3.7 4H9.6L13.6 9.2L18.5 4Z" fill="currentColor"/></svg>
@@ -550,41 +567,43 @@
       </div>
 
       <div class="footer-col">
-        <h4>Product</h4>
-        <a href="#">Features</a>
-        <a href="#">Integrations</a>
-        <a href="#">Pricing</a>
-        <a href="#">Changelog</a>
-        <a href="#">Security</a>
+        <h4 data-i18n="footer.col.product">Product</h4>
+        <a href="#" data-i18n="footer.product.f1">Features</a>
+        <a href="#" data-i18n="footer.product.f2">Integrations</a>
+        <a href="#" data-i18n="footer.product.f3">Pricing</a>
+        <a href="#" data-i18n="footer.product.f4">Changelog</a>
+        <a href="#" data-i18n="footer.product.f5">Security</a>
       </div>
       <div class="footer-col">
-        <h4>Company</h4>
-        <a href="#">About</a>
-        <a href="#">Careers</a>
-        <a href="#">Blog</a>
-        <a href="#">Press</a>
-        <a href="#">Contact</a>
+        <h4 data-i18n="footer.col.company">Company</h4>
+        <a href="#" data-i18n="footer.company.f1">About</a>
+        <a href="#" data-i18n="footer.company.f2">Careers</a>
+        <a href="#" data-i18n="footer.company.f3">Blog</a>
+        <a href="#" data-i18n="footer.company.f4">Press</a>
+        <a href="#" data-i18n="footer.company.f5">Contact</a>
       </div>
       <div class="footer-col">
-        <h4>Resources</h4>
-        <a href="#">Documentation</a>
-        <a href="#">API reference</a>
-        <a href="#">Guides</a>
-        <a href="#">Community</a>
-        <a href="#">Status</a>
+        <h4 data-i18n="footer.col.resources">Resources</h4>
+        <a href="#" data-i18n="footer.resources.f1">Documentation</a>
+        <a href="#" data-i18n="footer.resources.f2">API reference</a>
+        <a href="#" data-i18n="footer.resources.f3">Guides</a>
+        <a href="#" data-i18n="footer.resources.f4">Community</a>
+        <a href="#" data-i18n="footer.resources.f5">Status</a>
       </div>
       <div class="footer-col">
-        <h4>Legal</h4>
-        <a href="#">Privacy policy</a>
-        <a href="#">Terms of service</a>
-        <a href="#">Cookie policy</a>
-        <a href="#">DPA</a>
+        <h4 data-i18n="footer.col.legal">Legal</h4>
+        <a href="#" data-i18n="footer.legal.f1">Privacy policy</a>
+        <a href="#" data-i18n="footer.legal.f2">Terms of service</a>
+        <a href="#" data-i18n="footer.legal.f3">Cookie policy</a>
+        <a href="#" data-i18n="footer.legal.f4">DPA</a>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; 2026 Flowbase Inc. All rights reserved.</p>
+      <p>&copy; 2026 Flowbase Inc. <span data-i18n="footer.rights">All rights reserved.</span></p>
     </div>
+
+    <p class="footer-disclaimer" data-i18n="footer.disclaimer">This is a design sample from Al's portfolio — a demonstration, not a real, fully operational product.</p>
   </div>
 </footer>
 

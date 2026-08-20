@@ -278,6 +278,16 @@ svg { display: block; }
   display: none;
 }
 
+/* ---------- Sidebar disclaimer (portfolio sample notice) ---------- */
+.sidebar-disclaimer {
+  padding: var(--space-2) var(--space-4) var(--space-4);
+  font-size: .64rem;
+  line-height: 1.4;
+  color: var(--text-tertiary);
+  opacity: .68;
+  text-align: center;
+}
+
 /* ---------- Collapsed sidebar state ---------- */
 .sidebar.is-collapsed { width: var(--sidebar-w-collapsed); }
 .sidebar.is-collapsed .brand-word,
@@ -285,7 +295,8 @@ svg { display: block; }
 .sidebar.is-collapsed .nav-label,
 .sidebar.is-collapsed .nav-badge,
 .sidebar.is-collapsed .user-meta,
-.sidebar.is-collapsed .user-chevron {
+.sidebar.is-collapsed .user-chevron,
+.sidebar.is-collapsed .sidebar-disclaimer {
   display: none;
 }
 .sidebar.is-collapsed .sidebar-top { justify-content: center; }
@@ -445,6 +456,51 @@ svg { display: block; }
 [data-theme="light"] .theme-toggle .icon-sun { display: none; }
 [data-theme="light"] .theme-toggle .icon-moon { display: flex; }
 
+/* ---------- Language switcher ---------- */
+.lang-switcher { position: relative; }
+.lang-btn {
+  width: auto;
+  padding: 0 10px 0 9px;
+  gap: 6px;
+}
+.lang-btn .lang-code {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 172px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-pop);
+  padding: 6px;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 1px;
+  z-index: 70;
+  list-style: none;
+}
+.lang-switcher.is-open .lang-menu { display: flex; }
+.lang-option {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 7px 10px;
+  border-radius: var(--radius-sm);
+  font-size: .82rem;
+  color: var(--text-secondary);
+  text-align: left;
+  transition: background-color .15s var(--ease), color .15s var(--ease);
+}
+.lang-option:hover { background: var(--surface-hover); color: var(--text-primary); }
+.lang-option.is-active { color: var(--accent); font-weight: 600; background: var(--accent-soft); }
+
 /* ---------- Content ---------- */
 .content {
   padding: var(--space-6);
@@ -562,7 +618,7 @@ svg { display: block; }
   flex-wrap: wrap;
 }
 #donutChart { flex-shrink: 0; overflow: visible; }
-.donut-slice { transition: opacity .15s var(--ease), stroke-width .15s var(--ease); cursor: pointer; transform-origin: 90px 90px; }
+.donut-slice { transition: opacity .15s var(--ease), stroke-width .15s var(--ease); cursor: pointer; }
 .donut-wrap.has-hover .donut-slice { opacity: .35; }
 .donut-slice.is-hovered { opacity: 1 !important; }
 
@@ -723,7 +779,8 @@ svg { display: block; }
   .sidebar.is-collapsed .nav-label,
   .sidebar.is-collapsed .nav-badge,
   .sidebar.is-collapsed .user-meta,
-  .sidebar.is-collapsed .user-chevron { display: revert; }
+  .sidebar.is-collapsed .user-chevron,
+  .sidebar.is-collapsed .sidebar-disclaimer { display: revert; }
   .sidebar.is-collapsed .nav-link { justify-content: flex-start; padding: 9px var(--space-3); }
   .sidebar.is-collapsed .user-block { justify-content: flex-start; }
   .sidebar.is-collapsed .sidebar-top { justify-content: space-between; }
@@ -758,11 +815,65 @@ svg { display: block; }
   .donut-wrap { flex-direction: column; }
 }
 
-/* ---- Custom cursor ---- */
-.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;border-radius:50%;transform:translate(-50%,-50%);}
-.cursor-dot{width:6px;height:6px;background:var(--accent);transition:opacity .2s ease;}
-.cursor-ring{width:34px;height:34px;border:1.5px solid var(--accent);opacity:.55;transition:width .25s ease,height .25s ease,opacity .2s ease,background-color .25s ease;}
-.cursor-ring.is-hover{width:58px;height:58px;opacity:1;background:color-mix(in srgb, var(--accent) 15%, transparent);}
-.cursor-ring.is-click{width:24px;height:24px;}
-body.has-custom-cursor,body.has-custom-cursor a,body.has-custom-cursor button,body.has-custom-cursor input,body.has-custom-cursor select,body.has-custom-cursor textarea,body.has-custom-cursor label,body.has-custom-cursor [role="button"]{cursor:none;}
-@media (hover:none),(pointer:coarse){.cursor-dot,.cursor-ring{display:none!important;}}
+/* ---- Custom cursor: precision crosshair ---- */
+/* Two hairline guides that track the pointer across the whole viewport,
+   like a spreadsheet/chart precision crosshair, plus a small tick mark
+   at their intersection. Both pulse into the accent color while hovering
+   sortable table headers, chart areas, nav items and other controls. */
+.crosshair-line {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity .18s ease, box-shadow .18s ease, background-color .25s ease;
+}
+.crosshair-line.is-visible { opacity: .35; }
+.crosshair-h { width: 100%; height: 1px; }
+.crosshair-v { height: 100%; width: 1px; }
+.crosshair-line.is-active.is-visible {
+  opacity: .9;
+  box-shadow: 0 0 8px 1px rgba(var(--accent-rgb), .55);
+}
+
+.crosshair-tick {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 9px;
+  height: 9px;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(var(--accent-rgb), .55);
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity .18s ease, border-color .18s ease, box-shadow .18s ease, width .15s ease, height .15s ease;
+}
+.crosshair-tick.is-visible { opacity: 1; }
+.crosshair-tick.is-active {
+  border-color: var(--accent);
+  box-shadow: 0 0 10px 1px rgba(var(--accent-rgb), .5);
+  width: 13px;
+  height: 13px;
+}
+
+body.has-crosshair-cursor,
+body.has-crosshair-cursor a,
+body.has-crosshair-cursor button,
+body.has-crosshair-cursor input,
+body.has-crosshair-cursor select,
+body.has-crosshair-cursor textarea,
+body.has-crosshair-cursor label,
+body.has-crosshair-cursor [role="button"] { cursor: none; }
+
+@media (hover: hover) and (pointer: fine) {
+  /* Avoid stacking the browser's native crosshair on top of our own. */
+  body.has-crosshair-cursor #mainChart { cursor: none; }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .crosshair-line, .crosshair-tick { display: none !important; }
+}

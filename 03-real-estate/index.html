@@ -29,15 +29,28 @@
 
     <nav class="main-nav" id="mainNav" aria-label="Primary">
       <ul>
-        <li><a href="#listings">Listings</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#agents">Agents</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#listings" data-i18n="nav.listings">Listings</a></li>
+        <li><a href="#about" data-i18n="nav.about">About</a></li>
+        <li><a href="#agents" data-i18n="nav.agents">Agents</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
       </ul>
     </nav>
 
     <div class="header-actions">
-      <a href="#contact" class="btn btn-outline header-cta">Book a Viewing</a>
+      <div class="lang-switch" id="langSwitch">
+        <button type="button" class="lang-switch__toggle" id="langToggle" aria-haspopup="listbox" aria-expanded="false">
+          <span id="langCurrentLabel">EN</span>
+          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <ul class="lang-switch__menu" id="langMenu" role="listbox" aria-label="Select language" hidden>
+          <li role="option" tabindex="0" data-lang="ru">Русский</li>
+          <li role="option" tabindex="0" data-lang="uk">Українська</li>
+          <li role="option" tabindex="0" data-lang="en">English</li>
+          <li role="option" tabindex="0" data-lang="de">Deutsch</li>
+          <li role="option" tabindex="0" data-lang="es">Español</li>
+        </ul>
+      </div>
+      <a href="#contact" class="btn btn-outline header-cta" data-i18n="nav.cta">Book a Viewing</a>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
         <span></span><span></span><span></span>
       </button>
@@ -47,11 +60,11 @@
   <!-- mobile nav panel -->
   <div class="mobile-nav" id="mobileNav">
     <ul>
-      <li><a href="#listings">Listings</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#agents">Agents</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#contact" class="btn btn-primary">Book a Viewing</a></li>
+      <li><a href="#listings" data-i18n="nav.listings">Listings</a></li>
+      <li><a href="#about" data-i18n="nav.about">About</a></li>
+      <li><a href="#agents" data-i18n="nav.agents">Agents</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+      <li><a href="#contact" class="btn btn-primary" data-i18n="nav.cta">Book a Viewing</a></li>
     </ul>
   </div>
 </header>
@@ -60,37 +73,37 @@
 <section class="hero">
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="hero-content container">
-    <p class="eyebrow">Est. 2008 &mdash; Curated Real Estate</p>
-    <h1>Homes that hold<br>their <em>vantage.</em></h1>
-    <p class="hero-sub">We represent an exclusive portfolio of architecturally significant homes, penthouses and estates for discerning buyers and sellers across the globe.</p>
+    <p class="eyebrow" data-i18n="hero.eyebrow">Est. 2008 &mdash; Curated Real Estate</p>
+    <h1 data-i18n="hero.title" data-i18n-html>Homes that hold<br>their <em>vantage.</em></h1>
+    <p class="hero-sub" data-i18n="hero.sub">We represent an exclusive portfolio of architecturally significant homes, penthouses and estates for discerning buyers and sellers across the globe.</p>
 
     <form class="search-bar" id="searchBar">
       <div class="search-field">
-        <label for="searchLocation">Location</label>
+        <label for="searchLocation" data-i18n="search.location.label">Location</label>
         <select id="searchLocation" name="location">
-          <option value="">Any Location</option>
-          <option value="london">London</option>
-          <option value="new-york">New York</option>
-          <option value="los-angeles">Los Angeles</option>
-          <option value="paris">Paris</option>
-          <option value="dubai">Dubai</option>
+          <option value="" data-i18n="search.location.any">Any Location</option>
+          <option value="london" data-i18n="search.location.london">London</option>
+          <option value="new-york" data-i18n="search.location.newyork">New York</option>
+          <option value="los-angeles" data-i18n="search.location.la">Los Angeles</option>
+          <option value="paris" data-i18n="search.location.paris">Paris</option>
+          <option value="dubai" data-i18n="search.location.dubai">Dubai</option>
         </select>
       </div>
       <div class="search-divider" aria-hidden="true"></div>
       <div class="search-field">
-        <label for="searchType">Property Type</label>
+        <label for="searchType" data-i18n="search.type.label">Property Type</label>
         <select id="searchType" name="type">
-          <option value="all">All Types</option>
-          <option value="house">Houses</option>
-          <option value="apartment">Apartments</option>
-          <option value="villa">Villas</option>
+          <option value="all" data-i18n="search.type.all">All Types</option>
+          <option value="house" data-i18n="filter.house">Houses</option>
+          <option value="apartment" data-i18n="filter.apartment">Apartments</option>
+          <option value="villa" data-i18n="filter.villa">Villas</option>
         </select>
       </div>
       <div class="search-divider" aria-hidden="true"></div>
       <div class="search-field">
-        <label for="searchPrice">Price Range</label>
+        <label for="searchPrice" data-i18n="search.price.label">Price Range</label>
         <select id="searchPrice" name="price">
-          <option value="">Any Price</option>
+          <option value="" data-i18n="search.price.any">Any Price</option>
           <option value="1">$1M &ndash; $3M</option>
           <option value="3">$3M &ndash; $6M</option>
           <option value="6">$6M &ndash; $12M</option>
@@ -99,13 +112,13 @@
       </div>
       <button type="submit" class="btn btn-primary search-submit">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <span>Search</span>
+        <span data-i18n="search.submit">Search</span>
       </button>
     </form>
   </div>
   <div class="hero-scroll" aria-hidden="true">
     <span></span>
-    <p>Scroll</p>
+    <p data-i18n="hero.scroll">Scroll</p>
   </div>
 </section>
 
@@ -113,26 +126,26 @@
 <section class="listings" id="listings">
   <div class="container">
     <div class="section-head">
-      <p class="eyebrow">Featured Portfolio</p>
-      <h2>Current Listings</h2>
-      <p class="section-sub">A hand-selected edit of the properties currently represented by Vantage Estates.</p>
+      <p class="eyebrow" data-i18n="listings.eyebrow">Featured Portfolio</p>
+      <h2 data-i18n="listings.heading">Current Listings</h2>
+      <p class="section-sub" data-i18n="listings.sub">A hand-selected edit of the properties currently represented by Vantage Estates.</p>
     </div>
 
     <div class="listing-toggle" id="listingToggle" role="tablist" aria-label="Buy or rent">
-      <button class="toggle-btn active" data-listing-type="sale" role="tab" aria-selected="true">For Sale</button>
-      <button class="toggle-btn" data-listing-type="rent" role="tab" aria-selected="false">For Rent</button>
+      <button class="toggle-btn active" data-listing-type="sale" role="tab" aria-selected="true" data-i18n="toggle.sale">For Sale</button>
+      <button class="toggle-btn" data-listing-type="rent" role="tab" aria-selected="false" data-i18n="toggle.rent">For Rent</button>
     </div>
 
     <div class="filter-bar" id="filterBar" role="tablist" aria-label="Filter listings by type">
-      <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
-      <button class="filter-btn" data-filter="house" role="tab" aria-selected="false">Houses</button>
-      <button class="filter-btn" data-filter="apartment" role="tab" aria-selected="false">Apartments</button>
-      <button class="filter-btn" data-filter="villa" role="tab" aria-selected="false">Villas</button>
+      <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true" data-i18n="filter.all">All</button>
+      <button class="filter-btn" data-filter="house" role="tab" aria-selected="false" data-i18n="filter.house">Houses</button>
+      <button class="filter-btn" data-filter="apartment" role="tab" aria-selected="false" data-i18n="filter.apartment">Apartments</button>
+      <button class="filter-btn" data-filter="villa" role="tab" aria-selected="false" data-i18n="filter.villa">Villas</button>
     </div>
 
     <div class="price-slider" id="priceSlider">
       <div class="price-slider__labels">
-        <span>Price range</span>
+        <span data-i18n="price.label">Price range</span>
         <span class="price-slider__value" id="priceSliderValue">$150 &ndash; $15,000,000</span>
       </div>
       <div class="price-slider__track">
@@ -148,7 +161,7 @@
       <article class="listing-card" data-type="house" data-location="london" data-listing-type="sale" data-price="4250000">
         <div class="listing-photo photo-1">
           <img class="listing-photo-img" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;w=900&amp;q=70" alt="14 Cadogan Terrace, Belgravia, London" loading="lazy" onerror="this.remove()">
-          <span class="badge badge-sale">For Sale</span>
+          <span class="badge badge-sale" data-i18n="badge.sale">For Sale</span>
           <button class="fav-btn" aria-label="Save property" aria-pressed="false">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.4 8.3 2 4.8 5.5 4c2-.5 3.8.3 6.5 3 2.7-2.7 4.5-3.5 6.5-3 3.5.8 5.1 4.3 3.5 7.7C19.5 16.2 12 21 12 21z"/></svg>
           </button>
@@ -156,13 +169,13 @@
         <div class="listing-body">
           <div class="listing-price-row">
             <span class="listing-price">$4,250,000</span>
-            <span class="listing-type-tag">House</span>
+            <span class="listing-type-tag" data-i18n="type.house">House</span>
           </div>
           <h3 class="listing-address">14 Cadogan Terrace, Belgravia, London</h3>
           <ul class="listing-meta">
-            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11V7a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v4"/><path d="M2 11h20v6H2z"/><path d="M2 19v-2M22 19v-2"/></svg> 5 Beds</li>
-            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M6 12V6a2 2 0 0 1 2-2h1M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/></svg> 4 Baths</li>
-            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 3v18"/></svg> 4,200 sqft</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11V7a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v4"/><path d="M2 11h20v6H2z"/><path d="M2 19v-2M22 19v-2"/></svg> <span class="meta-num">5</span> <span data-i18n="unit.beds">Beds</span></li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M6 12V6a2 2 0 0 1 2-2h1M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/></svg> <span class="meta-num">4</span> <span data-i18n="unit.baths">Baths</span></li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 3v18"/></svg> <span class="meta-num">4,200</span> <span data-i18n="unit.sqft">sqft</span></li>
           </ul>
         </div>
       </article>
@@ -171,7 +184,7 @@
       <article class="listing-card" data-type="apartment" data-location="new-york" data-listing-type="sale" data-price="6900000">
         <div class="listing-photo photo-2">
           <img class="listing-photo-img" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&amp;fit=crop&amp;w=900&amp;q=70" alt="Residence 42B, One Riverside Park, New York" loading="lazy" onerror="this.remove()">
-          <span class="badge badge-new">New</span>
+          <span class="badge badge-new" data-i18n="badge.new">New</span>
           <button class="fav-btn" aria-label="Save property" aria-pressed="false">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.4 8.3 2 4.8 5.5 4c2-.5 3.8.3 6.5 3 2.7-2.7 4.5-3.5 6.5-3 3.5.8 5.1 4.3 3.5 7.7C19.5 16.2 12 21 12 21z"/></svg>
           </button>
@@ -179,13 +192,13 @@
         <div class="listing-body">
           <div class="listing-price-row">
             <span class="listing-price">$6,900,000</span>
-            <span class="listing-type-tag">Apartment</span>
+            <span class="listing-type-tag" data-i18n="type.apartment">Apartment</span>
           </div>
           <h3 class="listing-address">Residence 42B, One Riverside Park, New York</h3>
           <ul class="listing-meta">
-            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11V7a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v4"/><path d="M2 11h20v6H2z"/><path d="M2 19v-2M22 19v-2"/></svg> 3 Beds</li>
-            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M6 12V6a2 2 0 0 1 2-2h1M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/></svg> 3.5 Baths</li>
-            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 3v18"/></svg> 2,850 sqft</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11V7a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v4"/><path d="M2 11h20v6H2z"/><path d="M2 19v-2M22 19v-2"/></svg> <span class="meta-num">3</span> <span data-i18n="unit.beds">Beds</span></li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M6 12V6a2 2 0 0 1 2-2h1M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/></svg> <span class="meta-num">3.5</span> <span data-i18n="unit.baths">Baths</span></li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 3v18"/></svg> <span class="meta-num">2,850</span> <span data-i18n="unit.sqft">sqft</span></li>
           </ul>
         </div>
       </article>
@@ -194,7 +207,7 @@
       <article class="listing-card" data-type="villa" data-location="dubai" data-listing-type="sale" data-price="11500000">
         <div class="listing-photo photo-3">
           <img class="listing-photo-img" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&amp;fit=crop&amp;w=900&amp;q=70" alt="Villa 7, Palm Signature Collection, Dubai" loading="lazy" onerror="this.remove()">
-          <span class="badge badge-sale">For Sale</span>
+          <span class="badge badge-sale" data-i18n="badge.sale">For Sale</span>
           <button class="fav-btn" aria-label="Save property" aria-pressed="false">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.4 8.3 2 4.8 5.5 4c2-.5 3.8.3 6.5 3 2.7-2.7 4.5-3.5 6.5-3 3.5.8 5.1 4.3 3.5 7.7C19.5 16.2 12 21 12 21z"/></svg>
           </button>
@@ -202,13 +215,13 @@
         <div class="listing-body">
           <div class="listing-price-row">
             <span class="listing-price">$11,500,000</span>
-            <span class="listing-type-tag">Villa</span>
+            <span class="listing-type-tag" data-i18n="type.villa">Villa</span>
           </div>
           <h3 class="listing-address">Villa 7, Palm Signature Collection, Dubai</h3>
           <ul class="listing-meta">
-            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11V7a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v4"/><path d="M2 11h20v6H2z"/><path d="M2 19v-2M22 19v-2"/></svg> 6 Beds</li>
-            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M6 12V6a2 2 0 0 1 2-2h1M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/></svg> 7 Baths</li>
-            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 3v18"/></svg> 8,100 sqft</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11V7a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v4"/><path d="M2 11h20v6H2z"/><path d="M2 19v-2M22 19v-2"/></svg> <span class="meta-num">6</span> <span data-i18n="unit.beds">Beds</span></li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M6 12V6a2 2 0 0 1 2-2h1M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/></svg> <span class="meta-num">7</span> <span data-i18n="unit.baths">Baths</span></li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 3v18"/></svg> <span class="meta-num">8,100</span> <span data-i18n="unit.sqft">sqft</span></li>
           </ul>
         </div>
       </article>
@@ -217,7 +230,7 @@
       <article class="listing-card" data-type="house" data-location="los-angeles" data-listing-type="sale" data-price="8750000">
         <div class="listing-photo photo-4">
           <img class="listing-photo-img" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&amp;fit=crop&amp;w=900&amp;q=70" alt="1120 Blue Jay Way, Bird Streets, Los Angeles" loading="lazy" onerror="this.remove()">
-          <span class="badge badge-sale">For Sale</span>
+          <span class="badge badge-sale" data-i18n="badge.sale">For Sale</span>
           <button class="fav-btn" aria-label="Save property" aria-pressed="false">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.4 8.3 2 4.8 5.5 4c2-.5 3.8.3 6.5 3 2.7-2.7 4.5-3.5 6.5-3 3.5.8 5.1 4.3 3.5 7.7C19.5 16.2 12 21 12 21z"/></svg>
           </button>
@@ -225,13 +238,13 @@
         <div class="listing-body">
           <div class="listing-price-row">
             <span class="listing-price">$8,750,000</span>
-            <span class="listing-type-tag">House</span>
+            <span class="listing-type-tag" data-i18n="type.house">House</span>
           </div>
           <h3 class="listing-address">1120 Blue Jay Way, Bird Streets, Los Angeles</h3>
           <ul class="listing-meta">
-            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11V7a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v4"/><path d="M2 11h20v6H2z"/><path d="M2 19v-2M22 19v-2"/></svg> 5 Beds</li>
-            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M6 12V6a2 2 0 0 1 2-2h1M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/></svg> 6 Baths</li>
-            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 3v18"/></svg> 5,600 sqft</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11V7a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v4"/><path d="M2 11h20v6H2z"/><path d="M2 19v-2M22 19v-2"/></svg> <span class="meta-num">5</span> <span data-i18n="unit.beds">Beds</span></li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M6 12V6a2 2 0 0 1 2-2h1M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/></svg> <span class="meta-num">6</span> <span data-i18n="unit.baths">Baths</span></li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 3v18"/></svg> <span class="meta-num">5,600</span> <span data-i18n="unit.sqft">sqft</span></li>
           </ul>
         </div>
       </article>
@@ -240,7 +253,7 @@
       <article class="listing-card" data-type="apartment" data-location="paris" data-listing-type="sale" data-price="5400000">
         <div class="listing-photo photo-5">
           <img class="listing-photo-img" src="https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&amp;fit=crop&amp;w=900&amp;q=70" alt="18 Avenue Montaigne, 8th Arrondissement, Paris" loading="lazy" onerror="this.remove()">
-          <span class="badge badge-new">New</span>
+          <span class="badge badge-new" data-i18n="badge.new">New</span>
           <button class="fav-btn" aria-label="Save property" aria-pressed="false">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.4 8.3 2 4.8 5.5 4c2-.5 3.8.3 6.5 3 2.7-2.7 4.5-3.5 6.5-3 3.5.8 5.1 4.3 3.5 7.7C19.5 16.2 12 21 12 21z"/></svg>
           </button>
@@ -248,13 +261,13 @@
         <div class="listing-body">
           <div class="listing-price-row">
             <span class="listing-price">$5,400,000</span>
-            <span class="listing-type-tag">Apartment</span>
+            <span class="listing-type-tag" data-i18n="type.apartment">Apartment</span>
           </div>
           <h3 class="listing-address">18 Avenue Montaigne, 8th Arrondissement, Paris</h3>
           <ul class="listing-meta">
-            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11V7a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v4"/><path d="M2 11h20v6H2z"/><path d="M2 19v-2M22 19v-2"/></svg> 3 Beds</li>
-            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M6 12V6a2 2 0 0 1 2-2h1M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/></svg> 2 Baths</li>
-            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 3v18"/></svg> 2,100 sqft</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11V7a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v4"/><path d="M2 11h20v6H2z"/><path d="M2 19v-2M22 19v-2"/></svg> <span class="meta-num">3</span> <span data-i18n="unit.beds">Beds</span></li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M6 12V6a2 2 0 0 1 2-2h1M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/></svg> <span class="meta-num">2</span> <span data-i18n="unit.baths">Baths</span></li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 3v18"/></svg> <span class="meta-num">2,100</span> <span data-i18n="unit.sqft">sqft</span></li>
           </ul>
         </div>
       </article>
@@ -263,7 +276,7 @@
       <article class="listing-card" data-type="villa" data-location="los-angeles" data-listing-type="sale" data-price="14200000">
         <div class="listing-photo photo-6">
           <img class="listing-photo-img" src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&amp;fit=crop&amp;w=900&amp;q=70" alt="Villa Aurelia, Cap Ferrat Road, Monaco Coast" loading="lazy" onerror="this.remove()">
-          <span class="badge badge-sale">For Sale</span>
+          <span class="badge badge-sale" data-i18n="badge.sale">For Sale</span>
           <button class="fav-btn" aria-label="Save property" aria-pressed="false">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.4 8.3 2 4.8 5.5 4c2-.5 3.8.3 6.5 3 2.7-2.7 4.5-3.5 6.5-3 3.5.8 5.1 4.3 3.5 7.7C19.5 16.2 12 21 12 21z"/></svg>
           </button>
@@ -271,13 +284,13 @@
         <div class="listing-body">
           <div class="listing-price-row">
             <span class="listing-price">$14,200,000</span>
-            <span class="listing-type-tag">Villa</span>
+            <span class="listing-type-tag" data-i18n="type.villa">Villa</span>
           </div>
           <h3 class="listing-address">Villa Aurelia, Cap Ferrat Road, Monaco Coast</h3>
           <ul class="listing-meta">
-            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11V7a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v4"/><path d="M2 11h20v6H2z"/><path d="M2 19v-2M22 19v-2"/></svg> 7 Beds</li>
-            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M6 12V6a2 2 0 0 1 2-2h1M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/></svg> 8 Baths</li>
-            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 3v18"/></svg> 9,400 sqft</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11V7a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v4"/><path d="M2 11h20v6H2z"/><path d="M2 19v-2M22 19v-2"/></svg> <span class="meta-num">7</span> <span data-i18n="unit.beds">Beds</span></li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M6 12V6a2 2 0 0 1 2-2h1M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/></svg> <span class="meta-num">8</span> <span data-i18n="unit.baths">Baths</span></li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 3v18"/></svg> <span class="meta-num">9,400</span> <span data-i18n="unit.sqft">sqft</span></li>
           </ul>
         </div>
       </article>
@@ -286,21 +299,21 @@
       <article class="listing-card" data-type="apartment" data-location="london" data-listing-type="rent" data-price="9800">
         <div class="listing-photo photo-7">
           <img class="listing-photo-img" src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&amp;fit=crop&amp;w=900&amp;q=70" alt="Flat 3B, Cheyne Walk, Chelsea, London" loading="lazy" onerror="this.remove()">
-          <span class="badge badge-rent">For Rent</span>
+          <span class="badge badge-rent" data-i18n="badge.rent">For Rent</span>
           <button class="fav-btn" aria-label="Save property" aria-pressed="false">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.4 8.3 2 4.8 5.5 4c2-.5 3.8.3 6.5 3 2.7-2.7 4.5-3.5 6.5-3 3.5.8 5.1 4.3 3.5 7.7C19.5 16.2 12 21 12 21z"/></svg>
           </button>
         </div>
         <div class="listing-body">
           <div class="listing-price-row">
-            <span class="listing-price">$9,800<small>/mo</small></span>
-            <span class="listing-type-tag">Apartment</span>
+            <span class="listing-price">$9,800<small data-i18n="unit.perMonth">/mo</small></span>
+            <span class="listing-type-tag" data-i18n="type.apartment">Apartment</span>
           </div>
           <h3 class="listing-address">Flat 3B, Cheyne Walk, Chelsea, London</h3>
           <ul class="listing-meta">
-            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11V7a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v4"/><path d="M2 11h20v6H2z"/><path d="M2 19v-2M22 19v-2"/></svg> 2 Beds</li>
-            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M6 12V6a2 2 0 0 1 2-2h1M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/></svg> 2 Baths</li>
-            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 3v18"/></svg> 1,450 sqft</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11V7a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v4"/><path d="M2 11h20v6H2z"/><path d="M2 19v-2M22 19v-2"/></svg> <span class="meta-num">2</span> <span data-i18n="unit.beds">Beds</span></li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M6 12V6a2 2 0 0 1 2-2h1M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/></svg> <span class="meta-num">2</span> <span data-i18n="unit.baths">Baths</span></li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 3v18"/></svg> <span class="meta-num">1,450</span> <span data-i18n="unit.sqft">sqft</span></li>
           </ul>
         </div>
       </article>
@@ -309,21 +322,21 @@
       <article class="listing-card" data-type="house" data-location="los-angeles" data-listing-type="rent" data-price="32000">
         <div class="listing-photo photo-8">
           <img class="listing-photo-img" src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&amp;fit=crop&amp;w=900&amp;q=70" alt="1440 Stradella Court, Bel Air, Los Angeles" loading="lazy" onerror="this.remove()">
-          <span class="badge badge-rent">For Rent</span>
+          <span class="badge badge-rent" data-i18n="badge.rent">For Rent</span>
           <button class="fav-btn" aria-label="Save property" aria-pressed="false">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.4 8.3 2 4.8 5.5 4c2-.5 3.8.3 6.5 3 2.7-2.7 4.5-3.5 6.5-3 3.5.8 5.1 4.3 3.5 7.7C19.5 16.2 12 21 12 21z"/></svg>
           </button>
         </div>
         <div class="listing-body">
           <div class="listing-price-row">
-            <span class="listing-price">$32,000<small>/mo</small></span>
-            <span class="listing-type-tag">House</span>
+            <span class="listing-price">$32,000<small data-i18n="unit.perMonth">/mo</small></span>
+            <span class="listing-type-tag" data-i18n="type.house">House</span>
           </div>
           <h3 class="listing-address">1440 Stradella Court, Bel Air, Los Angeles</h3>
           <ul class="listing-meta">
-            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11V7a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v4"/><path d="M2 11h20v6H2z"/><path d="M2 19v-2M22 19v-2"/></svg> 6 Beds</li>
-            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M6 12V6a2 2 0 0 1 2-2h1M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/></svg> 6.5 Baths</li>
-            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 3v18"/></svg> 6,200 sqft</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11V7a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v4"/><path d="M2 11h20v6H2z"/><path d="M2 19v-2M22 19v-2"/></svg> <span class="meta-num">6</span> <span data-i18n="unit.beds">Beds</span></li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M6 12V6a2 2 0 0 1 2-2h1M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/></svg> <span class="meta-num">6.5</span> <span data-i18n="unit.baths">Baths</span></li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 3v18"/></svg> <span class="meta-num">6,200</span> <span data-i18n="unit.sqft">sqft</span></li>
           </ul>
         </div>
       </article>
@@ -332,28 +345,28 @@
       <article class="listing-card" data-type="villa" data-location="dubai" data-listing-type="rent" data-price="14500">
         <div class="listing-photo photo-9">
           <img class="listing-photo-img" src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&amp;fit=crop&amp;w=900&amp;q=70" alt="Villa 12, Dubai Marina Signature Villas, Dubai" loading="lazy" onerror="this.remove()">
-          <span class="badge badge-rent">For Rent</span>
+          <span class="badge badge-rent" data-i18n="badge.rent">For Rent</span>
           <button class="fav-btn" aria-label="Save property" aria-pressed="false">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-10-9.3C.4 8.3 2 4.8 5.5 4c2-.5 3.8.3 6.5 3 2.7-2.7 4.5-3.5 6.5-3 3.5.8 5.1 4.3 3.5 7.7C19.5 16.2 12 21 12 21z"/></svg>
           </button>
         </div>
         <div class="listing-body">
           <div class="listing-price-row">
-            <span class="listing-price">$14,500<small>/mo</small></span>
-            <span class="listing-type-tag">Villa</span>
+            <span class="listing-price">$14,500<small data-i18n="unit.perMonth">/mo</small></span>
+            <span class="listing-type-tag" data-i18n="type.villa">Villa</span>
           </div>
           <h3 class="listing-address">Villa 12, Dubai Marina Signature Villas, Dubai</h3>
           <ul class="listing-meta">
-            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11V7a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v4"/><path d="M2 11h20v6H2z"/><path d="M2 19v-2M22 19v-2"/></svg> 5 Beds</li>
-            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M6 12V6a2 2 0 0 1 2-2h1M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/></svg> 5.5 Baths</li>
-            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 3v18"/></svg> 5,800 sqft</li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11V7a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v4"/><path d="M2 11h20v6H2z"/><path d="M2 19v-2M22 19v-2"/></svg> <span class="meta-num">5</span> <span data-i18n="unit.beds">Beds</span></li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M6 12V6a2 2 0 0 1 2-2h1M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/></svg> <span class="meta-num">5.5</span> <span data-i18n="unit.baths">Baths</span></li>
+            <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 3v18"/></svg> <span class="meta-num">5,800</span> <span data-i18n="unit.sqft">sqft</span></li>
           </ul>
         </div>
       </article>
 
     </div>
 
-    <p class="no-results" id="noResults" hidden>No properties currently match this filter &mdash; please check back soon or contact an agent for off-market opportunities.</p>
+    <p class="no-results" id="noResults" hidden data-i18n="listings.noResults">No properties currently match this filter &mdash; please check back soon or contact an agent for off-market opportunities.</p>
   </div>
 </section>
 
@@ -362,19 +375,19 @@
   <div class="container stats-grid">
     <div class="stat">
       <span class="stat-number">$2.4B+</span>
-      <span class="stat-label">In Property Sales</span>
+      <span class="stat-label" data-i18n="stats.sales">In Property Sales</span>
     </div>
     <div class="stat">
       <span class="stat-number">500+</span>
-      <span class="stat-label">Properties Sold</span>
+      <span class="stat-label" data-i18n="stats.sold">Properties Sold</span>
     </div>
     <div class="stat">
       <span class="stat-number">18</span>
-      <span class="stat-label">Years of Experience</span>
+      <span class="stat-label" data-i18n="stats.years">Years of Experience</span>
     </div>
     <div class="stat">
       <span class="stat-number">97%</span>
-      <span class="stat-label">Client Satisfaction</span>
+      <span class="stat-label" data-i18n="stats.satisfaction">Client Satisfaction</span>
     </div>
   </div>
 </section>
@@ -383,35 +396,35 @@
 <section class="agents" id="agents">
   <div class="container">
     <div class="section-head">
-      <p class="eyebrow">The People</p>
-      <h2>Meet Our Agents</h2>
-      <p class="section-sub">A close-knit team of specialists, each fluent in a different corner of the world's luxury market.</p>
+      <p class="eyebrow" data-i18n="agents.eyebrow">The People</p>
+      <h2 data-i18n="agents.heading">Meet Our Agents</h2>
+      <p class="section-sub" data-i18n="agents.sub">A close-knit team of specialists, each fluent in a different corner of the world's luxury market.</p>
     </div>
 
     <div class="agent-grid">
       <div class="agent-card">
         <div class="agent-avatar avatar-1">AM</div>
         <h3>Alexandra Moreau</h3>
-        <p class="agent-title">Founding Partner, European Estates</p>
-        <p class="agent-bio">Formerly of a leading Parisian auction house, Alexandra has placed over 120 landmark residences across France, Monaco and the UK in the last decade.</p>
+        <p class="agent-title" data-i18n="agent1.title">Founding Partner, European Estates</p>
+        <p class="agent-bio" data-i18n="agent1.bio">Formerly of a leading Parisian auction house, Alexandra has placed over 120 landmark residences across France, Monaco and the UK in the last decade.</p>
       </div>
       <div class="agent-card">
         <div class="agent-avatar avatar-2">JK</div>
         <h3>James Kilbride</h3>
-        <p class="agent-title">Director, New York &amp; Northeast</p>
-        <p class="agent-bio">James built his reputation on Manhattan's most competitive off-market deals, closing more penthouse transactions than any agent in his cohort.</p>
+        <p class="agent-title" data-i18n="agent2.title">Director, New York &amp; Northeast</p>
+        <p class="agent-bio" data-i18n="agent2.bio">James built his reputation on Manhattan's most competitive off-market deals, closing more penthouse transactions than any agent in his cohort.</p>
       </div>
       <div class="agent-card">
         <div class="agent-avatar avatar-3">SR</div>
         <h3>Sophia Rahal</h3>
-        <p class="agent-title">Head of Gulf &amp; Emerging Markets</p>
-        <p class="agent-bio">Sophia advises a portfolio of private clients across Dubai and Abu Dhabi, specializing in waterfront villas and branded residences.</p>
+        <p class="agent-title" data-i18n="agent3.title">Head of Gulf &amp; Emerging Markets</p>
+        <p class="agent-bio" data-i18n="agent3.bio">Sophia advises a portfolio of private clients across Dubai and Abu Dhabi, specializing in waterfront villas and branded residences.</p>
       </div>
       <div class="agent-card">
         <div class="agent-avatar avatar-4">DT</div>
         <h3>Daniel Torres</h3>
-        <p class="agent-title">Senior Agent, West Coast</p>
-        <p class="agent-bio">A Los Angeles native, Daniel pairs deep neighborhood knowledge with a design-forward eye, representing architect-built homes from Malibu to the Hills.</p>
+        <p class="agent-title" data-i18n="agent4.title">Senior Agent, West Coast</p>
+        <p class="agent-bio" data-i18n="agent4.bio">A Los Angeles native, Daniel pairs deep neighborhood knowledge with a design-forward eye, representing architect-built homes from Malibu to the Hills.</p>
       </div>
     </div>
   </div>
@@ -421,25 +434,25 @@
 <section class="testimonials">
   <div class="container">
     <div class="section-head">
-      <p class="eyebrow">Client Stories</p>
-      <h2>What Our Clients Say</h2>
+      <p class="eyebrow" data-i18n="testimonials.eyebrow">Client Stories</p>
+      <h2 data-i18n="testimonials.heading">What Our Clients Say</h2>
     </div>
 
     <div class="testimonial-grid">
       <blockquote class="testimonial">
         <svg class="quote-mark" viewBox="0 0 32 32" width="34" height="34" fill="currentColor" aria-hidden="true"><path d="M9 8C4 10 1 14.5 1 20c0 4 2.5 7 6.5 7S14 24 14 20.5c0-3-2-5.5-5-5.5-.5 0-1 0-1.5.2C8.5 12 11 9.5 14 8L9 8zm17 0c-5 2-8 6.5-8 12 0 4 2.5 7 6.5 7S31 24 31 20.5c0-3-2-5.5-5-5.5-.5 0-1 0-1.5.2C25.5 12 28 9.5 31 8l-5 0z"/></svg>
-        <p>Vantage Estates found us a home that wasn't even on the market yet. Their discretion and market knowledge made a very private search feel effortless.</p>
-        <footer>&mdash; Richard &amp; Elena Hastings, Belgravia buyers</footer>
+        <p data-i18n="testimonial1.quote">Vantage Estates found us a home that wasn't even on the market yet. Their discretion and market knowledge made a very private search feel effortless.</p>
+        <footer data-i18n="testimonial1.author">&mdash; Richard &amp; Elena Hastings, Belgravia buyers</footer>
       </blockquote>
       <blockquote class="testimonial">
         <svg class="quote-mark" viewBox="0 0 32 32" width="34" height="34" fill="currentColor" aria-hidden="true"><path d="M9 8C4 10 1 14.5 1 20c0 4 2.5 7 6.5 7S14 24 14 20.5c0-3-2-5.5-5-5.5-.5 0-1 0-1.5.2C8.5 12 11 9.5 14 8L9 8zm17 0c-5 2-8 6.5-8 12 0 4 2.5 7 6.5 7S31 24 31 20.5c0-3-2-5.5-5-5.5-.5 0-1 0-1.5.2C25.5 12 28 9.5 31 8l-5 0z"/></svg>
-        <p>We sold our penthouse within three weeks, above asking, to a buyer James sourced through his own network. It never even needed to hit the open market.</p>
-        <footer>&mdash; Marcus Chen, Riverside Park seller</footer>
+        <p data-i18n="testimonial2.quote">We sold our penthouse within three weeks, above asking, to a buyer James sourced through his own network. It never even needed to hit the open market.</p>
+        <footer data-i18n="testimonial2.author">&mdash; Marcus Chen, Riverside Park seller</footer>
       </blockquote>
       <blockquote class="testimonial">
         <svg class="quote-mark" viewBox="0 0 32 32" width="34" height="34" fill="currentColor" aria-hidden="true"><path d="M9 8C4 10 1 14.5 1 20c0 4 2.5 7 6.5 7S14 24 14 20.5c0-3-2-5.5-5-5.5-.5 0-1 0-1.5.2C8.5 12 11 9.5 14 8L9 8zm17 0c-5 2-8 6.5-8 12 0 4 2.5 7 6.5 7S31 24 31 20.5c0-3-2-5.5-5-5.5-.5 0-1 0-1.5.2C25.5 12 28 9.5 31 8l-5 0z"/></svg>
-        <p>Sophia understood exactly what we wanted before we could fully articulate it ourselves. The villa she found us has exceeded every expectation.</p>
-        <footer>&mdash; The Al-Farsi Family, Palm Jumeirah buyers</footer>
+        <p data-i18n="testimonial3.quote">Sophia understood exactly what we wanted before we could fully articulate it ourselves. The villa she found us has exceeded every expectation.</p>
+        <footer data-i18n="testimonial3.author">&mdash; The Al-Farsi Family, Palm Jumeirah buyers</footer>
       </blockquote>
     </div>
   </div>
@@ -449,9 +462,9 @@
 <section class="contact" id="contact">
   <div class="container contact-inner">
     <div class="contact-info">
-      <p class="eyebrow">Get In Touch</p>
-      <h2>Let's find your<br>next address.</h2>
-      <p class="section-sub">Whether you're buying, selling or simply exploring what's possible, our team responds personally within one business day.</p>
+      <p class="eyebrow" data-i18n="contact.eyebrow">Get In Touch</p>
+      <h2 data-i18n="contact.heading" data-i18n-html>Let's find your<br>next address.</h2>
+      <p class="section-sub" data-i18n="contact.sub">Whether you're buying, selling or simply exploring what's possible, our team responds personally within one business day.</p>
 
       <ul class="contact-details">
         <li>
@@ -471,26 +484,26 @@
 
     <form class="contact-form" id="contactForm" novalidate>
       <div class="form-row">
-        <label for="name">Full Name</label>
-        <input type="text" id="name" name="name" placeholder="Jane Whitfield" required>
+        <label for="name" data-i18n="form.name.label">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Jane Whitfield" data-i18n-placeholder="form.name.placeholder" required>
       </div>
       <div class="form-row">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+        <label for="email" data-i18n="form.email.label">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="jane@example.com" data-i18n-placeholder="form.email.placeholder" required>
       </div>
       <div class="form-row">
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+        <label for="phone" data-i18n="form.phone.label">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" data-i18n-placeholder="form.phone.placeholder">
       </div>
       <div class="form-row">
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="4" placeholder="Tell us what you're looking for..." required></textarea>
+        <label for="message" data-i18n="form.message.label">Message</label>
+        <textarea id="message" name="message" rows="4" placeholder="Tell us what you're looking for..." data-i18n-placeholder="form.message.placeholder" required></textarea>
       </div>
-      <button type="submit" class="btn btn-primary form-submit">Send Enquiry</button>
+      <button type="submit" class="btn btn-primary form-submit" data-i18n="form.submit">Send Enquiry</button>
 
       <div class="form-confirm" id="formConfirm" role="status" hidden>
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
-        <span>Thank you &mdash; we'll be in touch within one business day.</span>
+        <span data-i18n="form.confirm">Thank you &mdash; we'll be in touch within one business day.</span>
       </div>
     </form>
   </div>
@@ -506,21 +519,21 @@
         </span>
         <span class="logo-text">Vantage <em>Estates</em></span>
       </a>
-      <p>Curated representation for the world's most distinctive homes.</p>
+      <p data-i18n="footer.tagline">Curated representation for the world's most distinctive homes.</p>
     </div>
 
     <div class="footer-col">
-      <h4>Explore</h4>
+      <h4 data-i18n="footer.explore">Explore</h4>
       <ul>
-        <li><a href="#listings">Listings</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#agents">Agents</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#listings" data-i18n="nav.listings">Listings</a></li>
+        <li><a href="#about" data-i18n="nav.about">About</a></li>
+        <li><a href="#agents" data-i18n="nav.agents">Agents</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
       </ul>
     </div>
 
     <div class="footer-col">
-      <h4>Contact</h4>
+      <h4 data-i18n="footer.contact">Contact</h4>
       <ul>
         <li>14 Grosvenor Square, Mayfair, London</li>
         <li>+44 20 7946 0891</li>
@@ -529,7 +542,7 @@
     </div>
 
     <div class="footer-col">
-      <h4>Follow</h4>
+      <h4 data-i18n="footer.follow">Follow</h4>
       <div class="social-row">
         <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
         <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 13v4"/></svg></a>
@@ -538,7 +551,8 @@
     </div>
   </div>
   <div class="footer-bottom container">
-    <p>&copy; 2026 Vantage Estates. All rights reserved.</p>
+    <p>&copy; 2026 Vantage Estates. <span data-i18n="footer.rights">All rights reserved.</span></p>
+    <p class="footer-disclaimer" data-i18n="footer.disclaimer">This is a design sample from Al's portfolio &mdash; a demonstration, not a real, fully operational agency.</p>
   </div>
 </footer>
 

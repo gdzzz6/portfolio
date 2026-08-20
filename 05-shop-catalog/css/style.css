@@ -181,6 +181,75 @@ input { font-family: inherit; }
   justify-self: end;
 }
 
+/* ---------- language switcher ---------- */
+.lang-switch {
+  position: relative;
+}
+.lang-switch__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  height: 40px;
+  padding: 0 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-line);
+  background: var(--color-cream);
+  color: var(--color-charcoal);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
+}
+.lang-switch__btn:hover {
+  border-color: var(--color-sage-dark);
+  background: var(--color-sand);
+}
+.lang-switch__btn svg {
+  transition: transform 0.2s var(--ease);
+  flex-shrink: 0;
+}
+.lang-switch.is-open .lang-switch__btn svg {
+  transform: rotate(180deg);
+}
+
+.lang-switch__menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 150px;
+  background: var(--color-cream);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lift);
+  padding: 0.4rem;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
+  z-index: 45;
+}
+.lang-switch.is-open .lang-switch__menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.lang-switch__menu li {
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  color: var(--color-ink);
+  cursor: pointer;
+  transition: background 0.15s var(--ease), color 0.15s var(--ease);
+}
+.lang-switch__menu li:hover {
+  background: var(--color-sand);
+  color: var(--color-charcoal);
+}
+.lang-switch__menu li.is-active {
+  background: var(--color-charcoal);
+  color: var(--color-cream);
+}
+
 .icon-btn {
   display: inline-flex;
   align-items: center;
@@ -659,9 +728,21 @@ input { font-family: inherit; }
 }
 .footer-col a:hover { color: var(--color-charcoal); }
 
+.footer-disclaimer {
+  max-width: 1280px;
+  margin: 2.25rem auto 0;
+}
+.footer-disclaimer p {
+  font-size: 0.74rem;
+  color: var(--color-muted);
+  opacity: 0.8;
+  margin: 0;
+  max-width: 62ch;
+}
+
 .footer-bottom {
   max-width: 1280px;
-  margin: 3rem auto 0;
+  margin: 1.75rem auto 0;
   padding-top: 1.75rem;
   border-top: 1px solid var(--color-line);
   display: flex;
@@ -943,11 +1024,28 @@ input { font-family: inherit; }
   .values { padding: 3rem 1.25rem; }
 }
 
-/* ---- Custom cursor ---- */
-.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;border-radius:50%;transform:translate(-50%,-50%);}
-.cursor-dot{width:6px;height:6px;background:var(--color-clay);transition:opacity .2s ease;}
-.cursor-ring{width:34px;height:34px;border:1.5px solid var(--color-clay);opacity:.55;transition:width .25s ease,height .25s ease,opacity .2s ease,background-color .25s ease;}
-.cursor-ring.is-hover{width:58px;height:58px;opacity:1;background:color-mix(in srgb, var(--color-clay) 15%, transparent);}
-.cursor-ring.is-click{width:24px;height:24px;}
+/* ---- Custom cursor: dot + contextual "View"/"Add" label ---- */
+.cursor-dot{position:fixed;top:0;left:0;width:7px;height:7px;border-radius:50%;background:var(--color-clay);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);opacity:0;transition:opacity .2s ease;}
+.cursor-label{
+  position:fixed;top:0;left:0;
+  pointer-events:none;z-index:9999;
+  background:var(--color-clay);
+  color:var(--color-cream);
+  font-family:var(--font-sans);
+  font-size:0.66rem;
+  font-weight:600;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+  padding:0.34rem 0.75rem;
+  border-radius:999px;
+  white-space:nowrap;
+  opacity:0;
+  transform:translate(16px,-50%) scale(0.8);
+  transition:opacity .2s ease, transform .2s ease;
+}
+.cursor-label.is-visible{
+  opacity:1;
+  transform:translate(16px,-50%) scale(1);
+}
 body.has-custom-cursor,body.has-custom-cursor a,body.has-custom-cursor button,body.has-custom-cursor input,body.has-custom-cursor select,body.has-custom-cursor textarea,body.has-custom-cursor label,body.has-custom-cursor [role="button"]{cursor:none;}
-@media (hover:none),(pointer:coarse){.cursor-dot,.cursor-ring{display:none!important;}}
+@media (hover:none),(pointer:coarse){.cursor-dot,.cursor-label{display:none!important;}}

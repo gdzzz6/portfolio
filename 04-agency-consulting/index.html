@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#main" data-i18n="a11y.skipLink">Skip to content</a>
 
 <!-- ===================== NAV ===================== -->
 <header class="site-header" id="siteHeader">
@@ -34,17 +34,30 @@
 
     <nav class="main-nav" id="mainNav" aria-label="Primary">
       <ul>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#approach">Approach</a></li>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#insights">Insights</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#services" data-i18n="nav.services">Services</a></li>
+        <li><a href="#approach" data-i18n="nav.approach">Approach</a></li>
+        <li><a href="#work" data-i18n="nav.work">Work</a></li>
+        <li><a href="#insights" data-i18n="nav.insights">Insights</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
       </ul>
     </nav>
 
     <div class="header-actions">
-      <a href="#contact" class="btn btn-primary btn-sm">Book a call</a>
-      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
+      <div class="lang-switch" id="langSwitch">
+        <button class="lang-switch-btn" id="langBtn" type="button" aria-haspopup="listbox" aria-expanded="false" data-i18n-aria-label="a11y.selectLang" aria-label="Select language">
+          <span id="langCurrent">EN</span>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <ul class="lang-switch-menu" id="langMenu" role="listbox" aria-label="Language">
+          <li role="option" data-lang="ru">Русский</li>
+          <li role="option" data-lang="uk">Українська</li>
+          <li role="option" data-lang="en">English</li>
+          <li role="option" data-lang="de">Deutsch</li>
+          <li role="option" data-lang="es">Español</li>
+        </ul>
+      </div>
+      <a href="#contact" class="btn btn-primary btn-sm" data-i18n="nav.bookCall">Book a call</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" data-i18n-aria-label="a11y.toggleMenu" aria-expanded="false" aria-controls="mobileNav">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -53,13 +66,13 @@
   <!-- Mobile nav -->
   <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
     <ul>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#approach">Approach</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#insights">Insights</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#services" data-i18n="nav.services">Services</a></li>
+      <li><a href="#approach" data-i18n="nav.approach">Approach</a></li>
+      <li><a href="#work" data-i18n="nav.work">Work</a></li>
+      <li><a href="#insights" data-i18n="nav.insights">Insights</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
     </ul>
-    <a href="#contact" class="btn btn-primary btn-block">Book a call</a>
+    <a href="#contact" class="btn btn-primary btn-block" data-i18n="nav.bookCall">Book a call</a>
   </nav>
 </header>
 
@@ -76,27 +89,27 @@
 
   <div class="container hero-inner">
     <div class="hero-copy reveal">
-      <p class="eyebrow">Strategy &amp; Operations Consulting</p>
-      <h1 class="hero-title">Turning ambitious strategy into <span class="accent-text">measurable growth.</span></h1>
-      <p class="hero-sub">Meridian partners with executive teams to solve the problems that matter most — market entry, operating model redesign, category-defining deals — and we stay accountable to the numbers until they land.</p>
+      <p class="eyebrow" data-i18n="hero.eyebrow">Strategy &amp; Operations Consulting</p>
+      <h1 class="hero-title"><span data-i18n="hero.titleMain">Turning ambitious strategy into</span> <span class="accent-text" data-i18n="hero.titleAccent">measurable growth.</span></h1>
+      <p class="hero-sub" data-i18n="hero.sub">Meridian partners with executive teams to solve the problems that matter most — market entry, operating model redesign, category-defining deals — and we stay accountable to the numbers until they land.</p>
       <div class="hero-cta">
-        <a href="#contact" class="btn btn-primary btn-lg">Book a strategy call</a>
-        <a href="#work" class="btn btn-link">See our results <span aria-hidden="true">→</span></a>
+        <a href="#contact" class="btn btn-primary btn-lg" data-i18n="hero.ctaPrimary">Book a strategy call</a>
+        <a href="#work" class="btn btn-link"><span data-i18n="hero.ctaLink">See our results</span> <span aria-hidden="true">→</span></a>
       </div>
       <div class="hero-meta">
         <div class="hero-meta-item">
           <span class="hero-meta-num">18</span>
-          <span class="hero-meta-label">years in practice</span>
+          <span class="hero-meta-label" data-i18n="hero.meta1">years in practice</span>
         </div>
         <div class="hero-meta-divider" aria-hidden="true"></div>
         <div class="hero-meta-item">
           <span class="hero-meta-num">140+</span>
-          <span class="hero-meta-label">engagements delivered</span>
+          <span class="hero-meta-label" data-i18n="hero.meta2">engagements delivered</span>
         </div>
         <div class="hero-meta-divider" aria-hidden="true"></div>
         <div class="hero-meta-item">
           <span class="hero-meta-num">94%</span>
-          <span class="hero-meta-label">client retention</span>
+          <span class="hero-meta-label" data-i18n="hero.meta3">client retention</span>
         </div>
       </div>
     </div>
@@ -104,18 +117,18 @@
     <div class="hero-card reveal" aria-hidden="true">
       <div class="floating-card">
         <div class="floating-card-top">
-          <span class="floating-card-tag">Client value created</span>
+          <span class="floating-card-tag" data-i18n="hero.cardTag">Client value created</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 17L10 11L14 15L20 7" stroke="#DE9A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 7H15M20 7V12" stroke="#DE9A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="floating-card-num">$1.2B<span>+</span></div>
         <div class="floating-card-bar"><span style="width:82%"></span></div>
-        <p class="floating-card-note">Since 2016, across 140+ engagements</p>
+        <p class="floating-card-note" data-i18n="hero.cardNote">Since 2016, across 140+ engagements</p>
       </div>
       <div class="floating-chip floating-chip-1">
-        <span class="chip-dot"></span> Avg. ROI 6.4x
+        <span class="chip-dot"></span> <span data-i18n="hero.chip1">Avg. ROI 6.4x</span>
       </div>
       <div class="floating-chip floating-chip-2">
-        9-month avg. time to impact
+        <span data-i18n="hero.chip2">9-month avg. time to impact</span>
       </div>
     </div>
   </div>
@@ -124,7 +137,7 @@
 <!-- ===================== CLIENT LOGOS ===================== -->
 <section class="logo-strip">
   <div class="container">
-    <p class="logo-strip-label">Trusted by ambitious teams</p>
+    <p class="logo-strip-label" data-i18n="logos.label">Trusted by ambitious teams</p>
     <div class="logo-grid">
       <span class="wordmark">NORTHFIELD&nbsp;&amp;&nbsp;CO</span>
       <span class="wordmark">VELOCITY GROUP</span>
@@ -140,9 +153,9 @@
 <section class="services" id="services">
   <div class="container">
     <div class="section-head reveal">
-      <p class="eyebrow">What we do</p>
-      <h2>Four practices. One standard of rigor.</h2>
-      <p class="section-sub">We don't do generic playbooks. Every engagement is built around the specific constraint holding your business back.</p>
+      <p class="eyebrow" data-i18n="services.eyebrow">What we do</p>
+      <h2 data-i18n="services.title">Four practices. One standard of rigor.</h2>
+      <p class="section-sub" data-i18n="services.sub">We don't do generic playbooks. Every engagement is built around the specific constraint holding your business back.</p>
     </div>
 
     <div class="services-grid">
@@ -150,36 +163,36 @@
         <div class="service-icon">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/></svg>
         </div>
-        <h3>Growth Strategy</h3>
-        <p>We identify the highest-leverage paths to revenue growth — new markets, new segments, new business models — and build the roadmap to get there, backed by real market data.</p>
-        <a href="#contact" class="card-link">Learn more <span aria-hidden="true">→</span></a>
+        <h3 data-i18n="services.card1.title">Growth Strategy</h3>
+        <p data-i18n="services.card1.desc">We identify the highest-leverage paths to revenue growth — new markets, new segments, new business models — and build the roadmap to get there, backed by real market data.</p>
+        <a href="#contact" class="card-link"><span data-i18n="services.learnMore">Learn more</span> <span aria-hidden="true">→</span></a>
       </article>
 
       <article class="service-card reveal">
         <div class="service-icon">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 3l1.6 3.2 3.5.5-2.5 2.5.6 3.5L12 11l-3.2 1.7.6-3.5-2.5-2.5 3.5-.5L12 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M6 15.5L4 21l4.2-1.3L6 15.5zM18 15.5L20 21l-4.2-1.3L18 15.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
         </div>
-        <h3>Operations Excellence</h3>
-        <p>We re-engineer processes, cost structures, and org design to unlock margin — without sacrificing quality, speed, or the people who make the business run.</p>
-        <a href="#contact" class="card-link">Learn more <span aria-hidden="true">→</span></a>
+        <h3 data-i18n="services.card2.title">Operations Excellence</h3>
+        <p data-i18n="services.card2.desc">We re-engineer processes, cost structures, and org design to unlock margin — without sacrificing quality, speed, or the people who make the business run.</p>
+        <a href="#contact" class="card-link"><span data-i18n="services.learnMore">Learn more</span> <span aria-hidden="true">→</span></a>
       </article>
 
       <article class="service-card reveal">
         <div class="service-icon">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="6" height="6" rx="1.3" stroke="currentColor" stroke-width="1.7"/><rect x="14" y="14" width="6" height="6" rx="1.3" stroke="currentColor" stroke-width="1.7"/><path d="M10 7h4a3 3 0 013 3v4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="7" cy="17" r="3" stroke="currentColor" stroke-width="1.7"/></svg>
         </div>
-        <h3>Digital Transformation</h3>
-        <p>We modernize technology, data, and ways of working so your organization can move at the pace the market — and your customers — now demand.</p>
-        <a href="#contact" class="card-link">Learn more <span aria-hidden="true">→</span></a>
+        <h3 data-i18n="services.card3.title">Digital Transformation</h3>
+        <p data-i18n="services.card3.desc">We modernize technology, data, and ways of working so your organization can move at the pace the market — and your customers — now demand.</p>
+        <a href="#contact" class="card-link"><span data-i18n="services.learnMore">Learn more</span> <span aria-hidden="true">→</span></a>
       </article>
 
       <article class="service-card reveal">
         <div class="service-icon">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="8" cy="8" r="4" stroke="currentColor" stroke-width="1.7"/><circle cx="16" cy="16" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M11 11l2 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
         </div>
-        <h3>M&amp;A Advisory</h3>
-        <p>We support diligence, integration planning, and post-merger execution so deals deliver the value they promised on day one — and every day after.</p>
-        <a href="#contact" class="card-link">Learn more <span aria-hidden="true">→</span></a>
+        <h3 data-i18n="services.card4.title">M&amp;A Advisory</h3>
+        <p data-i18n="services.card4.desc">We support diligence, integration planning, and post-merger execution so deals deliver the value they promised on day one — and every day after.</p>
+        <a href="#contact" class="card-link"><span data-i18n="services.learnMore">Learn more</span> <span aria-hidden="true">→</span></a>
       </article>
     </div>
   </div>
@@ -189,9 +202,9 @@
 <section class="approach" id="approach">
   <div class="container">
     <div class="section-head reveal light">
-      <p class="eyebrow">How we work</p>
-      <h2>A disciplined process, built for outcomes.</h2>
-      <p class="section-sub">No hundred-slide decks that gather dust. We embed with your team from diagnosis through delivery.</p>
+      <p class="eyebrow" data-i18n="approach.eyebrow">How we work</p>
+      <h2 data-i18n="approach.title">A disciplined process, built for outcomes.</h2>
+      <p class="section-sub" data-i18n="approach.sub">No hundred-slide decks that gather dust. We embed with your team from diagnosis through delivery.</p>
     </div>
 
     <div class="process">
@@ -199,23 +212,23 @@
 
       <div class="process-step reveal">
         <span class="process-num">01</span>
-        <h3>Discover</h3>
-        <p>We immerse in your business — data, operations, customers — to find the real constraint on growth, not the symptom.</p>
+        <h3 data-i18n="approach.step1.title">Discover</h3>
+        <p data-i18n="approach.step1.desc">We immerse in your business — data, operations, customers — to find the real constraint on growth, not the symptom.</p>
       </div>
       <div class="process-step reveal">
         <span class="process-num">02</span>
-        <h3>Design</h3>
-        <p>We build a focused strategy and execution plan, pressure-tested with your leadership team before a single slide is final.</p>
+        <h3 data-i18n="approach.step2.title">Design</h3>
+        <p data-i18n="approach.step2.desc">We build a focused strategy and execution plan, pressure-tested with your leadership team before a single slide is final.</p>
       </div>
       <div class="process-step reveal">
         <span class="process-num">03</span>
-        <h3>Deliver</h3>
-        <p>We work alongside your team to implement — not just recommend — with weekly milestones and named owners for every workstream.</p>
+        <h3 data-i18n="approach.step3.title">Deliver</h3>
+        <p data-i18n="approach.step3.desc">We work alongside your team to implement — not just recommend — with weekly milestones and named owners for every workstream.</p>
       </div>
       <div class="process-step reveal">
         <span class="process-num">04</span>
-        <h3>Drive</h3>
-        <p>We install the metrics, cadences, and capabilities that keep results compounding long after our engagement ends.</p>
+        <h3 data-i18n="approach.step4.title">Drive</h3>
+        <p data-i18n="approach.step4.desc">We install the metrics, cadences, and capabilities that keep results compounding long after our engagement ends.</p>
       </div>
     </div>
   </div>
@@ -225,68 +238,68 @@
 <section class="results" id="work">
   <div class="container">
     <div class="section-head reveal">
-      <p class="eyebrow">Results</p>
-      <h2>Outcomes we're accountable for.</h2>
-      <p class="section-sub">A sample of engagements. Names withheld at client request — the numbers speak for themselves.</p>
+      <p class="eyebrow" data-i18n="results.eyebrow">Results</p>
+      <h2 data-i18n="results.title">Outcomes we're accountable for.</h2>
+      <p class="section-sub" data-i18n="results.sub">A sample of engagements. Names withheld at client request — the numbers speak for themselves.</p>
     </div>
 
     <div class="case-grid">
       <article class="case-card reveal">
-        <p class="case-industry">Consumer Retail — Regional Chain</p>
-        <h3>Reignited growth after three flat years</h3>
-        <p class="case-desc">Repositioned the brand, redesigned the store-format economics, and relaunched in 14 new markets within nine months.</p>
+        <p class="case-industry" data-i18n="results.case1.industry">Consumer Retail — Regional Chain</p>
+        <h3 data-i18n="results.case1.headline">Reignited growth after three flat years</h3>
+        <p class="case-desc" data-i18n="results.case1.desc">Repositioned the brand, redesigned the store-format economics, and relaunched in 14 new markets within nine months.</p>
         <div class="case-stats">
           <div class="stat">
             <span class="stat-num" data-count="38" data-suffix="%" data-prefix="+">0</span>
-            <span class="stat-label">Revenue growth</span>
+            <span class="stat-label" data-i18n="results.case1.stat1">Revenue growth</span>
           </div>
           <div class="stat">
             <span class="stat-num" data-count="14">0</span>
-            <span class="stat-label">New markets entered</span>
+            <span class="stat-label" data-i18n="results.case1.stat2">New markets entered</span>
           </div>
           <div class="stat">
             <span class="stat-num" data-count="9">0</span>
-            <span class="stat-label">Months to breakeven</span>
+            <span class="stat-label" data-i18n="results.case1.stat3">Months to breakeven</span>
           </div>
         </div>
       </article>
 
       <article class="case-card reveal">
-        <p class="case-industry">Industrial — Mid-Market Manufacturer</p>
-        <h3>Cut operating costs without cutting output</h3>
-        <p class="case-desc">Redesigned the production line and supplier network, removing structural cost while lifting throughput.</p>
+        <p class="case-industry" data-i18n="results.case2.industry">Industrial — Mid-Market Manufacturer</p>
+        <h3 data-i18n="results.case2.headline">Cut operating costs without cutting output</h3>
+        <p class="case-desc" data-i18n="results.case2.desc">Redesigned the production line and supplier network, removing structural cost while lifting throughput.</p>
         <div class="case-stats">
           <div class="stat">
             <span class="stat-num" data-count="22" data-suffix="%" data-prefix="−">0</span>
-            <span class="stat-label">Operating costs</span>
+            <span class="stat-label" data-i18n="results.case2.stat1">Operating costs</span>
           </div>
           <div class="stat">
             <span class="stat-num" data-count="15" data-suffix="%" data-prefix="+">0</span>
-            <span class="stat-label">Throughput</span>
+            <span class="stat-label" data-i18n="results.case2.stat2">Throughput</span>
           </div>
           <div class="stat">
             <span class="stat-num" data-count="4">0</span>
-            <span class="stat-label">Months to implement</span>
+            <span class="stat-label" data-i18n="results.case2.stat3">Months to implement</span>
           </div>
         </div>
       </article>
 
       <article class="case-card reveal">
-        <p class="case-industry">Fintech — Growth-Stage Scale-up</p>
-        <h3>Built the playbook for a category-defining exit</h3>
-        <p class="case-desc">Sharpened the growth narrative and unit economics ahead of a Series D, then supported the eventual acquisition.</p>
+        <p class="case-industry" data-i18n="results.case3.industry">Fintech — Growth-Stage Scale-up</p>
+        <h3 data-i18n="results.case3.headline">Built the playbook for a category-defining exit</h3>
+        <p class="case-desc" data-i18n="results.case3.desc">Sharpened the growth narrative and unit economics ahead of a Series D, then supported the eventual acquisition.</p>
         <div class="case-stats">
           <div class="stat">
             <span class="stat-num" data-count="3.4" data-suffix="x" data-decimals="1">0</span>
-            <span class="stat-label">Valuation growth</span>
+            <span class="stat-label" data-i18n="results.case3.stat1">Valuation growth</span>
           </div>
           <div class="stat">
             <span class="stat-num" data-count="180" data-suffix="M" data-prefix="$">0</span>
-            <span class="stat-label">Deal value</span>
+            <span class="stat-label" data-i18n="results.case3.stat2">Deal value</span>
           </div>
           <div class="stat">
             <span class="stat-num" data-count="11">0</span>
-            <span class="stat-label">Month engagement</span>
+            <span class="stat-label" data-i18n="results.case3.stat3">Month engagement</span>
           </div>
         </div>
       </article>
@@ -298,8 +311,8 @@
 <section class="testimonials" id="insights">
   <div class="container">
     <div class="section-head reveal light">
-      <p class="eyebrow">What clients say</p>
-      <h2>Trusted where it matters most — the boardroom.</h2>
+      <p class="eyebrow" data-i18n="testimonials.eyebrow">What clients say</p>
+      <h2 data-i18n="testimonials.title">Trusted where it matters most — the boardroom.</h2>
     </div>
 
     <div class="carousel reveal" id="carousel">
@@ -347,11 +360,11 @@
       </div>
 
       <div class="carousel-controls">
-        <button class="carousel-btn" id="prevBtn" aria-label="Previous testimonial">
+        <button class="carousel-btn" id="prevBtn" aria-label="Previous testimonial" data-i18n-aria-label="testimonials.prevAria">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="carousel-dots" id="carouselDots"></div>
-        <button class="carousel-btn" id="nextBtn" aria-label="Next testimonial">
+        <button class="carousel-btn" id="nextBtn" aria-label="Next testimonial" data-i18n-aria-label="testimonials.nextAria">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
@@ -363,35 +376,35 @@
 <section class="team">
   <div class="container">
     <div class="section-head reveal">
-      <p class="eyebrow">Leadership</p>
-      <h2>The people behind the numbers.</h2>
-      <p class="section-sub">A small, senior team — every engagement is led by a partner, start to finish.</p>
+      <p class="eyebrow" data-i18n="team.eyebrow">Leadership</p>
+      <h2 data-i18n="team.title">The people behind the numbers.</h2>
+      <p class="section-sub" data-i18n="team.sub">A small, senior team — every engagement is led by a partner, start to finish.</p>
     </div>
 
     <div class="team-grid">
       <article class="team-card reveal">
         <div class="avatar-initials avatar-lg" style="--a:#F2C265;--b:#DE9A2E;">EV</div>
         <h3>Elena Vasquez</h3>
-        <p class="team-role">Managing Partner</p>
-        <p class="team-bio">20 years advising Fortune 500 boards on growth strategy and portfolio decisions.</p>
+        <p class="team-role" data-i18n="team.role1">Managing Partner</p>
+        <p class="team-bio" data-i18n="team.bio1">20 years advising Fortune 500 boards on growth strategy and portfolio decisions.</p>
       </article>
       <article class="team-card reveal">
         <div class="avatar-initials avatar-lg" style="--a:#8FB8E0;--b:#3E6FA0;">JO</div>
         <h3>James Okafor</h3>
-        <p class="team-role">Partner, Operations</p>
-        <p class="team-bio">Former VP of Operations at a global logistics leader; obsessed with margin.</p>
+        <p class="team-role" data-i18n="team.role2">Partner, Operations</p>
+        <p class="team-bio" data-i18n="team.bio2">Former VP of Operations at a global logistics leader; obsessed with margin.</p>
       </article>
       <article class="team-card reveal">
         <div class="avatar-initials avatar-lg" style="--a:#C79EE8;--b:#8A5CC7;">SL</div>
         <h3>Sofia Lindqvist</h3>
-        <p class="team-role">Partner, Digital</p>
-        <p class="team-bio">Leads Meridian's technology and data transformation practice.</p>
+        <p class="team-role" data-i18n="team.role3">Partner, Digital</p>
+        <p class="team-bio" data-i18n="team.bio3">Leads Meridian's technology and data transformation practice.</p>
       </article>
       <article class="team-card reveal">
         <div class="avatar-initials avatar-lg" style="--a:#8FE0C4;--b:#2F9E76;">MC</div>
         <h3>Marcus Chen</h3>
-        <p class="team-role">Partner, M&amp;A</p>
-        <p class="team-bio">20+ deals closed, representing $4B+ in aggregate transaction value.</p>
+        <p class="team-role" data-i18n="team.role4">Partner, M&amp;A</p>
+        <p class="team-bio" data-i18n="team.bio4">20+ deals closed, representing $4B+ in aggregate transaction value.</p>
       </article>
     </div>
   </div>
@@ -401,34 +414,34 @@
 <section class="cta-contact" id="contact">
   <div class="container cta-contact-inner">
     <div class="cta-copy reveal">
-      <p class="eyebrow">Let's talk</p>
-      <h2>Have a growth problem worth solving?</h2>
-      <p>Tell us where it hurts. We'll come back with a point of view within 48 hours — not a sales pitch, an actual answer.</p>
+      <p class="eyebrow" data-i18n="cta.eyebrow">Let's talk</p>
+      <h2 data-i18n="cta.title">Have a growth problem worth solving?</h2>
+      <p data-i18n="cta.desc">Tell us where it hurts. We'll come back with a point of view within 48 hours — not a sales pitch, an actual answer.</p>
       <ul class="cta-points">
-        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#DE9A2E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> No obligation, no generic deck</li>
-        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#DE9A2E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Direct line to a partner, not a rep</li>
-        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#DE9A2E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Response within 48 hours</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#DE9A2E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span data-i18n="cta.point1">No obligation, no generic deck</span></li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#DE9A2E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span data-i18n="cta.point2">Direct line to a partner, not a rep</span></li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#DE9A2E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span data-i18n="cta.point3">Response within 48 hours</span></li>
       </ul>
     </div>
 
     <form class="contact-form reveal" id="contactForm" novalidate>
       <div class="form-row">
-        <label for="cf-name">Name</label>
-        <input type="text" id="cf-name" name="name" placeholder="Jordan Reyes" required>
+        <label for="cf-name" data-i18n="form.name">Name</label>
+        <input type="text" id="cf-name" name="name" placeholder="Jordan Reyes" data-i18n-placeholder="form.namePlaceholder" required>
       </div>
       <div class="form-row">
-        <label for="cf-company">Company</label>
-        <input type="text" id="cf-company" name="company" placeholder="Northfield &amp; Co." required>
+        <label for="cf-company" data-i18n="form.company">Company</label>
+        <input type="text" id="cf-company" name="company" placeholder="Northfield &amp; Co." data-i18n-placeholder="form.companyPlaceholder" required>
       </div>
       <div class="form-row">
-        <label for="cf-email">Email</label>
-        <input type="email" id="cf-email" name="email" placeholder="jordan@company.com" required>
+        <label for="cf-email" data-i18n="form.email">Email</label>
+        <input type="email" id="cf-email" name="email" placeholder="jordan@company.com" data-i18n-placeholder="form.emailPlaceholder" required>
       </div>
       <div class="form-row">
-        <label for="cf-message">Message</label>
-        <textarea id="cf-message" name="message" rows="4" placeholder="Tell us a bit about the challenge you're facing." required></textarea>
+        <label for="cf-message" data-i18n="form.message">Message</label>
+        <textarea id="cf-message" name="message" rows="4" placeholder="Tell us a bit about the challenge you're facing." data-i18n-placeholder="form.messagePlaceholder" required></textarea>
       </div>
-      <button type="submit" class="btn btn-primary btn-block btn-lg">Send message</button>
+      <button type="submit" class="btn btn-primary btn-block btn-lg" data-i18n="form.submit">Send message</button>
       <p class="form-confirm" id="formConfirm" role="status" aria-live="polite"></p>
     </form>
   </div>
@@ -454,7 +467,7 @@
         </svg>
         <span class="logo-word">Meridian</span>
       </a>
-      <p>Strategy and operations consulting for executive teams who need results, not slideware.</p>
+      <p data-i18n="footer.tagline">Strategy and operations consulting for executive teams who need results, not slideware.</p>
       <div class="social-icons">
         <a href="#" aria-label="Meridian on LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V21h-4V9z" fill="currentColor"/></svg></a>
         <a href="#" aria-label="Meridian on X"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 4l7.2 9.6L4.4 20h2.3l6-6.5 4.6 6.5H20l-7.5-10L19 4h-2.3l-5.6 6-4.3-6H4z" fill="currentColor"/></svg></a>
@@ -463,45 +476,47 @@
     </div>
 
     <div class="footer-col">
-      <h4>Company</h4>
+      <h4 data-i18n="footer.colCompany">Company</h4>
       <ul>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Careers</a></li>
-        <li><a href="#">Leadership</a></li>
-        <li><a href="#">Newsroom</a></li>
+        <li><a href="#" data-i18n="footer.about">About</a></li>
+        <li><a href="#" data-i18n="footer.careers">Careers</a></li>
+        <li><a href="#" data-i18n="footer.leadership">Leadership</a></li>
+        <li><a href="#" data-i18n="footer.newsroom">Newsroom</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Services</h4>
+      <h4 data-i18n="footer.colServices">Services</h4>
       <ul>
-        <li><a href="#services">Growth Strategy</a></li>
-        <li><a href="#services">Operations Excellence</a></li>
-        <li><a href="#services">Digital Transformation</a></li>
-        <li><a href="#services">M&amp;A Advisory</a></li>
+        <li><a href="#services" data-i18n="services.card1.title">Growth Strategy</a></li>
+        <li><a href="#services" data-i18n="services.card2.title">Operations Excellence</a></li>
+        <li><a href="#services" data-i18n="services.card3.title">Digital Transformation</a></li>
+        <li><a href="#services" data-i18n="services.card4.title">M&amp;A Advisory</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Insights</h4>
+      <h4 data-i18n="footer.colInsights">Insights</h4>
       <ul>
-        <li><a href="#">Articles</a></li>
-        <li><a href="#">Research</a></li>
-        <li><a href="#">Case Studies</a></li>
-        <li><a href="#">Podcast</a></li>
+        <li><a href="#" data-i18n="footer.articles">Articles</a></li>
+        <li><a href="#" data-i18n="footer.research">Research</a></li>
+        <li><a href="#" data-i18n="footer.caseStudies">Case Studies</a></li>
+        <li><a href="#" data-i18n="footer.podcast">Podcast</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Legal</h4>
+      <h4 data-i18n="footer.colLegal">Legal</h4>
       <ul>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Terms of Service</a></li>
-        <li><a href="#">Cookie Policy</a></li>
+        <li><a href="#" data-i18n="footer.privacy">Privacy Policy</a></li>
+        <li><a href="#" data-i18n="footer.terms">Terms of Service</a></li>
+        <li><a href="#" data-i18n="footer.cookies">Cookie Policy</a></li>
       </ul>
     </div>
   </div>
 
   <div class="container footer-bottom">
-    <p>&copy; 2026 Meridian Consulting. All rights reserved.</p>
-    <p class="footer-note">Built for a fictional portfolio project.</p>
+    <p data-i18n="footer.copyright">&copy; 2026 Meridian Consulting. All rights reserved.</p>
+  </div>
+  <div class="container footer-disclaimer-wrap">
+    <p class="footer-disclaimer" data-i18n="footer.disclaimer">This is a design sample from Al's portfolio — a demonstration, not a real, fully operational consultancy.</p>
   </div>
 </footer>
 
