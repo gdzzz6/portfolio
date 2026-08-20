@@ -90,14 +90,73 @@
     text-align:center;padding:40px 24px 60px;color:var(--ink-soft);font-size:.85rem;
     border-top:1px solid var(--line);
   }
+  footer .disclaimer{
+    display:block;margin-top:10px;font-size:.76rem;color:var(--ink-soft);opacity:.65;
+    max-width:520px;margin-left:auto;margin-right:auto;
+  }
+
+  /* ---- language switcher ---- */
+  .lang-switch{
+    position:fixed;top:20px;right:20px;z-index:200;
+  }
+  .lang-switch__btn{
+    display:flex;align-items:center;gap:6px;background:var(--surface);
+    border:1px solid var(--line);color:var(--ink);padding:8px 14px;border-radius:999px;
+    font-size:.78rem;font-weight:600;letter-spacing:.03em;
+  }
+  .lang-switch__btn svg{width:11px;height:11px;transition:transform .2s ease;}
+  .lang-switch.is-open .lang-switch__btn svg{transform:rotate(180deg);}
+  .lang-switch__menu{
+    position:absolute;top:calc(100% + 8px);right:0;background:var(--surface);
+    border:1px solid var(--line);border-radius:12px;padding:6px;min-width:150px;
+    box-shadow:0 20px 40px -12px rgba(0,0,0,.5);
+    opacity:0;transform:translateY(-6px);pointer-events:none;transition:opacity .18s ease, transform .18s ease;
+  }
+  .lang-switch.is-open .lang-switch__menu{opacity:1;transform:translateY(0);pointer-events:auto;}
+  .lang-switch__option{
+    display:flex;align-items:center;justify-content:space-between;width:100%;
+    padding:8px 10px;border-radius:8px;font-size:.85rem;color:var(--ink-soft);text-align:left;
+  }
+  .lang-switch__option:hover{background:var(--line);color:var(--ink);}
+  .lang-switch__option.is-active{color:var(--accent);font-weight:600;}
+  @media (max-width:600px){
+    .lang-switch{top:14px;right:14px;}
+    .lang-switch__btn{padding:7px 11px;font-size:.72rem;}
+  }
+
+  /* ---- custom cursor (subtle, no ring theatrics) ---- */
+  .cursor-dot{
+    position:fixed;top:0;left:0;width:9px;height:9px;border-radius:50%;
+    background:var(--accent);pointer-events:none;z-index:9999;
+    transform:translate(-50%,-50%);opacity:0;
+    box-shadow:0 0 14px 2px color-mix(in srgb, var(--accent) 55%, transparent);
+    transition:opacity .25s ease, width .2s ease, height .2s ease, box-shadow .2s ease;
+  }
+  .cursor-dot.is-hover{width:14px;height:14px;box-shadow:0 0 20px 4px color-mix(in srgb, var(--accent) 65%, transparent);}
+  body.has-custom-cursor,body.has-custom-cursor a,body.has-custom-cursor button{cursor:none;}
+  @media (hover:none),(pointer:coarse){.cursor-dot{display:none!important;}}
 </style>
 </head>
 <body>
 
+<div class="lang-switch" id="langSwitch">
+  <button type="button" class="lang-switch__btn" id="langToggle" aria-haspopup="listbox" aria-expanded="false">
+    <span id="langCurrentLabel">EN</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+  </button>
+  <ul class="lang-switch__menu" id="langMenu" role="listbox" aria-label="Select language">
+    <li class="lang-switch__option" role="option" tabindex="0" data-lang="ru">Русский</li>
+    <li class="lang-switch__option" role="option" tabindex="0" data-lang="uk">Українська</li>
+    <li class="lang-switch__option is-active" role="option" tabindex="0" data-lang="en">English</li>
+    <li class="lang-switch__option" role="option" tabindex="0" data-lang="de">Deutsch</li>
+    <li class="lang-switch__option" role="option" tabindex="0" data-lang="es">Español</li>
+  </ul>
+</div>
+
 <header class="container">
-  <span class="eyebrow">Al — Back-End &amp; Front-End Developer</span>
-  <h1>Al's Portfolio</h1>
-  <p>Six full builds across six industries — marketing sites, e-commerce, and a real product dashboard — made to show how a finished site should look, feel, and work end to end.</p>
+  <span class="eyebrow" data-i18n="eyebrow">Al — Back-End &amp; Front-End Developer</span>
+  <h1 data-i18n="h1">Al's Portfolio</h1>
+  <p data-i18n="intro">Six full builds across six industries — marketing sites, e-commerce, and a real product dashboard — made to show how a finished site should look, feel, and work end to end.</p>
 </header>
 
 <main class="container">
@@ -106,85 +165,229 @@
     <a class="card" href="01-cafe-landing/index.html">
       <div class="card__preview p1">
         <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&amp;fit=crop&amp;w=700&amp;q=65" alt="Ember &amp; Oak coffee house" loading="lazy" onerror="this.remove()">
-        <span class="card__tag">Hospitality</span>
+        <span class="card__tag" data-i18n="card1.tag">Hospitality</span>
       </div>
       <div class="card__arrow" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
       </div>
-      <h3>Ember &amp; Oak</h3>
-      <p>Specialty coffee house landing page — editorial typography, CSS illustration, live menu tabs, reservation form.</p>
-      <div class="card__meta"><span>Landing page</span><span>Animations</span><span>Booking form</span></div>
+      <h3 data-i18n="card1.title">Ember &amp; Oak</h3>
+      <p data-i18n="card1.desc">Specialty coffee house landing page — editorial typography, CSS illustration, live menu tabs, reservation form.</p>
+      <div class="card__meta"><span data-i18n="card1.tag1">Landing page</span><span data-i18n="card1.tag2">Animations</span><span data-i18n="card1.tag3">Booking form</span></div>
     </a>
 
     <a class="card" href="02-saas-landing/index.html">
       <div class="card__preview p2">
         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=700&amp;q=65" alt="Flowbase analytics dashboard" loading="lazy" onerror="this.remove()">
-        <span class="card__tag">SaaS</span>
+        <span class="card__tag" data-i18n="card2.tag">SaaS</span>
       </div>
       <div class="card__arrow" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
       </div>
-      <h3>Flowbase</h3>
-      <p>B2B product marketing site — dark UI, CSS-built product mockup, monthly/yearly pricing toggle, FAQ accordion.</p>
-      <div class="card__meta"><span>Dark theme</span><span>Pricing logic</span><span>Product UI</span></div>
+      <h3 data-i18n="card2.title">Flowbase</h3>
+      <p data-i18n="card2.desc">B2B product marketing site — dark UI, CSS-built product mockup, monthly/yearly pricing toggle, FAQ accordion.</p>
+      <div class="card__meta"><span data-i18n="card2.tag1">Dark theme</span><span data-i18n="card2.tag2">Pricing logic</span><span data-i18n="card2.tag3">Product UI</span></div>
     </a>
 
     <a class="card" href="03-real-estate/index.html">
       <div class="card__preview p3">
         <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&amp;fit=crop&amp;w=700&amp;q=65" alt="Vantage Estates luxury villa" loading="lazy" onerror="this.remove()">
-        <span class="card__tag">Real Estate</span>
+        <span class="card__tag" data-i18n="card3.tag">Real Estate</span>
       </div>
       <div class="card__arrow" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
       </div>
-      <h3>Vantage Estates</h3>
-      <p>Luxury property agency — filterable listings grid, favorites, search bar, agent profiles.</p>
-      <div class="card__meta"><span>Filtering</span><span>Luxury UI</span><span>Search</span></div>
+      <h3 data-i18n="card3.title">Vantage Estates</h3>
+      <p data-i18n="card3.desc">Luxury property agency — filterable listings grid, favorites, search bar, agent profiles.</p>
+      <div class="card__meta"><span data-i18n="card3.tag1">Filtering</span><span data-i18n="card3.tag2">Luxury UI</span><span data-i18n="card3.tag3">Search</span></div>
     </a>
 
     <a class="card" href="04-agency-consulting/index.html">
       <div class="card__preview p4">
         <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&amp;fit=crop&amp;w=700&amp;q=65" alt="Meridian Consulting offices" loading="lazy" onerror="this.remove()">
-        <span class="card__tag">Consulting</span>
+        <span class="card__tag" data-i18n="card4.tag">Consulting</span>
       </div>
       <div class="card__arrow" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
       </div>
-      <h3>Meridian Consulting</h3>
-      <p>Corporate strategy firm — animated stat counters, testimonial carousel, case studies.</p>
-      <div class="card__meta"><span>Count-up stats</span><span>Carousel</span><span>Corporate</span></div>
+      <h3 data-i18n="card4.title">Meridian Consulting</h3>
+      <p data-i18n="card4.desc">Corporate strategy firm — animated stat counters, testimonial carousel, case studies.</p>
+      <div class="card__meta"><span data-i18n="card4.tag1">Count-up stats</span><span data-i18n="card4.tag2">Carousel</span><span data-i18n="card4.tag3">Corporate</span></div>
     </a>
 
     <a class="card" href="05-shop-catalog/index.html">
       <div class="card__preview p5">
         <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&amp;fit=crop&amp;w=700&amp;q=65" alt="Linen &amp; Co. styled home goods" loading="lazy" onerror="this.remove()">
-        <span class="card__tag">E-commerce</span>
+        <span class="card__tag" data-i18n="card5.tag">E-commerce</span>
       </div>
       <div class="card__arrow" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
       </div>
-      <h3>Linen &amp; Co.</h3>
-      <p>Boutique DTC store — full working cart with quantity, checkout flow, and persistence across reloads.</p>
-      <div class="card__meta"><span>Cart logic</span><span>localStorage</span><span>DTC design</span></div>
+      <h3 data-i18n="card5.title">Linen &amp; Co.</h3>
+      <p data-i18n="card5.desc">Boutique DTC store — full working cart with quantity, checkout flow, and persistence across reloads.</p>
+      <div class="card__meta"><span data-i18n="card5.tag1">Cart logic</span><span data-i18n="card5.tag2">localStorage</span><span data-i18n="card5.tag3">DTC design</span></div>
     </a>
 
     <a class="card" href="06-dashboard-app/index.html">
       <div class="card__preview p6">
         <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=700&amp;q=65" alt="Pulse Analytics dashboard" loading="lazy" onerror="this.remove()">
-        <span class="card__tag">Analytics App</span>
+        <span class="card__tag" data-i18n="card6.tag">Analytics App</span>
       </div>
       <div class="card__arrow" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
       </div>
-      <h3>Pulse Analytics</h3>
-      <p>Admin dashboard — hand-built SVG charts with live tooltips, sortable tables, light/dark mode.</p>
-      <div class="card__meta"><span>Data viz</span><span>App UI</span><span>Dark mode</span></div>
+      <h3 data-i18n="card6.title">Pulse Analytics</h3>
+      <p data-i18n="card6.desc">Admin dashboard — hand-built SVG charts with live tooltips, sortable tables, light/dark mode.</p>
+      <div class="card__meta"><span data-i18n="card6.tag1">Data viz</span><span data-i18n="card6.tag2">App UI</span><span data-i18n="card6.tag3">Dark mode</span></div>
     </a>
 
   </div>
 </main>
 
-<footer>© 2026 Al · Back-end &amp; Front-end Developer · No frameworks, no build step</footer>
+<footer>
+  <span data-i18n="footer.copy">© 2026 Al · Back-end &amp; Front-end Developer · No frameworks, no build step</span>
+  <span class="disclaimer" data-i18n="footer.disclaimer">These are portfolio samples by Al — demonstrations only, not real, fully operational businesses.</span>
+</footer>
+
+<script>
+(function () {
+  /* ---------------------------------------------------
+     Translations
+  --------------------------------------------------- */
+  var translations = {
+    en: {
+      eyebrow: "Al — Back-End & Front-End Developer",
+      h1: "Al's Portfolio",
+      intro: "Six full builds across six industries — marketing sites, e-commerce, and a real product dashboard — made to show how a finished site should look, feel, and work end to end.",
+      "card1.tag": "Hospitality", "card1.title": "Ember & Oak", "card1.desc": "Specialty coffee house landing page — editorial typography, CSS illustration, live menu tabs, reservation form.", "card1.tag1": "Landing page", "card1.tag2": "Animations", "card1.tag3": "Booking form",
+      "card2.tag": "SaaS", "card2.title": "Flowbase", "card2.desc": "B2B product marketing site — dark UI, CSS-built product mockup, monthly/yearly pricing toggle, FAQ accordion.", "card2.tag1": "Dark theme", "card2.tag2": "Pricing logic", "card2.tag3": "Product UI",
+      "card3.tag": "Real Estate", "card3.title": "Vantage Estates", "card3.desc": "Luxury property agency — filterable listings grid, favorites, search bar, agent profiles.", "card3.tag1": "Filtering", "card3.tag2": "Luxury UI", "card3.tag3": "Search",
+      "card4.tag": "Consulting", "card4.title": "Meridian Consulting", "card4.desc": "Corporate strategy firm — animated stat counters, testimonial carousel, case studies.", "card4.tag1": "Count-up stats", "card4.tag2": "Carousel", "card4.tag3": "Corporate",
+      "card5.tag": "E-commerce", "card5.title": "Linen & Co.", "card5.desc": "Boutique DTC store — full working cart with quantity, checkout flow, and persistence across reloads.", "card5.tag1": "Cart logic", "card5.tag2": "localStorage", "card5.tag3": "DTC design",
+      "card6.tag": "Analytics App", "card6.title": "Pulse Analytics", "card6.desc": "Admin dashboard — hand-built SVG charts with live tooltips, sortable tables, light/dark mode.", "card6.tag1": "Data viz", "card6.tag2": "App UI", "card6.tag3": "Dark mode",
+      "footer.copy": "© 2026 Al · Back-end & Front-end Developer · No frameworks, no build step",
+      "footer.disclaimer": "These are portfolio samples by Al — demonstrations only, not real, fully operational businesses."
+    },
+    ru: {
+      eyebrow: "Al — Back-end и Front-end разработчик",
+      h1: "Портфолио Al",
+      intro: "Шесть полноценных сайтов в шести разных нишах — лендинги, интернет-магазин и настоящий дашборд — чтобы показать, как должен выглядеть, ощущаться и работать готовый сайт.",
+      "card1.tag": "Общепит", "card1.title": "Ember & Oak", "card1.desc": "Лендинг кофейни — редакторская типографика, CSS-иллюстрация, живые вкладки меню, форма бронирования.", "card1.tag1": "Лендинг", "card1.tag2": "Анимации", "card1.tag3": "Форма брони",
+      "card2.tag": "SaaS", "card2.title": "Flowbase", "card2.desc": "Маркетинговый сайт B2B-продукта — тёмная тема, CSS-мокап продукта, переключатель тарифов, аккордеон FAQ.", "card2.tag1": "Тёмная тема", "card2.tag2": "Логика тарифов", "card2.tag3": "UI продукта",
+      "card3.tag": "Недвижимость", "card3.title": "Vantage Estates", "card3.desc": "Агентство элитной недвижимости — фильтруемый каталог, избранное, поиск, профили агентов.", "card3.tag1": "Фильтры", "card3.tag2": "Люкс-дизайн", "card3.tag3": "Поиск",
+      "card4.tag": "Консалтинг", "card4.title": "Meridian Consulting", "card4.desc": "Корпоративная консалтинговая фирма — анимированные счётчики статистики, карусель отзывов, кейсы.", "card4.tag1": "Счётчики", "card4.tag2": "Карусель", "card4.tag3": "Корпоративный стиль",
+      "card5.tag": "E-commerce", "card5.title": "Linen & Co.", "card5.desc": "Бутик-магазин DTC — полноценная корзина с количеством, оформлением заказа и сохранением между визитами.", "card5.tag1": "Логика корзины", "card5.tag2": "localStorage", "card5.tag3": "DTC-дизайн",
+      "card6.tag": "Аналитика", "card6.title": "Pulse Analytics", "card6.desc": "Админ-дашборд — SVG-графики с подсказками, сортируемые таблицы, светлая/тёмная тема.", "card6.tag1": "Визуализация данных", "card6.tag2": "UI приложения", "card6.tag3": "Тёмная тема",
+      "footer.copy": "© 2026 Al · Back-end и Front-end разработчик · Без фреймворков и сборки",
+      "footer.disclaimer": "Это демонстрационные образцы из портфолио Al — не полноценные, реально работающие сайты компаний."
+    },
+    uk: {
+      eyebrow: "Al — Back-end і Front-end розробник",
+      h1: "Портфоліо Al",
+      intro: "Шість повноцінних сайтів у шести різних нішах — лендинги, інтернет-магазин і справжній дашборд — щоб показати, як має виглядати, відчуватися та працювати готовий сайт.",
+      "card1.tag": "Громадське харчування", "card1.title": "Ember & Oak", "card1.desc": "Лендинг кав'ярні — редакторська типографіка, CSS-ілюстрація, живі вкладки меню, форма бронювання.", "card1.tag1": "Лендинг", "card1.tag2": "Анімації", "card1.tag3": "Форма броні",
+      "card2.tag": "SaaS", "card2.title": "Flowbase", "card2.desc": "Маркетинговий сайт B2B-продукту — темна тема, CSS-макет продукту, перемикач тарифів, акордеон FAQ.", "card2.tag1": "Темна тема", "card2.tag2": "Логіка тарифів", "card2.tag3": "UI продукту",
+      "card3.tag": "Нерухомість", "card3.title": "Vantage Estates", "card3.desc": "Агенція елітної нерухомості — фільтрований каталог, обране, пошук, профілі агентів.", "card3.tag1": "Фільтри", "card3.tag2": "Люкс-дизайн", "card3.tag3": "Пошук",
+      "card4.tag": "Консалтинг", "card4.title": "Meridian Consulting", "card4.desc": "Корпоративна консалтингова фірма — анімовані лічильники статистики, карусель відгуків, кейси.", "card4.tag1": "Лічильники", "card4.tag2": "Карусель", "card4.tag3": "Корпоративний стиль",
+      "card5.tag": "E-commerce", "card5.title": "Linen & Co.", "card5.desc": "Бутік-магазин DTC — повноцінний кошик із кількістю, оформленням замовлення та збереженням між візитами.", "card5.tag1": "Логіка кошика", "card5.tag2": "localStorage", "card5.tag3": "DTC-дизайн",
+      "card6.tag": "Аналітика", "card6.title": "Pulse Analytics", "card6.desc": "Адмін-дашборд — SVG-графіки з підказками, сортовані таблиці, світла/темна тема.", "card6.tag1": "Візуалізація даних", "card6.tag2": "UI застосунку", "card6.tag3": "Темна тема",
+      "footer.copy": "© 2026 Al · Back-end і Front-end розробник · Без фреймворків і збірки",
+      "footer.disclaimer": "Це демонстраційні зразки з портфоліо Al — не повноцінні, реально працюючі сайти компаній."
+    },
+    de: {
+      eyebrow: "Al — Back-End- & Front-End-Entwickler",
+      h1: "Al's Portfolio",
+      intro: "Sechs vollständige Websites aus sechs Branchen — Marketing-Sites, E-Commerce und ein echtes Produkt-Dashboard — zeigen, wie eine fertige Website aussehen, sich anfühlen und funktionieren sollte.",
+      "card1.tag": "Gastronomie", "card1.title": "Ember & Oak", "card1.desc": "Landingpage für ein Spezialitäten-Café — redaktionelle Typografie, CSS-Illustration, interaktive Menü-Tabs, Reservierungsformular.", "card1.tag1": "Landingpage", "card1.tag2": "Animationen", "card1.tag3": "Buchungsformular",
+      "card2.tag": "SaaS", "card2.title": "Flowbase", "card2.desc": "B2B-Produktseite — dunkles UI, CSS-basiertes Produkt-Mockup, Monats-/Jahres-Preisumschalter, FAQ-Akkordeon.", "card2.tag1": "Dark Theme", "card2.tag2": "Preislogik", "card2.tag3": "Produkt-UI",
+      "card3.tag": "Immobilien", "card3.title": "Vantage Estates", "card3.desc": "Luxusimmobilienagentur — filterbares Angebotsraster, Favoriten, Suchleiste, Makler-Profile.", "card3.tag1": "Filterung", "card3.tag2": "Luxus-UI", "card3.tag3": "Suche",
+      "card4.tag": "Beratung", "card4.title": "Meridian Consulting", "card4.desc": "Unternehmensberatung — animierte Statistik-Zähler, Testimonial-Karussell, Fallstudien.", "card4.tag1": "Zähl-Animation", "card4.tag2": "Karussell", "card4.tag3": "Corporate",
+      "card5.tag": "E-Commerce", "card5.title": "Linen & Co.", "card5.desc": "Boutique-DTC-Shop — voll funktionsfähiger Warenkorb mit Mengenangabe, Checkout-Ablauf und Persistenz über Neuladungen hinweg.", "card5.tag1": "Warenkorb-Logik", "card5.tag2": "localStorage", "card5.tag3": "DTC-Design",
+      "card6.tag": "Analytics-App", "card6.title": "Pulse Analytics", "card6.desc": "Admin-Dashboard — handgebaute SVG-Diagramme mit Live-Tooltips, sortierbare Tabellen, Hell-/Dunkelmodus.", "card6.tag1": "Datenvisualisierung", "card6.tag2": "App-UI", "card6.tag3": "Dark Mode",
+      "footer.copy": "© 2026 Al · Back-End- & Front-End-Entwickler · Ohne Frameworks, ohne Build-Schritt",
+      "footer.disclaimer": "Dies sind Portfolio-Beispiele von Al — reine Demonstrationen, keine echten, voll funktionsfähigen Unternehmen."
+    },
+    es: {
+      eyebrow: "Al — Desarrollador Back-End y Front-End",
+      h1: "Portafolio de Al",
+      intro: "Seis proyectos completos en seis sectores — sitios de marketing, e-commerce y un panel de control real — para mostrar cómo debe verse, sentirse y funcionar un sitio terminado.",
+      "card1.tag": "Hostelería", "card1.title": "Ember & Oak", "card1.desc": "Landing page de una cafetería de especialidad — tipografía editorial, ilustración CSS, pestañas de menú en vivo, formulario de reserva.", "card1.tag1": "Landing page", "card1.tag2": "Animaciones", "card1.tag3": "Formulario de reserva",
+      "card2.tag": "SaaS", "card2.title": "Flowbase", "card2.desc": "Sitio de marketing B2B — interfaz oscura, mockup de producto en CSS, selector de precios mensual/anual, acordeón de preguntas frecuentes.", "card2.tag1": "Tema oscuro", "card2.tag2": "Lógica de precios", "card2.tag3": "UI de producto",
+      "card3.tag": "Inmobiliaria", "card3.title": "Vantage Estates", "card3.desc": "Agencia inmobiliaria de lujo — cuadrícula de propiedades filtrable, favoritos, barra de búsqueda, perfiles de agentes.", "card3.tag1": "Filtros", "card3.tag2": "UI de lujo", "card3.tag3": "Búsqueda",
+      "card4.tag": "Consultoría", "card4.title": "Meridian Consulting", "card4.desc": "Firma de consultoría corporativa — contadores estadísticos animados, carrusel de testimonios, casos de estudio.", "card4.tag1": "Contadores animados", "card4.tag2": "Carrusel", "card4.tag3": "Corporativo",
+      "card5.tag": "E-commerce", "card5.title": "Linen & Co.", "card5.desc": "Tienda boutique DTC — carrito totalmente funcional con cantidad, flujo de compra y persistencia entre recargas.", "card5.tag1": "Lógica de carrito", "card5.tag2": "localStorage", "card5.tag3": "Diseño DTC",
+      "card6.tag": "App de Analítica", "card6.title": "Pulse Analytics", "card6.desc": "Panel de administración — gráficos SVG hechos a mano con tooltips en vivo, tablas ordenables, modo claro/oscuro.", "card6.tag1": "Visualización de datos", "card6.tag2": "UI de app", "card6.tag3": "Modo oscuro",
+      "footer.copy": "© 2026 Al · Desarrollador Back-End y Front-End · Sin frameworks, sin proceso de build",
+      "footer.disclaimer": "Estas son muestras de portafolio de Al — solo demostraciones, no negocios reales y totalmente operativos."
+    }
+  };
+
+  var LANG_KEY = 'portfolio_lang';
+  var langLabels = { ru: 'RU', uk: 'UA', en: 'EN', de: 'DE', es: 'ES' };
+
+  function applyLang(lang) {
+    var dict = translations[lang] || translations.en;
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+    document.documentElement.setAttribute('lang', lang);
+    document.getElementById('langCurrentLabel').textContent = langLabels[lang] || 'EN';
+    document.querySelectorAll('.lang-switch__option').forEach(function (opt) {
+      opt.classList.toggle('is-active', opt.getAttribute('data-lang') === lang);
+    });
+  }
+
+  var saved = localStorage.getItem(LANG_KEY);
+  applyLang(saved && translations[saved] ? saved : 'en');
+
+  var langSwitch = document.getElementById('langSwitch');
+  var langToggle = document.getElementById('langToggle');
+  langToggle.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var open = langSwitch.classList.toggle('is-open');
+    langToggle.setAttribute('aria-expanded', String(open));
+  });
+  document.querySelectorAll('.lang-switch__option').forEach(function (opt) {
+    opt.addEventListener('click', function () {
+      var lang = opt.getAttribute('data-lang');
+      applyLang(lang);
+      localStorage.setItem(LANG_KEY, lang);
+      langSwitch.classList.remove('is-open');
+      langToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+  document.addEventListener('click', function () {
+    langSwitch.classList.remove('is-open');
+    langToggle.setAttribute('aria-expanded', 'false');
+  });
+
+  /* ---------------------------------------------------
+     Subtle custom cursor
+  --------------------------------------------------- */
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    var dot = document.createElement('div'); dot.className = 'cursor-dot';
+    document.body.appendChild(dot);
+    document.body.classList.add('has-custom-cursor');
+    var mx = window.innerWidth / 2, my = window.innerHeight / 2, rx = mx, ry = my;
+    window.addEventListener('mousemove', function (e) {
+      mx = e.clientX; my = e.clientY;
+      dot.style.opacity = 1;
+    });
+    (function raf() {
+      rx += (mx - rx) * 0.25; ry += (my - ry) * 0.25;
+      dot.style.left = rx + 'px'; dot.style.top = ry + 'px';
+      requestAnimationFrame(raf);
+    })();
+    document.addEventListener('mouseover', function (e) {
+      if (e.target.closest('a,button,.card')) dot.classList.add('is-hover');
+    });
+    document.addEventListener('mouseout', function (e) {
+      if (e.target.closest('a,button,.card')) dot.classList.remove('is-hover');
+    });
+    document.addEventListener('mouseleave', function () { dot.style.opacity = 0; });
+  }
+})();
+</script>
 
 </body>
 </html>
