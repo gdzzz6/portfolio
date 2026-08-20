@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse Analytics — Overview</title>
+<meta name="description" content="Pulse Analytics dashboard — revenue, users, orders and channel breakdown at a glance.">
+
+<!-- Theme is applied before paint to avoid a flash of the wrong theme -->
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('pulse-theme');
+      var theme = saved || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app" id="app">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M2 13h4l2.5-7L13 20l3-11h6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="brand-word">Pulse</span>
+      </div>
+      <button class="sidebar-collapse-btn" id="sidebarCollapseBtn" aria-label="Collapse sidebar" title="Collapse sidebar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+    <nav class="nav" aria-label="Primary">
+      <div class="nav-label">Menu</div>
+      <ul class="nav-list">
+        <li>
+          <a href="#" class="nav-link is-active" data-tip="Overview">
+            <span class="nav-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="9" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="14" y="3" width="7" height="5" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="14" y="12" width="7" height="9" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="3" y="16" width="7" height="5" rx="1.5" stroke="currentColor" stroke-width="2"/></svg></span>
+            <span class="nav-text">Overview</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link" data-tip="Analytics">
+            <span class="nav-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 19V10M12 19V5M20 19v-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+            <span class="nav-text">Analytics</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link" data-tip="Orders">
+            <span class="nav-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 7h18M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2M4 7l1.2 12.1a2 2 0 0 0 2 1.9h9.6a2 2 0 0 0 2-1.9L20 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="nav-text">Orders</span>
+            <span class="nav-badge">12</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link" data-tip="Customers">
+            <span class="nav-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="2"/><path d="M2.5 20c.7-3.6 3.4-5.6 6.5-5.6s5.8 2 6.5 5.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M16 8.2a3.2 3.2 0 1 1 3.6 3.17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M15.5 14.6c2.7.3 4.7 2.1 5.3 5.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+            <span class="nav-text">Customers</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link" data-tip="Reports">
+            <span class="nav-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 3v5h5M9 13h6M9 17h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+            <span class="nav-text">Reports</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="nav-label">General</div>
+      <ul class="nav-list">
+        <li>
+          <a href="#" class="nav-link" data-tip="Settings">
+            <span class="nav-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/><path d="M19.4 13.5c.1-.5.1-1 0-1.5l1.9-1.5-2-3.4-2.3.6a7.7 7.7 0 0 0-1.3-.75l-.35-2.4H9.65l-.35 2.4c-.47.2-.9.45-1.3.75l-2.3-.6-2 3.4L5.6 12c-.1.5-.1 1 0 1.5l-1.9 1.5 2 3.4 2.3-.6c.4.3.83.55 1.3.75l.35 2.4h4.7l.35-2.4c.47-.2.9-.45 1.3-.75l2.3.6 2-3.4-1.9-1.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+            <span class="nav-text">Settings</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-user">
+      <button class="user-block" id="userBlock" aria-haspopup="true" aria-expanded="false">
+        <span class="avatar" style="--avatar-hue:265">AK</span>
+        <span class="user-meta">
+          <span class="user-name">Alli Kim</span>
+          <span class="user-role">Product Admin</span>
+        </span>
+        <span class="user-chevron" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M8 9l4 4 4-4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </button>
+    </div>
+  </aside>
+
+  <div class="sidebar-scrim" id="sidebarScrim"></div>
+
+  <!-- ============ MAIN ============ -->
+  <div class="main">
+
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="icon-btn hamburger-btn" id="hamburgerBtn" aria-label="Open sidebar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="topbar-heading">
+          <h1>Overview</h1>
+          <p class="topbar-sub">Welcome back — here's what's happening today.</p>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <div class="search-box">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.2-3.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input type="text" placeholder="Search…" aria-label="Search">
+          <kbd>⌘K</kbd>
+        </div>
+
+        <div class="date-range" id="dateRange" role="group" aria-label="Date range">
+          <button class="range-btn" data-range="7d">7D</button>
+          <button class="range-btn is-active" data-range="30d">30D</button>
+          <button class="range-btn" data-range="90d">90D</button>
+          <button class="range-btn" data-range="12m">12M</button>
+        </div>
+
+        <button class="icon-btn" id="notifBtn" aria-label="Notifications">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 1 0-12 0c0 6.5-2.5 8-2.5 8h17S18 14.5 18 8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M10 20a2 2 0 0 0 4 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span class="notif-badge">3</span>
+        </button>
+
+        <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Toggle color theme" title="Toggle theme">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.5 12H2.1M21.9 12h-2.4M5.6 5.6l1.7 1.7M16.7 16.7l1.7 1.7M18.4 5.6l-1.7 1.7M7.3 16.7l-1.7 1.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <!-- ===== STAT CARDS ===== -->
+      <section class="stat-grid" aria-label="Key metrics">
+        <div class="stat-card">
+          <div class="stat-top">
+            <span class="stat-label">Revenue</span>
+            <span class="trend trend-up"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M6 18 18 6M9 6h9v9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>12.4%</span>
+          </div>
+          <div class="stat-value">$84,210</div>
+          <div class="stat-bottom">
+            <span class="stat-sub">vs $74,930 last period</span>
+            <svg class="sparkline" data-spark="42,45,41,48,52,50,58,55,62,60,68,74" data-trend="up" width="88" height="32" viewBox="0 0 88 32"></svg>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-top">
+            <span class="stat-label">Active Users</span>
+            <span class="trend trend-up"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M6 18 18 6M9 6h9v9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>8.1%</span>
+          </div>
+          <div class="stat-value">18,942</div>
+          <div class="stat-bottom">
+            <span class="stat-sub">vs 17,520 last period</span>
+            <svg class="sparkline" data-spark="30,34,33,36,35,40,42,41,46,48,47,52" data-trend="up" width="88" height="32" viewBox="0 0 88 32"></svg>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-top">
+            <span class="stat-label">Conversion Rate</span>
+            <span class="trend trend-down"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M6 6 18 18M18 9v9H9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>2.3%</span>
+          </div>
+          <div class="stat-value">3.42%</div>
+          <div class="stat-bottom">
+            <span class="stat-sub">vs 3.50% last period</span>
+            <svg class="sparkline" data-spark="50,48,52,47,45,46,42,44,40,41,38,37" data-trend="down" width="88" height="32" viewBox="0 0 88 32"></svg>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-top">
+            <span class="stat-label">Avg. Order Value</span>
+            <span class="trend trend-up"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M6 18 18 6M9 6h9v9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>4.6%</span>
+          </div>
+          <div class="stat-value">$128.60</div>
+          <div class="stat-bottom">
+            <span class="stat-sub">vs $123.00 last period</span>
+            <svg class="sparkline" data-spark="40,42,39,41,44,43,46,45,48,47,50,53" data-trend="up" width="88" height="32" viewBox="0 0 88 32"></svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CHARTS ===== -->
+      <section class="chart-grid">
+        <div class="card chart-card chart-card-main">
+          <div class="card-head">
+            <div>
+              <h2>Revenue Over Time</h2>
+              <p class="card-sub">Monthly revenue, last 12 months</p>
+            </div>
+            <div class="legend-inline">
+              <span class="legend-dot" style="--dot:var(--accent)"></span> Revenue
+            </div>
+          </div>
+          <div class="chart-wrap" id="mainChartWrap">
+            <svg id="mainChart" width="100%" height="280" viewBox="0 0 720 280" preserveAspectRatio="none" aria-label="Monthly revenue line chart"></svg>
+            <div class="chart-tooltip" id="chartTooltip" role="status" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <div class="card chart-card chart-card-donut">
+          <div class="card-head">
+            <div>
+              <h2>Traffic by Channel</h2>
+              <p class="card-sub">Share of sessions this period</p>
+            </div>
+          </div>
+          <div class="donut-wrap">
+            <svg id="donutChart" width="180" height="180" viewBox="0 0 180 180" aria-label="Traffic by channel donut chart"></svg>
+            <ul class="donut-legend" id="donutLegend"></ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TABLE + SIDE LIST ===== -->
+      <section class="lower-grid">
+        <div class="card table-card">
+          <div class="card-head">
+            <div>
+              <h2>Recent Orders</h2>
+              <p class="card-sub">Latest transactions across all channels</p>
+            </div>
+            <div class="table-filter">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.2-3.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <input type="text" id="tableFilter" placeholder="Filter by customer name…" aria-label="Filter orders by customer name">
+            </div>
+          </div>
+
+          <div class="table-scroll">
+            <table class="data-table" id="ordersTable">
+              <thead>
+                <tr>
+                  <th data-key="id" class="sortable">ID <span class="sort-arrow"></span></th>
+                  <th data-key="customer" class="sortable">Customer <span class="sort-arrow"></span></th>
+                  <th data-key="amount" class="sortable is-numeric">Amount <span class="sort-arrow"></span></th>
+                  <th data-key="status" class="sortable">Status <span class="sort-arrow"></span></th>
+                  <th data-key="date" class="sortable">Date <span class="sort-arrow"></span></th>
+                </tr>
+              </thead>
+              <tbody id="ordersTableBody"></tbody>
+            </table>
+          </div>
+          <p class="table-empty" id="tableEmpty" hidden>No orders match “<span id="tableEmptyTerm"></span>”.</p>
+        </div>
+
+        <div class="card list-card">
+          <div class="card-head">
+            <div>
+              <h2>Top Products</h2>
+              <p class="card-sub">Best sellers this period</p>
+            </div>
+          </div>
+          <ul class="top-products" id="topProducts"></ul>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

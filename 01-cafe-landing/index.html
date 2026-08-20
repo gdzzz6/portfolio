@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ember & Oak — Specialty Coffee House</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="#" class="logo">Ember&nbsp;&amp;&nbsp;Oak</a>
+    <nav class="nav" id="nav">
+      <a href="#about">Our Story</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Space</a>
+      <a href="#contact">Visit</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero__bg"></div>
+  <div class="hero__grain" aria-hidden="true"></div>
+  <div class="hero__blob hero__blob--1" aria-hidden="true"></div>
+  <div class="hero__blob hero__blob--2" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <span class="badge">☕ Voted Best Coffee House 2025</span>
+      <p class="hero__eyebrow">Roasting since 2015</p>
+      <h1>Coffee that starts<br>the morning <em>right</em></h1>
+      <p class="hero__text">We roast our own beans, brew with care, and serve with pride. Step in — your morning is about to get better.</p>
+      <div class="hero__actions">
+        <a href="#menu" class="btn btn--primary">View Menu</a>
+        <a href="#contact" class="btn btn--ghost">Find Us</a>
+      </div>
+      <div class="hero__proof">
+        <div class="hero__avatars" aria-hidden="true">
+          <span>JM</span><span>AK</span><span>SL</span><span>TR</span>
+        </div>
+        <p><strong>2,400+</strong> regulars trust their morning to us</p>
+      </div>
+    </div>
+    <div class="hero__visual" aria-hidden="true">
+      <div class="hero__card hero__card--main">
+        <div class="cup">
+          <div class="cup__steam s1"></div>
+          <div class="cup__steam s2"></div>
+          <div class="cup__steam s3"></div>
+          <div class="cup__body"></div>
+          <div class="cup__handle"></div>
+          <div class="cup__saucer"></div>
+        </div>
+      </div>
+      <div class="hero__card hero__card--rating">
+        <span class="stars">★★★★★</span>
+        <strong>4.9 / 5</strong>
+        <span>1,240+ reviews</span>
+      </div>
+      <div class="hero__card hero__card--roast">
+        <span class="eyebrow">Today's roast</span>
+        <strong>Ethiopian Yirgacheffe</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee__track">
+    <span>SINGLE ORIGIN</span><span>·</span><span>SLOW ROASTED</span><span>·</span><span>LOCALLY SOURCED</span><span>·</span><span>BAKED FRESH DAILY</span><span>·</span><span>ZERO COMPROMISE</span><span>·</span>
+    <span>SINGLE ORIGIN</span><span>·</span><span>SLOW ROASTED</span><span>·</span><span>LOCALLY SOURCED</span><span>·</span><span>BAKED FRESH DAILY</span><span>·</span><span>ZERO COMPROMISE</span><span>·</span>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="container about__grid">
+    <div class="about__media" aria-hidden="true">
+      <div class="about__stat-card about__stat-card--1">
+        <strong>10+</strong>
+        <span>years in business</span>
+      </div>
+      <div class="about__stat-card about__stat-card--2">
+        <strong>12</strong>
+        <span>origins in rotation</span>
+      </div>
+    </div>
+    <div class="about__text">
+      <span class="eyebrow">Our Story</span>
+      <h2>A place that smells like fresh pastry and good coffee</h2>
+      <p>Ember & Oak started as a small corner bar and grew into the neighbourhood's favourite spot. We work with local producers, roast our own beans in-house, and bake croissants fresh every morning from 5am.</p>
+      <ul class="about__list">
+        <li><strong>10+ years</strong><span>in business</span></li>
+        <li><strong>4 roasts</strong><span>crafted in-house</span></li>
+        <li><strong>12 origins</strong><span>in rotation</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="press">
+  <div class="container press__row">
+    <span>As featured in</span>
+    <strong>Berlin Eats</strong>
+    <strong>Kinfolk Journal</strong>
+    <strong>The Daily Grind</strong>
+    <strong>City Weekender</strong>
+    <strong>Roast Magazine</strong>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="container">
+    <span class="eyebrow eyebrow--center">Menu</span>
+    <h2 class="section-title">What to try</h2>
+    <div class="menu__tabs" id="menuTabs">
+      <button class="menu__tab is-active" data-tab="coffee">Coffee</button>
+      <button class="menu__tab" data-tab="tea">Tea</button>
+      <button class="menu__tab" data-tab="food">Pastry</button>
+    </div>
+    <div class="menu__grid" id="menuGrid">
+      <!-- filled by JS -->
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="container">
+    <span class="eyebrow eyebrow--center">Atmosphere</span>
+    <h2 class="section-title">Come in for a cup</h2>
+  </div>
+  <div class="gallery__row">
+    <div class="gallery__item g1"><span>Morning light in the front room</span></div>
+    <div class="gallery__item g2"><span>Fresh croissants, every dawn</span></div>
+    <div class="gallery__item g3"><span>Our roastery in the back</span></div>
+    <div class="gallery__item g4"><span>Weekend regulars</span></div>
+    <div class="gallery__item g5"><span>Latte art, always</span></div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="container">
+    <span class="eyebrow eyebrow--center">Reviews</span>
+    <h2 class="section-title">What people say</h2>
+    <div class="testimonials__grid">
+      <div class="testimonial-card">
+        <span class="stars">★★★★★</span>
+        <p>"Hands down the best flat white in the city. The staff remember my order and my name — that's rare these days."</p>
+        <div class="testimonial-card__person">
+          <span class="avatar">JM</span>
+          <div><strong>Julia Meyer</strong><span>Regular since 2019</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <span class="stars">★★★★★</span>
+        <p>"I work from here twice a week. Great wifi, better coffee, and the croissants alone are worth the trip."</p>
+        <div class="testimonial-card__person">
+          <span class="avatar">AK</span>
+          <div><strong>Anton Krüger</strong><span>Local freelancer</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <span class="stars">★★★★★</span>
+        <p>"We book their table for every team breakfast. The space feels warm without trying too hard."</p>
+        <div class="testimonial-card__person">
+          <span class="avatar">SL</span>
+          <div><strong>Sofia Lang</strong><span>Studio owner</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container contact__grid">
+    <div>
+      <span class="eyebrow">Visit Us</span>
+      <h2>We'd love to see you</h2>
+      <ul class="contact__info">
+        <li><strong>Address</strong><span>14 Garden Street, Berlin</span></li>
+        <li><strong>Opening Hours</strong><span>Mon–Sun, 8:00–22:00</span></li>
+        <li><strong>Phone</strong><span>+49 30 1234 5678</span></li>
+      </ul>
+    </div>
+    <form class="contact__form" id="contactForm">
+      <h3>Reserve a Table</h3>
+      <input type="text" placeholder="Your name" required>
+      <input type="tel" placeholder="Phone number" required>
+      <input type="date" required>
+      <button type="submit" class="btn btn--primary">Send Request</button>
+      <p class="contact__note" id="formNote"></p>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <span>© 2026 Ember & Oak Coffee House. All rights reserved.</span>
+    <div class="footer__social">
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<a href="#contact" class="fab" id="fab">Reserve a table</a>
+
+<script src="js/script.js"></script>
+</body>
+</html>
