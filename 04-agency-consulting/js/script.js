@@ -738,45 +738,30 @@
   applyLanguage(currentLang);
 })();
 
-/* ---- Custom cursor: corner-bracket "focus frame" ---- */
+/* ---- Custom cursor: dot with glow (unified across portfolio) ---- */
 (function () {
   if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-
-  var frame = document.createElement('div');
-  frame.className = 'cursor-frame';
-  ['tl', 'tr', 'bl', 'br'].forEach(function (pos) {
-    var corner = document.createElement('span');
-    corner.className = 'cursor-corner ' + pos;
-    frame.appendChild(corner);
-  });
-  document.body.appendChild(frame);
+  var dot = document.createElement('div'); dot.className = 'cursor-dot';
+  document.body.appendChild(dot);
   document.body.classList.add('has-custom-cursor');
 
-  var mx = window.innerWidth / 2, my = window.innerHeight / 2, fx = mx, fy = my;
-  var active = false;
-
+  var mx = window.innerWidth / 2, my = window.innerHeight / 2, rx = mx, ry = my;
   window.addEventListener('mousemove', function (e) {
     mx = e.clientX; my = e.clientY;
-    if (!active) { fx = mx; fy = my; active = true; }
-    frame.style.opacity = 1;
-  });
-
+    dot.style.opacity = 1;
+  }, { passive: true });
   (function raf() {
-    fx += (mx - fx) * 0.2;
-    fy += (my - fy) * 0.2;
-    frame.style.transform = 'translate(' + fx + 'px,' + fy + 'px)';
+    rx += (mx - rx) * 0.25; ry += (my - ry) * 0.25;
+    dot.style.left = rx + 'px'; dot.style.top = ry + 'px';
     requestAnimationFrame(raf);
   })();
 
-  var hoverSel = 'a,button,input,select,textarea,label,[role="button"],.service-card,.case-card,.team-card,.carousel-btn,.carousel-dot,.hamburger,.lang-switch-btn,.lang-switch-menu li';
+  var hoverSel = 'a,button,input,select,textarea,label,[role="button"],.card,.filter-btn,.toggle-btn,.menu__tab,.product-card,.listing-card,.wishlist-btn,.fav-btn,.quick-add,th.sortable,.nav-link,.icon-btn,.donut-slice,.donut-legend-item,.sidebar-collapse-btn';
   document.addEventListener('mouseover', function (e) {
-    if (e.target.closest(hoverSel)) frame.classList.add('is-hover');
+    if (e.target.closest && e.target.closest(hoverSel)) dot.classList.add('is-hover');
   });
   document.addEventListener('mouseout', function (e) {
-    if (e.target.closest(hoverSel)) frame.classList.remove('is-hover');
+    if (e.target.closest && e.target.closest(hoverSel)) dot.classList.remove('is-hover');
   });
-  document.addEventListener('mousedown', function () { frame.classList.add('is-click'); });
-  document.addEventListener('mouseup', function () { frame.classList.remove('is-click'); });
-  document.addEventListener('mouseleave', function () { frame.style.opacity = 0; });
-  document.addEventListener('mouseenter', function () { frame.style.opacity = 1; });
+  document.addEventListener('mouseleave', function () { dot.style.opacity = 0; });
 })();

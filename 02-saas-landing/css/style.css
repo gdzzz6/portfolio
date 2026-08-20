@@ -1186,122 +1186,35 @@ h1, h2, h3, h4 {
   .price-badge { font-size: 0.66rem; }
 }
 
-/* ---- Custom cursor: crosshair / viewfinder reticle ---- */
-.cursor-reticle{
-  position:fixed;top:0;left:0;width:0;height:0;
-  pointer-events:none;z-index:9999;
-  opacity:0;transition:opacity .25s ease;
-  will-change:transform;
+/* ---- Custom cursor: dot with glow (unified across portfolio) ---- */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent-1);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  box-shadow: 0 0 16px 3px color-mix(in srgb, var(--accent-1) 55%, transparent);
+  transition: opacity .25s ease, width .2s ease, height .2s ease, box-shadow .2s ease;
 }
-.cursor-reticle.is-visible{opacity:1;}
-
-.reticle-dot{
-  position:absolute;top:0;left:0;width:4px;height:4px;margin:-2px 0 0 -2px;
-  border-radius:50%;background:var(--accent-2);
-  box-shadow:0 0 8px 1px var(--accent-glow);
-  transition:transform .3s var(--ease),background-color .3s ease,opacity .2s ease;
+.cursor-dot.is-hover {
+  width: 16px;
+  height: 16px;
+  box-shadow: 0 0 22px 5px color-mix(in srgb, var(--accent-1) 65%, transparent);
 }
-
-.reticle-tick{
-  position:absolute;top:0;left:0;background:var(--accent-1);
-  transition:transform .35s var(--ease),opacity .3s ease;
-}
-.reticle-tick-t{width:1.5px;height:10px;margin-left:-0.75px;transform:translateY(-24px);}
-.reticle-tick-b{width:1.5px;height:10px;margin-left:-0.75px;transform:translateY(14px);}
-.reticle-tick-l{width:10px;height:1.5px;margin-top:-0.75px;transform:translateX(-24px);}
-.reticle-tick-r{width:10px;height:1.5px;margin-top:-0.75px;transform:translateX(14px);}
-
-.reticle-brackets{
-  position:absolute;top:0;left:0;width:26px;height:26px;margin:-13px 0 0 -13px;
-  opacity:0;transform:scale(0.55);
-  transition:opacity .3s ease,transform .4s var(--ease);
-}
-.reticle-brackets span{
-  position:absolute;width:9px;height:9px;
-  border-color:var(--accent-2);
-  transition:border-color .3s ease;
-}
-.reticle-brackets span:nth-child(1){top:0;left:0;border-top:1.5px solid;border-left:1.5px solid;border-radius:3px 0 0 0;}
-.reticle-brackets span:nth-child(2){top:0;right:0;border-top:1.5px solid;border-right:1.5px solid;border-radius:0 3px 0 0;}
-.reticle-brackets span:nth-child(3){bottom:0;left:0;border-bottom:1.5px solid;border-left:1.5px solid;border-radius:0 0 0 3px;}
-.reticle-brackets span:nth-child(4){bottom:0;right:0;border-bottom:1.5px solid;border-right:1.5px solid;border-radius:0 0 3px 0;}
-
-/* Hover state: crosshair ticks retract, viewfinder brackets snap out and scale up */
-.cursor-reticle.is-hover .reticle-tick{opacity:0;transform:scale(0.4);}
-.cursor-reticle.is-hover .reticle-brackets{opacity:1;transform:scale(1.9);}
-.cursor-reticle.is-hover .reticle-dot{transform:scale(1.4);background:var(--accent-1);}
-
-/* Click state: quick contraction for tactile feedback */
-.cursor-reticle.is-click .reticle-brackets{transform:scale(1.55);}
-.cursor-reticle.is-click .reticle-dot{transform:scale(0.7);}
-
-body.has-custom-cursor,body.has-custom-cursor a,body.has-custom-cursor button,body.has-custom-cursor input,body.has-custom-cursor select,body.has-custom-cursor textarea,body.has-custom-cursor label,body.has-custom-cursor [role="button"]{cursor:none;}
-@media (hover:none),(pointer:coarse){.cursor-reticle{display:none!important;}}
-
-/* ---- Language switcher ---- */
-.lang-switcher{position:relative;flex-shrink:0;margin-left:4px;z-index:150;}
-.lang-btn{
-  display:flex;align-items:center;gap:6px;
-  padding:8px 12px;
-  background:rgba(255,255,255,0.05);
-  border:1px solid var(--border);
-  border-radius:999px;
-  color:var(--text-secondary);
-  font-family:var(--font-body);
-  font-size:0.82rem;
-  font-weight:600;
-  letter-spacing:0.02em;
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-  transition:color .2s ease,border-color .2s ease,background .2s ease;
-}
-.lang-btn:hover{color:var(--text-primary);border-color:var(--border-strong);background:rgba(255,255,255,0.08);}
-.lang-btn svg{flex-shrink:0;opacity:0.85;}
-.lang-chevron{transition:transform .25s var(--ease);}
-.lang-switcher.open .lang-chevron{transform:rotate(180deg);}
-#lang-current{color:var(--text-primary);min-width:1.6em;text-align:center;}
-
-.lang-menu{
-  position:absolute;top:calc(100% + 10px);right:0;
-  min-width:170px;
-  background:rgba(15,15,24,0.92);
-  border:1px solid var(--border-strong);
-  border-radius:var(--radius-md);
-  box-shadow:var(--shadow-card);
-  backdrop-filter:blur(20px) saturate(140%);
-  -webkit-backdrop-filter:blur(20px) saturate(140%);
-  padding:6px;
-  opacity:0;visibility:hidden;
-  transform:translateY(-6px) scale(0.97);
-  transform-origin:top right;
-  transition:opacity .2s var(--ease),transform .2s var(--ease),visibility .2s;
-}
-.lang-switcher.open .lang-menu{opacity:1;visibility:visible;transform:translateY(0) scale(1);}
-
-.lang-menu li{
-  padding:9px 12px;
-  border-radius:8px;
-  font-size:0.9rem;
-  font-weight:500;
-  color:var(--text-secondary);
-  cursor:pointer;
-  transition:background .15s ease,color .15s ease;
-}
-.lang-menu li:hover{background:rgba(139,123,255,0.12);color:var(--text-primary);}
-.lang-menu li[aria-selected="true"]{color:var(--text-primary);background:rgba(139,123,255,0.16);position:relative;}
-.lang-menu li[aria-selected="true"]::after{
-  content:"";position:absolute;right:12px;top:50%;width:5px;height:5px;
-  border-radius:50%;background:var(--accent-gradient);transform:translateY(-50%);
-}
-
-/* ---- Footer disclaimer ---- */
-.footer-disclaimer{
-  margin:14px auto 0;
-  padding-top:14px;
-  border-top: 1px solid var(--border);
-  font-size:0.78rem;
-  line-height:1.5;
-  color:var(--text-muted);
-  max-width:640px;
-  text-align:center;
+body.has-custom-cursor,
+body.has-custom-cursor a,
+body.has-custom-cursor button,
+body.has-custom-cursor input,
+body.has-custom-cursor select,
+body.has-custom-cursor textarea,
+body.has-custom-cursor label,
+body.has-custom-cursor [role="button"] { cursor: none; }
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot { display: none !important; }
 }

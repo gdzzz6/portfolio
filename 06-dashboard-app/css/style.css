@@ -815,65 +815,35 @@ svg { display: block; }
   .donut-wrap { flex-direction: column; }
 }
 
-/* ---- Custom cursor: precision crosshair ---- */
-/* Two hairline guides that track the pointer across the whole viewport,
-   like a spreadsheet/chart precision crosshair, plus a small tick mark
-   at their intersection. Both pulse into the accent color while hovering
-   sortable table headers, chart areas, nav items and other controls. */
-.crosshair-line {
+/* ---- Custom cursor: dot with glow (unified across portfolio) ---- */
+.cursor-dot {
   position: fixed;
   top: 0;
   left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
   pointer-events: none;
   z-index: 9999;
-  background: var(--accent);
-  opacity: 0;
-  transition: opacity .18s ease, box-shadow .18s ease, background-color .25s ease;
-}
-.crosshair-line.is-visible { opacity: .35; }
-.crosshair-h { width: 100%; height: 1px; }
-.crosshair-v { height: 100%; width: 1px; }
-.crosshair-line.is-active.is-visible {
-  opacity: .9;
-  box-shadow: 0 0 8px 1px rgba(var(--accent-rgb), .55);
-}
-
-.crosshair-tick {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 9px;
-  height: 9px;
-  pointer-events: none;
-  z-index: 10000;
   transform: translate(-50%, -50%);
-  border: 1px solid rgba(var(--accent-rgb), .55);
-  border-radius: 2px;
   opacity: 0;
-  transition: opacity .18s ease, border-color .18s ease, box-shadow .18s ease, width .15s ease, height .15s ease;
+  box-shadow: 0 0 16px 3px color-mix(in srgb, var(--accent) 55%, transparent);
+  transition: opacity .25s ease, width .2s ease, height .2s ease, box-shadow .2s ease;
 }
-.crosshair-tick.is-visible { opacity: 1; }
-.crosshair-tick.is-active {
-  border-color: var(--accent);
-  box-shadow: 0 0 10px 1px rgba(var(--accent-rgb), .5);
-  width: 13px;
-  height: 13px;
+.cursor-dot.is-hover {
+  width: 16px;
+  height: 16px;
+  box-shadow: 0 0 22px 5px color-mix(in srgb, var(--accent) 65%, transparent);
 }
-
-body.has-crosshair-cursor,
-body.has-crosshair-cursor a,
-body.has-crosshair-cursor button,
-body.has-crosshair-cursor input,
-body.has-crosshair-cursor select,
-body.has-crosshair-cursor textarea,
-body.has-crosshair-cursor label,
-body.has-crosshair-cursor [role="button"] { cursor: none; }
-
-@media (hover: hover) and (pointer: fine) {
-  /* Avoid stacking the browser's native crosshair on top of our own. */
-  body.has-crosshair-cursor #mainChart { cursor: none; }
-}
-
+body.has-custom-cursor,
+body.has-custom-cursor a,
+body.has-custom-cursor button,
+body.has-custom-cursor input,
+body.has-custom-cursor select,
+body.has-custom-cursor textarea,
+body.has-custom-cursor label,
+body.has-custom-cursor [role="button"] { cursor: none; }
 @media (hover: none), (pointer: coarse) {
-  .crosshair-line, .crosshair-tick { display: none !important; }
+  .cursor-dot { display: none !important; }
 }

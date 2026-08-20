@@ -1022,55 +1022,30 @@
   cartBadge.classList.remove("bump");
 })();
 
-/* ---- Custom cursor: dot + contextual "View" / "Add" label ---- */
+/* ---- Custom cursor: dot with glow (unified across portfolio) ---- */
 (function () {
   if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-
   var dot = document.createElement('div'); dot.className = 'cursor-dot';
-  var label = document.createElement('div'); label.className = 'cursor-label';
   document.body.appendChild(dot);
-  document.body.appendChild(label);
   document.body.classList.add('has-custom-cursor');
 
   var mx = window.innerWidth / 2, my = window.innerHeight / 2, rx = mx, ry = my;
-
-  function setLabel(text) {
-    if (text) {
-      if (label.textContent !== text) label.textContent = text;
-      label.classList.add('is-visible');
-    } else {
-      label.classList.remove('is-visible');
-    }
-  }
-
   window.addEventListener('mousemove', function (e) {
     mx = e.clientX; my = e.clientY;
     dot.style.opacity = 1;
-
-    var addEl = e.target.closest ? e.target.closest('.quick-add') : null;
-    var mediaEl = e.target.closest ? e.target.closest('.product-card__media') : null;
-    if (addEl) {
-      setLabel('Add');
-    } else if (mediaEl) {
-      setLabel('View');
-    } else {
-      setLabel(null);
-    }
-  });
-
+  }, { passive: true });
   (function raf() {
-    rx += (mx - rx) * 0.35;
-    ry += (my - ry) * 0.35;
+    rx += (mx - rx) * 0.25; ry += (my - ry) * 0.25;
     dot.style.left = rx + 'px'; dot.style.top = ry + 'px';
-    label.style.left = rx + 'px'; label.style.top = ry + 'px';
     requestAnimationFrame(raf);
   })();
 
-  document.addEventListener('mouseleave', function () {
-    dot.style.opacity = 0;
-    setLabel(null);
+  var hoverSel = 'a,button,input,select,textarea,label,[role="button"],.card,.filter-btn,.toggle-btn,.menu__tab,.product-card,.listing-card,.wishlist-btn,.fav-btn,.quick-add,th.sortable,.nav-link,.icon-btn,.donut-slice,.donut-legend-item,.sidebar-collapse-btn';
+  document.addEventListener('mouseover', function (e) {
+    if (e.target.closest && e.target.closest(hoverSel)) dot.classList.add('is-hover');
   });
-  document.addEventListener('mouseenter', function () {
-    dot.style.opacity = 1;
+  document.addEventListener('mouseout', function (e) {
+    if (e.target.closest && e.target.closest(hoverSel)) dot.classList.remove('is-hover');
   });
+  document.addEventListener('mouseleave', function () { dot.style.opacity = 0; });
 })();

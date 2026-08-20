@@ -990,86 +990,30 @@
   });
 })();
 
-/* ---- Custom cursor: precision crosshair ----
-   Two hairline guides (1px each) track the pointer across the full
-   viewport like a spreadsheet/chart crosshair, plus a small tick mark
-   at their intersection. This listens on `window`/`document` only and
-   never touches the chart SVG's own mousemove listener (which reads
-   e.clientX/e.clientY directly for its hover-tooltip), so the two
-   stay fully independent. Everything here is pointer-events:none. */
+/* ---- Custom cursor: dot with glow (unified across portfolio) ---- */
 (function () {
   if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  var dot = document.createElement('div'); dot.className = 'cursor-dot';
+  document.body.appendChild(dot);
+  document.body.classList.add('has-custom-cursor');
 
-  var lineH = document.createElement('div');
-  lineH.className = 'crosshair-line crosshair-h';
-  var lineV = document.createElement('div');
-  lineV.className = 'crosshair-line crosshair-v';
-  var tick = document.createElement('div');
-  tick.className = 'crosshair-tick';
-
-  document.body.appendChild(lineH);
-  document.body.appendChild(lineV);
-  document.body.appendChild(tick);
-  document.body.classList.add('has-crosshair-cursor');
-
-  var mx = window.innerWidth / 2;
-  var my = window.innerHeight / 2;
-  var tx = mx, ty = my; // eased position for the tick mark
-  var shown = false;
-
+  var mx = window.innerWidth / 2, my = window.innerHeight / 2, rx = mx, ry = my;
   window.addEventListener('mousemove', function (e) {
-    mx = e.clientX;
-    my = e.clientY;
-    if (!shown) {
-      shown = true;
-      lineH.classList.add('is-visible');
-      lineV.classList.add('is-visible');
-      tick.classList.add('is-visible');
-    }
+    mx = e.clientX; my = e.clientY;
+    dot.style.opacity = 1;
   }, { passive: true });
-
-  document.addEventListener('mouseleave', function () {
-    lineH.classList.remove('is-visible');
-    lineV.classList.remove('is-visible');
-    tick.classList.remove('is-visible');
-    shown = false;
-  });
-  document.addEventListener('mouseenter', function () {
-    shown = true;
-    lineH.classList.add('is-visible');
-    lineV.classList.add('is-visible');
-    tick.classList.add('is-visible');
-  });
-
   (function raf() {
-    // Lines snap straight to the pointer for a precise, non-laggy feel.
-    lineH.style.top = my + 'px';
-    lineV.style.left = mx + 'px';
-    // The tick mark (the intersection point) eases toward the pointer.
-    tx += (mx - tx) * 0.28;
-    ty += (my - ty) * 0.28;
-    tick.style.left = tx + 'px';
-    tick.style.top = ty + 'px';
+    rx += (mx - rx) * 0.25; ry += (my - ry) * 0.25;
+    dot.style.left = rx + 'px'; dot.style.top = ry + 'px';
     requestAnimationFrame(raf);
   })();
 
-  var hoverSel = [
-    'a', 'button', 'input', 'select', 'textarea', 'label', '[role="button"]',
-    '.nav-link', '.icon-btn', '.range-btn', '.user-block', '.lang-option',
-    'th.sortable', '#mainChart', '#donutChart', '.donut-slice', '.donut-legend-item',
-    '.sidebar-collapse-btn'
-  ].join(',');
-
-  function setActive(on) {
-    lineH.classList.toggle('is-active', on);
-    lineV.classList.toggle('is-active', on);
-    tick.classList.toggle('is-active', on);
-  }
-
+  var hoverSel = 'a,button,input,select,textarea,label,[role="button"],.card,.filter-btn,.toggle-btn,.menu__tab,.product-card,.listing-card,.wishlist-btn,.fav-btn,.quick-add,th.sortable,.nav-link,.icon-btn,.donut-slice,.donut-legend-item,.sidebar-collapse-btn';
   document.addEventListener('mouseover', function (e) {
-    if (e.target.closest && e.target.closest(hoverSel)) setActive(true);
+    if (e.target.closest && e.target.closest(hoverSel)) dot.classList.add('is-hover');
   });
   document.addEventListener('mouseout', function (e) {
-    if (e.target.closest && e.target.closest(hoverSel)) setActive(false);
+    if (e.target.closest && e.target.closest(hoverSel)) dot.classList.remove('is-hover');
   });
+  document.addEventListener('mouseleave', function () { dot.style.opacity = 0; });
 })();

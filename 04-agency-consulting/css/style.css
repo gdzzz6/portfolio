@@ -821,50 +821,35 @@ h1, h2, h3, h4 { font-family: var(--font-head); font-weight: 600; line-height: 1
   .lang-switch-menu { right: -8px; }
 }
 
-/* ---- Custom cursor: corner-bracket focus frame ---- */
-.cursor-frame{
+/* ---- Custom cursor: dot with glow (unified across portfolio) ---- */
+.cursor-dot {
   position: fixed;
   top: 0;
   left: 0;
-  width: 0;
-  height: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
   pointer-events: none;
   z-index: 9999;
+  transform: translate(-50%, -50%);
   opacity: 0;
-  transition: opacity .25s ease;
+  box-shadow: 0 0 16px 3px color-mix(in srgb, var(--accent) 55%, transparent);
+  transition: opacity .25s ease, width .2s ease, height .2s ease, box-shadow .2s ease;
 }
-.cursor-corner{
-  position: absolute;
-  width: 9px;
-  height: 9px;
-  opacity: .82;
-  transform: scale(1);
-  transition:
-    top .45s cubic-bezier(.16,1,.3,1),
-    left .45s cubic-bezier(.16,1,.3,1),
-    right .45s cubic-bezier(.16,1,.3,1),
-    bottom .45s cubic-bezier(.16,1,.3,1),
-    width .45s cubic-bezier(.16,1,.3,1),
-    height .45s cubic-bezier(.16,1,.3,1),
-    opacity .3s ease,
-    transform .45s cubic-bezier(.16,1,.3,1);
+.cursor-dot.is-hover {
+  width: 16px;
+  height: 16px;
+  box-shadow: 0 0 22px 5px color-mix(in srgb, var(--accent) 65%, transparent);
 }
-.cursor-corner.tl{ top: -10px; left: -10px; border-top: 1.5px solid var(--accent); border-left: 1.5px solid var(--accent); }
-.cursor-corner.tr{ top: -10px; right: -10px; border-top: 1.5px solid var(--accent); border-right: 1.5px solid var(--accent); }
-.cursor-corner.bl{ bottom: -10px; left: -10px; border-bottom: 1.5px solid var(--accent); border-left: 1.5px solid var(--accent); }
-.cursor-corner.br{ bottom: -10px; right: -10px; border-bottom: 1.5px solid var(--accent); border-right: 1.5px solid var(--accent); }
-
-.cursor-frame.is-hover .cursor-corner{ opacity: 1; width: 13px; height: 13px; transform: scale(1.05); }
-.cursor-frame.is-hover .cursor-corner.tl{ top: -25px; left: -25px; }
-.cursor-frame.is-hover .cursor-corner.tr{ top: -25px; right: -25px; }
-.cursor-frame.is-hover .cursor-corner.bl{ bottom: -25px; left: -25px; }
-.cursor-frame.is-hover .cursor-corner.br{ bottom: -25px; right: -25px; }
-
-.cursor-frame.is-click .cursor-corner{ opacity: 1; }
-.cursor-frame.is-click .cursor-corner.tl{ top: -8px; left: -8px; }
-.cursor-frame.is-click .cursor-corner.tr{ top: -8px; right: -8px; }
-.cursor-frame.is-click .cursor-corner.bl{ bottom: -8px; left: -8px; }
-.cursor-frame.is-click .cursor-corner.br{ bottom: -8px; right: -8px; }
-
-body.has-custom-cursor,body.has-custom-cursor a,body.has-custom-cursor button,body.has-custom-cursor input,body.has-custom-cursor select,body.has-custom-cursor textarea,body.has-custom-cursor label,body.has-custom-cursor [role="button"]{cursor:none;}
-@media (hover:none),(pointer:coarse){.cursor-frame{display:none!important;}}
+body.has-custom-cursor,
+body.has-custom-cursor a,
+body.has-custom-cursor button,
+body.has-custom-cursor input,
+body.has-custom-cursor select,
+body.has-custom-cursor textarea,
+body.has-custom-cursor label,
+body.has-custom-cursor [role="button"] { cursor: none; }
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot { display: none !important; }
+}

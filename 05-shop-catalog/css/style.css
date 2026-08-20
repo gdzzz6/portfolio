@@ -1024,28 +1024,35 @@ input { font-family: inherit; }
   .values { padding: 3rem 1.25rem; }
 }
 
-/* ---- Custom cursor: dot + contextual "View"/"Add" label ---- */
-.cursor-dot{position:fixed;top:0;left:0;width:7px;height:7px;border-radius:50%;background:var(--color-clay);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);opacity:0;transition:opacity .2s ease;}
-.cursor-label{
-  position:fixed;top:0;left:0;
-  pointer-events:none;z-index:9999;
-  background:var(--color-clay);
-  color:var(--color-cream);
-  font-family:var(--font-sans);
-  font-size:0.66rem;
-  font-weight:600;
-  letter-spacing:0.05em;
-  text-transform:uppercase;
-  padding:0.34rem 0.75rem;
-  border-radius:999px;
-  white-space:nowrap;
-  opacity:0;
-  transform:translate(16px,-50%) scale(0.8);
-  transition:opacity .2s ease, transform .2s ease;
+/* ---- Custom cursor: dot with glow (unified across portfolio) ---- */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-clay);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  box-shadow: 0 0 16px 3px color-mix(in srgb, var(--color-clay) 55%, transparent);
+  transition: opacity .25s ease, width .2s ease, height .2s ease, box-shadow .2s ease;
 }
-.cursor-label.is-visible{
-  opacity:1;
-  transform:translate(16px,-50%) scale(1);
+.cursor-dot.is-hover {
+  width: 16px;
+  height: 16px;
+  box-shadow: 0 0 22px 5px color-mix(in srgb, var(--color-clay) 65%, transparent);
 }
-body.has-custom-cursor,body.has-custom-cursor a,body.has-custom-cursor button,body.has-custom-cursor input,body.has-custom-cursor select,body.has-custom-cursor textarea,body.has-custom-cursor label,body.has-custom-cursor [role="button"]{cursor:none;}
-@media (hover:none),(pointer:coarse){.cursor-dot,.cursor-label{display:none!important;}}
+body.has-custom-cursor,
+body.has-custom-cursor a,
+body.has-custom-cursor button,
+body.has-custom-cursor input,
+body.has-custom-cursor select,
+body.has-custom-cursor textarea,
+body.has-custom-cursor label,
+body.has-custom-cursor [role="button"] { cursor: none; }
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot { display: none !important; }
+}

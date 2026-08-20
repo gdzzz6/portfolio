@@ -618,45 +618,30 @@
   }
 })();
 
-/* ---- Custom cursor: crosshair / viewfinder reticle ---- */
+/* ---- Custom cursor: dot with glow (unified across portfolio) ---- */
 (function () {
   if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-
-  var wrap = document.createElement('div');
-  wrap.className = 'cursor-reticle';
-  wrap.innerHTML =
-    '<div class="reticle-tick reticle-tick-t"></div>' +
-    '<div class="reticle-tick reticle-tick-b"></div>' +
-    '<div class="reticle-tick reticle-tick-l"></div>' +
-    '<div class="reticle-tick reticle-tick-r"></div>' +
-    '<div class="reticle-brackets"><span></span><span></span><span></span><span></span></div>' +
-    '<div class="reticle-dot"></div>';
-  document.body.appendChild(wrap);
+  var dot = document.createElement('div'); dot.className = 'cursor-dot';
+  document.body.appendChild(dot);
   document.body.classList.add('has-custom-cursor');
 
   var mx = window.innerWidth / 2, my = window.innerHeight / 2, rx = mx, ry = my;
-
   window.addEventListener('mousemove', function (e) {
     mx = e.clientX; my = e.clientY;
-    wrap.classList.add('is-visible');
-  });
-
+    dot.style.opacity = 1;
+  }, { passive: true });
   (function raf() {
-    rx += (mx - rx) * 0.22;
-    ry += (my - ry) * 0.22;
-    wrap.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
+    rx += (mx - rx) * 0.25; ry += (my - ry) * 0.25;
+    dot.style.left = rx + 'px'; dot.style.top = ry + 'px';
     requestAnimationFrame(raf);
   })();
 
-  var hoverSel = 'a,button,input,select,textarea,label,[role="button"],[role="switch"],.lang-menu li,.accordion-trigger';
+  var hoverSel = 'a,button,input,select,textarea,label,[role="button"],.card,.filter-btn,.toggle-btn,.menu__tab,.product-card,.listing-card,.wishlist-btn,.fav-btn,.quick-add,th.sortable,.nav-link,.icon-btn,.donut-slice,.donut-legend-item,.sidebar-collapse-btn';
   document.addEventListener('mouseover', function (e) {
-    if (e.target.closest(hoverSel)) wrap.classList.add('is-hover');
+    if (e.target.closest && e.target.closest(hoverSel)) dot.classList.add('is-hover');
   });
   document.addEventListener('mouseout', function (e) {
-    if (e.target.closest(hoverSel)) wrap.classList.remove('is-hover');
+    if (e.target.closest && e.target.closest(hoverSel)) dot.classList.remove('is-hover');
   });
-  document.addEventListener('mousedown', function () { wrap.classList.add('is-click'); });
-  document.addEventListener('mouseup', function () { wrap.classList.remove('is-click'); });
-  document.addEventListener('mouseleave', function () { wrap.classList.remove('is-visible'); });
-  document.addEventListener('mouseenter', function () { wrap.classList.add('is-visible'); });
+  document.addEventListener('mouseleave', function () { dot.style.opacity = 0; });
 })();
