@@ -769,7 +769,8 @@ em { font-style: italic; color: var(--color-gold-deep); }
   transform: translate(-50%, -50%);
   opacity: 0;
   box-shadow: 0 0 16px 3px color-mix(in srgb, var(--color-gold-deep) 55%, transparent);
-  transition: opacity .25s ease, width .2s ease, height .2s ease, box-shadow .2s ease;
+  transition: left .12s cubic-bezier(.2,.6,.2,1), top .12s cubic-bezier(.2,.6,.2,1),
+              opacity .25s ease, width .2s ease, height .2s ease, box-shadow .2s ease;
 }
 .cursor-dot.is-hover {
   width: 16px;

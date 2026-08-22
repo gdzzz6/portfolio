@@ -997,16 +997,15 @@
   document.body.appendChild(dot);
   document.body.classList.add('has-custom-cursor');
 
-  var mx = window.innerWidth / 2, my = window.innerHeight / 2, rx = mx, ry = my;
+  // Position is set directly on mousemove; the CSS `transition` on
+  // left/top does the easing. No requestAnimationFrame loop, so there's
+  // nothing for a browser to suspend/stall while a tab is backgrounded —
+  // the dot just picks up exactly where it should on the next mousemove.
   window.addEventListener('mousemove', function (e) {
-    mx = e.clientX; my = e.clientY;
+    dot.style.left = e.clientX + 'px';
+    dot.style.top = e.clientY + 'px';
     dot.style.opacity = 1;
   }, { passive: true });
-  (function raf() {
-    rx += (mx - rx) * 0.25; ry += (my - ry) * 0.25;
-    dot.style.left = rx + 'px'; dot.style.top = ry + 'px';
-    requestAnimationFrame(raf);
-  })();
 
   var hoverSel = 'a,button,input,select,textarea,label,[role="button"],.card,.filter-btn,.toggle-btn,.menu__tab,.product-card,.listing-card,.wishlist-btn,.fav-btn,.quick-add,th.sortable,.nav-link,.icon-btn,.donut-slice,.donut-legend-item,.sidebar-collapse-btn';
   document.addEventListener('mouseover', function (e) {
